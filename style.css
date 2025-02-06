@@ -8,28 +8,50 @@ header{
     background: linear-gradient(135deg, #9a0000 30%, 50%, #f7c041 70%);
 }
 .entete{
-    display: flex;
-    justify-content: space-between;
+    padding-left: 3%;
+    padding-right: 3%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
 }
 header *{
-
 }
 header h1{
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    text-align: center;
+    font-size: 50px;
 
 }
 
-header img{
-    flex:1 1;
-    max-width: 5%;
+#logo{
+    grid-column: 1;
+    grid-row: 1;
+    height: auto;
+    flex:1;
+    align-self: center;
 
+}
+header img{
+    width: 33%;
+}
+#temp{
+    display:flex;
+    justify-content: space-between;
 }
 
 .inscrico{
+    font-size: 30px;
+    width: fit-content;
+    grid-column: 3;
+    grid-row: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 header div a{
+    border: solid 1px white;
     border-radius:5px;
     text-decoration: none;
     padding-left:5px;
@@ -39,6 +61,7 @@ header div a{
 }
 
 nav{
+
     padding-top: 1%;
     border-top: double 1px black;
     display: flex;
@@ -47,6 +70,7 @@ nav{
 
 }
 nav a{
+
     border-radius: 5px;
     background-color: #FFFCF0;
     padding: 5px;
@@ -55,7 +79,7 @@ nav a{
 }
 
 .contenu{
-    background-color: blue;
+
     display: flex;
     flex-direction: column;
     border: 1px solid black;
@@ -63,20 +87,22 @@ nav a{
 
 }
 .descript{
-    border: solid 1px black;
     display: flex;
     flex-direction: initial;
     width: auto;
 
 }
-.descript img{
+.descript div{;
     display: flex;
-    flex:10;
-    width: auto;
-    max-width: 100%;
+    flex:50;
+}
+.descript img{
+    border-radius:10px;
+    width:80%;
 }
 .descript p{
+    box-shadow: -10px -10px 5px red;
+    background-color: blue;
     display: flex;
     flex:30;
 }
-
