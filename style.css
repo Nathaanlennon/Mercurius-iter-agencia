@@ -2,41 +2,53 @@ body {
     background-color: #F0ebd7;
 }
 header{
+    border-top-left-radius:10px;
+    border-top-right-radius: 10px;
+    padding: 1%;
+    background: linear-gradient(135deg, #9a0000 30%, 50%, #f7c041 70%);
+}
+.entete{
     display: flex;
     justify-content: space-between;
-    background: linear-gradient(135deg, #9b0b04 30%, 50%, #CEA000 70%);
 }
 header *{
-    border: 1px solid black;
+
+}
+header h1{
 
 }
 
 header img{
-    width: 5%;
+    flex:1 1;
+    max-width: 5%;
+
 }
 
-header div{
+.inscrico{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 header div a{
-    border:1px solid black;
     border-radius:5px;
     text-decoration: none;
     padding-left:5px;
     padding-right:5px;
     background-color: #FFFCF0;
+    color:black
 }
 
 nav{
+    padding-top: 1%;
+    border-top: double 1px black;
     display: flex;
     justify-content: space-evenly;
+
 
 }
 nav a{
     border-radius: 5px;
-    background-color: green;
+    background-color: #FFFCF0;
     padding: 5px;
     color: black;
     text-decoration: none;
@@ -45,18 +57,26 @@ nav a{
 .contenu{
     background-color: blue;
     display: flex;
-    flex-direction: initial;
+    flex-direction: column;
     border: 1px solid black;
     flex-basis: 0;
+
 }
-aside{
+.descript{
+    border: solid 1px black;
     display: flex;
-    flex: 30;
-    flex-direction: column;
-    background-color: green;
+    flex-direction: initial;
+    width: auto;
+
 }
-article{
+.descript img{
     display: flex;
-    flex:70;
-    border: 1px solid black;
+    flex:10;
+    width: auto;
+    max-width: 100%;
 }
+.descript p{
+    display: flex;
+    flex:30;
+}
+
