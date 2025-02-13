@@ -1,22 +1,176 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Recherche</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        form {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 2em;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            border: solid 1px black;
+            border-radius: 5px;
+            width: 50%;
+            font-size: 30px;
+            background-color: white;
+            padding-bottom: 0.5em;
+        }
+
+        form * {
+
+        }
+
+        form > h6 {
+            margin: 0.5em;
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+            border-radius: 15px;
+
+        }
+
+        #villes{
+            border: black solid 1px;
+            border-radius: 5px;
+            padding: 3px;
+            font-size: 20px;
+            overflow-y: auto;
+            max-height: 5.8em;
+        }
+
+        #villes input[type="checkbox"] {
+            display: none;
+            visibility: hidden;
+        }
+
+        #villes label {
+            display: block;
+        }
+
+        #villes label:has(:checked) {
+            background-color: #9a0000;
+        }
+
+        .hotels{
+            font-size: 20px;
+        }
+        .titres{
+            margin-bottom: 0.25em;
+        }
+    </style>
 </head>
 <body>
+<div>
+    <header>
+        <div class="entete">
+            <div id="logo"><img src="logo.png" alt="logo"></div>
+
+            <h1>Mercurius Iter Agencia</h1>
+
+            <div id="temp">
+                <div>
+
+                </div>
+                <div class="inscrico">
+                    <a href="inscription.html">Inscription</a>
+                    <a href="connexion.html">Connexion</a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <a href="presentation.html">À propos</a>
+            <a href="recherche.html">Recherche</a>
+            <a href="choix.html">Choix</a>
+            <a href="profil.html">Profil</a>
+        </nav>
+    </header>
+
+</div>
 <form action="">
-    <input type="date" name="départ">
-    <input type="date" name="arrivée">
-    <select name="ville">
-        <option value="ville1"></option>
-        <option value="ville2"></option>
-        <option value="ville3"></option>
-        <option value="ville4"><option>
-    </select>
-    <select name="options" id="option">
-        <option value=""></option>
-    </select>
+    <h6><label>Date de départ : <input type="date" name="depart" min=Date()></label>
+    </h6>
+    <h6><label>Date de retour : <input type="date" name="retour" min=Date()></label>
+    </h6>
+
+    <h6 class="titres">Villes souhaitées</h6>
+    <div id="villes">
+        <label>
+            <input type="checkbox" value="Alexandrie">
+            Alexandrie (Égypte)
+        </label>
+
+        <label>
+            <input type="checkbox" value="Antioche">
+            Antioche (Turquie)
+        </label>
+
+        <label>
+            <input type="checkbox" value="Athenes">
+            Athènes (Grèce)
+        </label>
+
+        <label>
+            <input type="checkbox" value="Carthage">
+            Carthage (Tunisie)
+        </label>
+
+        <label>
+            <input type="checkbox" value="Constantinople">
+            Constantinople (Istanbul, Turquie)
+        </label>
+
+        <label>
+            <input type="checkbox" value="Ephese">
+            Ephèse (Turquie)
+        </label>
+
+        <label>
+            <input type="checkbox" value="Jerusalem">
+            Jérusalem (Israël)
+        </label>
+
+        <label>
+            <input type="checkbox" value="LeptisMagna">
+            Leptis Magna (Libye)
+        </label>
+
+        <label>
+            <input type="checkbox" value="Rome">
+            Rome (Italie)
+        </label>
+
+        <label>
+            <input type="checkbox" value="Syracuse">
+            Syracuse (Italie)
+        </label>
+    </div>
+    <h6 class="titres">Nombre d'étoiles :</h6>
+    <div class="hotels">
+        <label>Une étoile :
+            <input type="checkbox" value="un">
+        </label>
+        <label>Deux étoiles :
+            <input type="checkbox" value="deux">
+        </label>
+        <label>Trois étoiles :
+            <input type="checkbox" value="trois">
+        </label>
+        <label>Quatre étoiles :
+            <input type="checkbox" value="quatre">
+        </label>
+        <label>Cinq étoiles :
+            <input type="checkbox" value="cinq">
+        </label>
+
+    </div>
+    <h6><label>budget :
+        <input type="range" min="0" step="10" max="10000" oninput="this.nextElementSibling.value = this.value">
+        <output></output>
+    </label></h6>
+    <button type="submit">Recherche</button>
 </form>
 </body>
 </html>

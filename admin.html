@@ -3,19 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <title>administrateur</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        table, td, th{
+            border: 1px solid black;
+            font-size:30px;
+        }
+        td{
+          color:blue;
+        }
+        select{
+        }
+    </style>
 </head>
 <body>
-<p>Utilisateurs :</p>
+
 <form action="">
-<ul>
-  <li><select>
-    <option value="normal">Normal</option>
-    <option value="VIP">VIP</option>
-    <option value="Banni">Banni</option>
-  </select>
-    <button>Envoyer</button>
-  </li>
-</ul>
+<label>Id spécifique : <input type="text" maxlength="9px"></label>
+    <button type="submit">envoyer</button>
 </form>
+
+<table>
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            etat
+        </th>
+    </tr>
+    <tr>
+        <td>152648289</td>
+        <td><form action="">
+            <select name="etat">
+                <option value="normal">Normal</option>
+                <option value="VIP">VIP</option>
+                <option value="Banni">Banni</option>
+            </select>
+            <button>Envoyer</button>
+        </form></td>
+    </tr>
+    <tr>
+        <td>
+            475896325
+        </td>
+        <td>
+            <form action="">
+                <select name="etat">
+                    <option value="normal">Normal</option>
+                    <option value="VIP">VIP</option>
+                    <option value="Banni">Banni</option>
+                </select>
+                <button>Envoyer</button>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            856974125
+        </td>
+        <td>
+            <form action="">
+                <select name="etat">
+                    <option value="normal">Normal</option>
+                    <option value="VIP">VIP</option>
+                    <option value="Banni">Banni</option>
+                </select>
+                <button>Envoyer</button>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            236485196
+        </td>
+        <td>
+            <form action="">
+                <select name="etat">
+                    <option value="normal">Normal</option>
+                    <option value="VIP">VIP</option>
+                    <option value="Banni">Banni</option>
+                </select>
+                <button>Envoyer</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
 </body>
 </html>
