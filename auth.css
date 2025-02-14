@@ -2,18 +2,20 @@ body{
 	background-image: url("logotransp.png");
 	background-repeat: no-repeat;
 	background-size: 40%;	
-	background-position: 50% 0%;
+	background-position: 50%;
 	
 }
+
+
 table, tr, th, td {
 	border: 1px solid #650065;
 	
 	
 }
-table{ 
+table{
+	border:1px solid black;
 	border-spacing: 0;
 	border-radius: 5px;
-	position : 50% 100%;
 	margin :auto;
 }	
 
@@ -32,17 +34,7 @@ td{
 	text-align: center;
 }
 
-p{		
-	text-align: center;
-}
-	
-a{
-	 border-radius: 5px;
-    background-color: #9a0000;
-    padding: 5px;
-    color: white;
-    text-decoration: none;
-   }
+
    
 tr:last-child td {
     border-bottom-left-radius: 5px;

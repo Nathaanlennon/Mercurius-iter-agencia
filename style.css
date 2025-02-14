@@ -6,6 +6,8 @@
 body {
     font-family: hadriatic, sans-serif;
     background-color: #F0ebd7;
+    line-height: 2em;
+    letter-spacing: 0.15em;
 }
 
 header {
@@ -34,6 +36,15 @@ header h1 {
     font-size: 50px;
 }
 
+a{
+    border-radius: 5px;
+    background-color: #FFFCF0;
+    padding: 5px;
+    color: black;
+    text-decoration: none;
+    align-self: center;
+}
+
 #logo {
     grid-column: 1;
     grid-row: 1;
@@ -41,9 +52,12 @@ header h1 {
     flex: 1;
     align-self: center;
 }
+#logo>a{
+    background: none;
+}
 
 header img {
-    width: 33%;
+    width: 25%;
 }
 
 #temp {
@@ -81,40 +95,13 @@ nav {
     justify-content: space-evenly;
 }
 
-nav a {
-    border-radius: 5px;
-    background-color: #FFFCF0;
-    padding: 5px;
-    color: black;
-    text-decoration: none;
-}
-
 .contenu {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid black;
-    flex-basis: 0;
+    padding: 3%;
 }
 
-.descript {
-    display: flex;
-    flex-direction: initial;
-    width: auto;
-}
-
-.descript div {
-    display: flex;
-    flex: 50;
-}
-
-.descript img {
-    border-radius: 10px;
-    width: 80%;
-}
-
-.descript p {
-    box-shadow: -10px -10px 5px red;
-    background-color: blue;
-    display: flex;
-    flex: 30;
+p{
+    border-radius:5px;
+    box-shadow: 5px 5px 7.5px #650065;
+    background-color: white;
+    padding:0.5em;
 }

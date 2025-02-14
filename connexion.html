@@ -1,18 +1,60 @@
-<html>
-	<head>
-		 <meta charset="UTF-8">
-    		<title>Page de connexion</title>
-    		<link rel="stylesheet" href="style_inscript.css">
-	</head>
-	
-	<body>
-		<form>
-			<table>
-				<tr> <th colspan="2">Formulaire de connexion</th>
-				<tr> <td>E-mail :</th> <td><label for="email"></label><input type="text" id= "email" name="email"/></td> </tr>
-				<tr> <td>Mot de passe :</th> <td><label for="mdp"></label><input type="text" id= "mdp" name="mdp"/></td> </tr>
-				<tr><td colspan="2" id="button"><button type="button">Connexion</button><br></td></tr>
-			</table>
-		</form>
-	<p><a id="bouton2" href="inscription.html">Inscription</a ></p>
-	</body>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Page de connexion</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+
+
+<body>
+<div>
+    <header>
+        <div class="entete">
+            <div id="logo"><a href="index.html"><img src="logo.png" alt="logo"></a></div>
+
+            <h1>Mercurius Iter Agencia</h1>
+
+            <div id="temp">
+                <div>
+
+                </div>
+                <div class="inscrico">
+                    <a href="inscription.html">Inscription</a>
+                    <a href="connexion.html">Connexion</a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <a href="presentation.html">À propos</a>
+            <a href="recherche.html">Recherche</a>
+            <a href="choix.html">Choix</a>
+            <a href="profil.html">Profil</a>
+        </nav>
+    </header>
+
+</div>
+
+<div class="contenu">
+    <form>
+        <table>
+            <tr>
+                <th colspan="2">Formulaire de connexion</th>
+            <tr>
+                <td>E-mail :</td>
+                <td><label for="email"></label><input type="text" id="email" name="email"/></td>
+            </tr>
+            <tr>
+                <td>Mot de passe :</td>
+                <td><label for="mdp"></label><input type="text" id="mdp" name="mdp"/></td>
+            </tr>
+            <tr>
+                <td colspan="2" id="button">
+                    <button type="button">Connexion</button>
+                    <br></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
