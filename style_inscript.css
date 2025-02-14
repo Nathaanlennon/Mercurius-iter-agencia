@@ -1,0 +1,52 @@
+body{
+	background-image: url("logotransp.png");
+	background-repeat: no-repeat;
+	background-size: 40%;	
+	background-position: 50% 0%;
+	
+}
+table, tr, th, td {
+	border: 1px solid #650065;
+	
+	
+}
+table{ 
+	border-spacing: 0;
+	border-radius: 5px;
+	position : 50% 100%;
+	margin :auto;
+}	
+
+th{
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	background: #9a0000;
+	color: white;
+}
+
+td{
+	
+	background:#f7c041 
+}
+#button{
+	text-align: center;
+}
+
+p{		
+	text-align: center;
+}
+	
+a{
+	 border-radius: 5px;
+    background-color: #9a0000;
+    padding: 5px;
+    color: white;
+    text-decoration: none;
+   }
+   
+tr:last-child td {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+	
+
