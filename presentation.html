@@ -5,6 +5,70 @@
     <title>Page d'accueil</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        #charte {
+            border-radius: 5px;
+            box-shadow: 5px 5px 7.5px #650065;
+            background-color: white;
+            padding: 0.5em;
+
+            display: flex;
+            margin: 0 0;
+        }
+
+        #charte * {
+            /*border: 1px solid black;*/
+        }
+
+        #charte p {
+            box-shadow: none;
+        }
+
+
+        #text {
+            display: flex;
+            align-content: center;
+            flex: 90;
+        }
+
+        #image {
+            flex: 50;
+        }
+
+        #charte img {
+            width: 100%;
+
+        }
+
+        #red {
+            background-color: #9a0000;
+            color: white;
+        }
+
+        #purple {
+            background-color: #650065;
+            color: white;
+        }
+
+        #yellow {
+            background-color: #f7c041;
+        }
+
+        #eggshell {
+            background-color: #F0ebd7;
+        }
+
+        p[id] {
+            clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 90%, 0 80%);
+            width: 1em;
+            padding:  1.5em 1em;
+            margin: 0.5em;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            font-size: 2em;
+
+        }
+
+
 
     </style>
 </head>
@@ -36,31 +100,57 @@
 </div>
 
 <div class="contenu">
-    <p>Mercurius Iter Agencia vous invite à un voyage hors du temps, où l'histoire et l'aventure se rencontrent au cœur
-        de l'Empire Romain. Explorez les contrées majestueuses qui bordent la mer Méditerranée, et laissez-vous guider
-        par l'esprit du dieu Mercure à travers un monde de découvertes sans fin. Offrez-vous une expérience sur mesure,
-        où vous avez le pouvoir de choisir votre itinéraire, de personnaliser chaque étape et de vivre l'Empire Romain
-        comme jamais auparavant.
-    </p>
-    <p>
-        Que vous soyez un explorateur des cités antiques, un passionné de culture impériale ou un amateur de paysages
-        légendaires, chaque formule vous promet un périple unique, en toute liberté. Redécouvrez les vestiges de Rome et
-        ses provinces, de la grandeur du Colisée aux rives d'Elbe, en passant par les splendeurs d'Alexandrie.
-    </p>
-    <p>
-        Mercurius Iter Agencia, c'est plus qu'un voyage, c'est un retour dans l'histoire, une épopée que vous écrivez
-        vous-même, guidé par les vents méditerranéens et l'héritage impérial. Où que vous soyez, l'aventure commence
-        ici, avec vous.
-    </p>
-    <p>Le site est co géré par Nathan B et Ivan C, les deux fondateurs ingénieux de ce noble projet.</p>
-    <p>Charte de couleur ? :</p>
-    <img src="" alt="image des couleurs">
-    recherche??
     <form>
         <label>recherche rapide :
             <input type="text">
         </label>
     </form>
+    <p>Mercurius Iter Agencia vous invite à un voyage hors du temps, où l'histoire et l'aventure se rencontrent au cœur
+        de l'Empire Romain. Explorez les contrées majestueuses qui bordent la mer Méditerranée, et laissez-vous guider
+        par l'esprit du dieu Mercure à travers un monde de découvertes sans fin. Offrez-vous une expérience sur mesure,
+        où vous avez le pouvoir de choisir votre itinéraire, de personnaliser chaque étape et de vivre l'Empire Romain
+        comme jamais auparavant.
+
+        Que vous soyez un explorateur des cités antiques, un passionné de culture impériale ou un amateur de paysages
+        légendaires, chaque formule vous promet un périple unique, en toute liberté. Redécouvrez les vestiges de Rome et
+        ses provinces, de la grandeur du Colisée aux rives d'Elbe, en passant par les splendeurs d'Alexandrie.
+
+        Mercurius Iter Agencia, c'est plus qu'un voyage, c'est un retour dans l'histoire, une épopée que vous écrivez
+        vous-même, guidé par les vents méditerranéens et l'héritage impérial. Où que vous soyez, l'aventure commence
+        ici, avec vous.
+        <br>
+        <br>
+        Le site est co géré par Nathan B et Ivan C, les deux fondateurs ingénieux de ce noble projet.</p>
+    <div id="charte">
+        <div id="text">
+
+            <p id="red">
+                #9a0000
+            </p>
+
+            <p id="purple">
+                #650065
+
+            <p id="yellow">
+                #f7c041
+            </p>
+
+            <p id="eggshell">
+               #f0ebd7
+            </p>
+
+            <p>Charte de couleur : Nous avons choisit pour les couleurs de notre site celles de la Rome Antique, le
+                rouge,
+                le jaune et le violet des differents drapeaux, et une couleur jaune-beige pour représenter la couleur
+                des
+                temples.
+            </p>
+        </div>
+        <div id="image">
+            <img src="spqr.png" alt="image des couleurs">
+        </div>
+    </div>
+
 
 </div>
 </body>

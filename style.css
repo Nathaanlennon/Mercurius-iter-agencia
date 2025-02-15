@@ -8,13 +8,16 @@ body {
     background-color: #F0ebd7;
     line-height: 2em;
     letter-spacing: 0.15em;
+    height: 100vh;
 }
-
+html *{
+    cursor: url('cursor.png'), auto;
+}
 header {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     padding: 1%;
-    background: linear-gradient(135deg, #9a0000 30%, 50%, #f7c041 70%);
+    background: linear-gradient(90deg,#9a0000 11%,#f7c041  44% 56%,#650065 88%);
 }
 
 .entete {
@@ -38,12 +41,13 @@ header h1 {
 
 a{
     border-radius: 5px;
-    background-color: #FFFCF0;
+    background-color: #F0ebd7;
     padding: 5px;
     color: black;
     text-decoration: none;
     align-self: center;
 }
+
 
 #logo {
     grid-column: 1;
@@ -77,16 +81,25 @@ header img {
 
 .inscrico>a {
     text-align: center;
-    border: solid 1px white;
     border-radius: 5px;
     text-decoration: none;
     padding-left: 5px;
     padding-right: 5px;
-    background-color: #FFFCF0;
+    background-color: #F0ebd7;
     color: black;
 }
 
+a:hover{
+    background-color: #650065;
+    color: white;
+}
 
+a.purple:hover {
+    background-color: #650065;
+}
+a.red:hover {
+    background-color: #9a0000;
+}
 
 nav {
     padding-top: 1%;

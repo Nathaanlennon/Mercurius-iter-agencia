@@ -1,6 +1,5 @@
 
 .contenu {
-    border: 1px black solid;
     padding: 3%;
     display: flex;
     flex-direction: column;
@@ -9,7 +8,6 @@
 }
 
 #descriptions {
-    border: 1px black solid;
     padding: 1%;
 }
 
@@ -58,7 +56,7 @@
 }
 .link{
     background-color: #650065;
-    color: #FFFCF0;
+    color: #F0ebd7;
 }
 .descript1 img {
     border-radius: 10px;
