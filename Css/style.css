@@ -10,11 +10,12 @@ body {
     letter-spacing: 0.15em;
     height: 100vh;
 }
-html *{
+
+html * {
     cursor: url('../assets/cursor.png'), auto;
 }
 
-body{
+body {
     background-image: url("../assets/transpqr.png");
     background-repeat: no-repeat;
     background-size: 60%;
@@ -27,7 +28,7 @@ header {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     padding: 1%;
-    background: linear-gradient(90deg,#9a0000 11%,#f7c041  44% 56%,#650065 88%);
+    background: linear-gradient(90deg, #9a0000 11%, #f7c041 44% 56%, #650065 88%);
 }
 
 .header {
@@ -49,7 +50,7 @@ header h1 {
     font-size: 50px;
 }
 
-a{
+a {
     border-radius: 5px;
     background-color: #F0ebd7;
     padding: 5px;
@@ -65,7 +66,8 @@ a{
     flex: 1;
     align-self: center;
 }
-#logo>a{
+
+#logo > a {
     background: none;
 }
 
@@ -88,7 +90,7 @@ header img {
     justify-content: space-evenly;
 }
 
-.auth>a {
+.auth > a {
     text-align: center;
     border-radius: 5px;
     text-decoration: none;
@@ -98,7 +100,7 @@ header img {
     color: black;
 }
 
-a:hover{
+a:hover {
     background-color: #650065;
     color: white;
 }
@@ -106,6 +108,7 @@ a:hover{
 a.purple:hover {
     background-color: #650065;
 }
+
 a.red:hover {
     background-color: #9a0000;
 }
@@ -121,9 +124,9 @@ nav {
     padding: 3%;
 }
 
-p{
-    border-radius:5px;
+p {
+    border-radius: 5px;
     box-shadow: 5px 5px 7.5px #650065;
     background-color: white;
-    padding:0.5em;
+    padding: 0.5em;
 }

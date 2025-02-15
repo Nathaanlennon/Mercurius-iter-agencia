@@ -25,7 +25,7 @@ form > h6 {
 
 }
 
-#cities{
+#cities {
     border: black solid 1px;
     border-radius: 5px;
     padding: 3px;
@@ -45,11 +45,13 @@ form > h6 {
 
 #cities label:has(:checked) {
     background-color: #9a0000;
+    color: white;
 }
 
-.hotels{
+.hotels {
     font-size: 20px;
 }
-.titres{
+
+.titres {
     margin-bottom: 0.25em;
 }
