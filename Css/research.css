@@ -25,7 +25,7 @@ form > h6 {
 
 }
 
-#villes{
+#cities{
     border: black solid 1px;
     border-radius: 5px;
     padding: 3px;
@@ -34,16 +34,16 @@ form > h6 {
     max-height: 5.8em;
 }
 
-#villes input[type="checkbox"] {
+#cities input[type="checkbox"] {
     display: none;
     visibility: hidden;
 }
 
-#villes label {
+#cities label {
     display: block;
 }
 
-#villes label:has(:checked) {
+#cities label:has(:checked) {
     background-color: #9a0000;
 }
 

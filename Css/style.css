@@ -30,7 +30,7 @@ header {
     background: linear-gradient(90deg,#9a0000 11%,#f7c041  44% 56%,#650065 88%);
 }
 
-.entete {
+.header {
     padding-left: 3%;
     padding-right: 3%;
     display: grid;
@@ -78,7 +78,7 @@ header img {
     justify-content: space-between;
 }
 
-.inscrico {
+.auth {
     font-size: 30px;
     width: fit-content;
     grid-column: 3;
@@ -88,7 +88,7 @@ header img {
     justify-content: space-evenly;
 }
 
-.inscrico>a {
+.auth>a {
     text-align: center;
     border-radius: 5px;
     text-decoration: none;
@@ -117,7 +117,7 @@ nav {
     justify-content: space-evenly;
 }
 
-.contenu {
+.content {
     padding: 3%;
 }
 

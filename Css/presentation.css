@@ -1,4 +1,4 @@
-#charte {
+#charter {
     border-radius: 5px;
     box-shadow: 5px 5px 7.5px #650065;
     background-color: white;
@@ -8,11 +8,11 @@
     margin: 0 0;
 }
 
-#charte * {
+#charter * {
     /*border: 1px solid black;*/
 }
 
-#charte p {
+#charter p {
     box-shadow: none;
 }
 
@@ -27,7 +27,7 @@
     flex: 50;
 }
 
-#charte img {
+#charter img {
     width: 100%;
 
 }
