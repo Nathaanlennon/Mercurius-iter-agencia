@@ -1,6 +1,6 @@
 @font-face {
     font-family: hadriatic;
-    src: url(Hadriatic-lgyRV.ttf);
+    src: url(../assets/Hadriatic-lgyRV.ttf);
 }
 
 body {
@@ -11,11 +11,11 @@ body {
     height: 100vh;
 }
 html *{
-    cursor: url('cursor.png'), auto;
+    cursor: url('../assets/cursor.png'), auto;
 }
 
 body{
-    background-image: url("spqr.png");
+    background-image: url("../assets/transpqr.png");
     background-repeat: no-repeat;
     background-size: 60%;
     background-position: 50% 80%;
