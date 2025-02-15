@@ -1,5 +1,5 @@
 body{
-	background-image: url("patron.png");
+	background-image: url("logotransp.png");
 	background-repeat: no-repeat;
 	background-size: 40%;	
 	background-position: 50%;
@@ -31,7 +31,11 @@ td{
 	background:#f7c041 
 }
 #button{
+	border-radius: 5px;
 	text-align: center;
+}
+button{
+	font-family: Hadriatic ,sans-serif;
 }
 
 

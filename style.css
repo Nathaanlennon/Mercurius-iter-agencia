@@ -13,6 +13,16 @@ body {
 html *{
     cursor: url('cursor.png'), auto;
 }
+
+body{
+    background-image: url("spqr.png");
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: 50% 80%;
+    background-attachment: fixed;
+
+}
+
 header {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -47,7 +57,6 @@ a{
     text-decoration: none;
     align-self: center;
 }
-
 
 #logo {
     grid-column: 1;
