@@ -1,7 +1,6 @@
 form {
     margin-left: auto;
     margin-right: auto;
-    margin-top: 2em;
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -50,6 +49,27 @@ form > h6 {
 
 .hotels {
     font-size: 20px;
+    text-align: center;
+}
+.hotels label{
+
+    border-radius: 5px;
+    border: black solid 1px;
+    text-align: center;
+    margin: 0.5em;
+
+}
+
+.hotels label:has(:checked) {
+    background-color: #950065;
+    color: white;
+    border:none;
+}
+
+.hotels input[type="checkbox"] {
+    display: none;
+    visibility: hidden;
+
 }
 
 .titres {

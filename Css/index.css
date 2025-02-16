@@ -68,16 +68,13 @@
 
 
 .tour2 {
-
     display: flex;
-
     flex-direction: initial;
     width: auto;
 
 }
 
 .tour2 img {
-
     border-radius: 10px;
     width: 100%;
 }

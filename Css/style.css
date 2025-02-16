@@ -9,6 +9,7 @@ body {
     line-height: 2em;
     letter-spacing: 0.15em;
     height: 100vh;
+    border-radius: 10px;
 }
 
 html * {
@@ -129,4 +130,11 @@ p {
     box-shadow: 5px 5px 7.5px #650065;
     background-color: white;
     padding: 0.5em;
+}
+
+button {
+    font-family: Hadriatic, sans-serif;
+    font-size: 0.75em;
+    padding: 0.2em
+
 }
