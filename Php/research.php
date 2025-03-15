@@ -1,5 +1,7 @@
 <?php
-include "header.php"
+include "header.php";
+
+
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +16,29 @@ include "header.php"
 
 <div class="content">
 
-    <form action="">
+
+    <!-- TODO: mettre le div que quand le get a été fait -->
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        echo "<div id=\"result\">";
+        $file = file_exists("../voyagetest.json") ? json_decode(file_get_contents("../voyagetest.json"), true) : [];
+        if ($file == null || $file == []) {
+            echo "<p>Aucun voyage ne correspond à votre recherche.</p>";
+        }
+        else{
+            foreach ($file as $voyage) {
+                if (isset($voyage["price"])&&isset($_GET["price"])) {
+                    if ($voyage["price"] <= $_GET["price"]) {
+
+                        echo "<p>" . $voyage["name"] . "</p>";
+                    }
+                }
+            }
+        }
+        echo "</div>";
+    }
+    ?>
+    <form method="get">
         <h6><label>Date de départ : <input type="date" name="depart" min=Date()></label>
         </h6>
         <h6><label>Date de retour : <input type="date" name="retour" min=Date()></label>
@@ -87,11 +111,25 @@ include "header.php"
 
         </div>
         <h6><label>budget :
-            <input type="range" min="0" step="10" value="5000" max="10000" oninput="this.nextElementSibling.value = this.value">
-            <output>5000</output>€
-        </label></h6>
+                <input name="price" type="range" min="0" step="10" value="5000" max="10000"
+                       oninput="this.nextElementSibling.value = this.value">
+                <output>
+                    <?php
+                    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                        if (isset($_GET["price"])) {
+                            echo $_GET["price"];
+                        } else {
+                            echo "5000";
+                        }
+                    } else {
+                        echo "5000";
+                    }
+                    ?></output>
+                €
+            </label></h6>
         <button type="submit">Recherche</button>
     </form>
 </div>
+
 </body>
 </html>
