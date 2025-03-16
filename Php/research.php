@@ -1,6 +1,16 @@
 <?php
 include "header.php";
 
+function has_city($trip, $city){
+    if (isset($trip["stages"])){
+        foreach ($trip["stages"] as $trip_city){
+            if ($trip_city === $city){
+                return true;
+            }
+        }
+    }
+    return false;
+}
 
 ?>
 
@@ -16,10 +26,8 @@ include "header.php";
 
 <div class="content">
 
-
-    <!-- TODO: mettre le div que quand le get a été fait -->
     <?php
-    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["action"])){
         echo "<div id=\"result\">";
         $file = file_exists("../voyagetest.json") ? json_decode(file_get_contents("../voyagetest.json"), true) : [];
         if ($file == null || $file == []) {
@@ -27,12 +35,19 @@ include "header.php";
         }
         else{
             foreach ($file as $voyage) {
-                if (isset($voyage["price"])&&isset($_GET["price"])) {
-                    if ($voyage["price"] <= $_GET["price"]) {
-
-                        echo "<p>" . $voyage["name"] . "</p>";
+                if (isset($_GET["price"])) {
+                    if(!($voyage["price"] <= $_GET["price"])){
+                        continue;
                     }
                 }
+                if(isset($_GET["cities"])){
+                    foreach ($_GET["cities"] as $city){
+                        if (!(has_city($voyage, $city))){
+                            continue 2;
+                        }
+                    }
+                }
+                echo "<p>".$voyage["name"]."</p>";
             }
         }
         echo "</div>";
@@ -47,52 +62,43 @@ include "header.php";
         <h6 class="titres">Villes souhaitées</h6>
         <div id="cities">
             <label>
-                <input type="checkbox" value="Alexandrie">
+                <input type="checkbox" name="cities[]" value="alexandrie">
                 Alexandrie (Égypte)
             </label>
-
             <label>
-                <input type="checkbox" value="Antioche">
+                <input type="checkbox" name="cities[]" value="antioche">
                 Antioche (Turquie)
             </label>
-
             <label>
-                <input type="checkbox" value="Athenes">
+                <input type="checkbox" name="cities[]" value="athenes">
                 Athènes (Grèce)
             </label>
-
             <label>
-                <input type="checkbox" value="Carthage">
+                <input type="checkbox" name="cities[]" value="carthage">
                 Carthage (Tunisie)
             </label>
-
             <label>
-                <input type="checkbox" value="Constantinople">
+                <input type="checkbox" name="cities[]" value="constantinople">
                 Constantinople (Istanbul, Turquie)
             </label>
-
             <label>
-                <input type="checkbox" value="Ephese">
+                <input type="checkbox" name="cities[]" value="ephese">
                 Ephèse (Turquie)
             </label>
-
             <label>
-                <input type="checkbox" value="Jerusalem">
+                <input type="checkbox" name="cities[]" value="jerusalem">
                 Jérusalem (Israël)
             </label>
-
             <label>
-                <input type="checkbox" value="LeptisMagna">
+                <input type="checkbox" name="cities[]" value="leptis">
                 Leptis Magna (Libye)
             </label>
-
             <label>
-                <input type="checkbox" value="Rome">
+                <input type="checkbox" name="cities[]" value="rome">
                 Rome (Italie)
             </label>
-
             <label>
-                <input type="checkbox" value="Syracuse">
+                <input type="checkbox" name="cities[]" value="syracuse">
                 Syracuse (Italie)
             </label>
         </div>
@@ -111,23 +117,17 @@ include "header.php";
 
         </div>
         <h6><label>budget :
-                <input name="price" type="range" min="0" step="10" value="5000" max="10000"
+                <input name="price" type="range" min="0" step="10" value="<?php
+                echo isset($_GET["price"]) ? $_GET["price"] : 5000;
+                ?>" max="10000"
                        oninput="this.nextElementSibling.value = this.value">
                 <output>
                     <?php
-                    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-                        if (isset($_GET["price"])) {
-                            echo $_GET["price"];
-                        } else {
-                            echo "5000";
-                        }
-                    } else {
-                        echo "5000";
-                    }
+                    echo isset($_GET["price"]) ? $_GET["price"] : 5000;
                     ?></output>
                 €
             </label></h6>
-        <button type="submit">Recherche</button>
+        <button type="submit" name="action">Recherche</button>
     </form>
 </div>
 

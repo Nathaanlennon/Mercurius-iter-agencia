@@ -1,12 +1,82 @@
 [
   {
     "id": 1,
-    "name": "voyage 1",
-    "price": 1000
+    "name": "Septentrionalis",
+    "price": 1000,
+    "stages": [
+      "valence",
+      "tarragone",
+      "barcelone",
+      "arles",
+      "marseille",
+      "antibes",
+      "nice",
+      "rome",
+      "ostie",
+      "naples",
+      "herculanum",
+      "pompei",
+      "syracuse",
+      "malte",
+      "agrigente",
+      "butrin",
+      "athenes",
+      "ephesus",
+      "istanbul"
+    ]
   },
   {
     "id": 2,
-    "name": "voyage 2",
-    "price": 1500
+    "name": "Meridionalis",
+    "price": 1500,
+    "stages": [
+      "tipaza",
+      "annaba",
+      "tunis",
+      "carthage",
+      "leptis",
+      "alexandrie",
+      "jerusalem",
+      "cesaree",
+      "sidon",
+      "jbeil",
+      "antioche"
+    ]
+  },
+  {
+    "id": 3,
+    "name" : "Hispania",
+    "price" : 2000,
+    "stages": [
+      "valence",
+      "tarragone",
+      "barcelone"
+    ]
+  },
+  {
+    "id": 4,
+    "name" : "Gallia",
+    "price" : 2500,
+    "stages": [
+      "arles",
+      "marseille",
+      "antibes",
+      "nice"
+    ]
+  },
+  {
+    "id": 5,
+    "name" : "Roma",
+    "price" : 3000,
+    "stages": [
+      "rome",
+      "ostie",
+      "naples",
+      "herculanum",
+      "pompei",
+      "syracuse",
+      "malte",
+      "agrigente"
+      ]
   }
 ]
