@@ -1,5 +1,18 @@
 <?php
-include "header.php"
+
+include "header.php";
+
+$fichier = "utilisateurs.json";
+
+$utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier), true) : [];
+
+$info_util = null;
+foreach ($utilisateurs as $utilisateur) {
+    if ($utilisateur['id'] == $_SESSION['id']) {
+        $info_util = $utilisateur;
+        break;
+    }
+}
 ?>
 
 <html lang="fr">
@@ -16,23 +29,16 @@ include "header.php"
 <table>
     <tr>
         <th>Nom</th>
-        <td> Maximus</td>
+        <td><?php echo $info_util['nom']; ?></td>
         <td>
-            <button type="button">Modifier</button>
-            <br></td>
-    </tr>
-    <tr>
-        <th>Prenom</th>
-        <td> Brutus</td>
-        <td>
-            <button type="button">Modifier</button>
+            <a href="modif_profile.php"><button>modifier</button></a>
             <br></td>
     </tr>
     <tr>
         <th>E-mail</th>
-        <td> Maximus.Brutus@gmail.com</td>
+        <td><?php echo $info_util['email']; ?></td>
         <td>
-            <button type="button">Modifier</button>
+            <a href="modif_profile.php"><button>modifier</button></a>
             <br></td>
     </tr>
 </table>
