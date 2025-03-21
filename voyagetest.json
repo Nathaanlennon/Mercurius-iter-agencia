@@ -23,7 +23,8 @@
       "athenes",
       "ephesus",
       "istanbul"
-    ]
+    ],
+    "duration": 25
   },
   {
     "id": 2,
@@ -41,33 +42,36 @@
       "sidon",
       "jbeil",
       "antioche"
-    ]
+    ],
+    "duration": 15
   },
   {
     "id": 3,
-    "name" : "Hispania",
-    "price" : 2000,
+    "name": "Hispania",
+    "price": 2000,
     "stages": [
       "valence",
       "tarragone",
       "barcelone"
-    ]
+    ],
+    "duration": 5
   },
   {
     "id": 4,
-    "name" : "Gallia",
-    "price" : 2500,
+    "name": "Gallia",
+    "price": 2500,
     "stages": [
       "arles",
       "marseille",
       "antibes",
       "nice"
-    ]
+    ],
+    "duration": 6
   },
   {
     "id": 5,
-    "name" : "Roma",
-    "price" : 3000,
+    "name": "Roma",
+    "price": 3000,
     "stages": [
       "rome",
       "ostie",
@@ -77,6 +81,45 @@
       "syracuse",
       "malte",
       "agrigente"
-      ]
+    ],
+    "duration": 12
+  },
+  {
+    "id": 6,
+    "name": "Imperium",
+    "price": 5000,
+    "stages": [
+      "valence",
+      "tarragone",
+      "barcelone",
+      "arles",
+      "marseille",
+      "antibes",
+      "nice",
+      "rome",
+      "ostie",
+      "naples",
+      "herculanum",
+      "pompei",
+      "syracuse",
+      "malte",
+      "agrigente",
+      "butrin",
+      "athenes",
+      "ephesus",
+      "istanbul",
+      "tipaza",
+      "annaba",
+      "tunis",
+      "carthage",
+      "leptis",
+      "alexandrie",
+      "jerusalem",
+      "cesaree",
+      "sidon",
+      "jbeil",
+      "antioche"
+    ],
+    "duration": 40
   }
 ]

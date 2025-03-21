@@ -1,4 +1,4 @@
-*{
+* *{
     border:1px solid black;
 }
 
@@ -81,4 +81,13 @@ form > h6 {
 
 .titres {
     margin-bottom: 0.25em;
+}
+
+.result {
+    border-radius: 5px;
+    box-shadow: 5px 5px 7.5px #650065;
+    background-color: white;
+    padding: 0.5em;
+    text-align: center;
+    margin: 0.8em;
 }

@@ -47,7 +47,9 @@ function has_city($trip, $city){
                         }
                     }
                 }
-                echo "<p>".$voyage["name"]."</p>";
+                echo "<div class='result' style=';' onclick='window.location=\"print_voyage.php?id=". $voyage["id"]."\"'>"
+                .$voyage["name"] ."<br> Prix moyen (2 personnes) : ". $voyage["price"] . "€";
+                echo "</div>";
             }
         }
         echo "</div>";
@@ -62,46 +64,127 @@ function has_city($trip, $city){
         <h6 class="titres">Villes souhaitées</h6>
         <div id="cities">
             <label>
-                <input type="checkbox" name="cities[]" value="alexandrie">
-                Alexandrie (Égypte)
+                <input type="checkbox" name="cities[]" value="valence">
+                Valence (Espagne)
             </label>
             <label>
-                <input type="checkbox" name="cities[]" value="antioche">
-                Antioche (Turquie)
+                <input type="checkbox" name="cities[]" value="tarragone">
+                Tarragone (Espagne)
             </label>
             <label>
-                <input type="checkbox" name="cities[]" value="athenes">
-                Athènes (Grèce)
+                <input type="checkbox" name="cities[]" value="barcelone">
+                Barcelone (Espagne)
             </label>
             <label>
-                <input type="checkbox" name="cities[]" value="carthage">
-                Carthage (Tunisie)
+                <input type="checkbox" name="cities[]" value="arles">
+                Arles (France)
             </label>
             <label>
-                <input type="checkbox" name="cities[]" value="constantinople">
-                Constantinople (Istanbul, Turquie)
+                <input type="checkbox" name="cities[]" value="marseille">
+                Marseille (France)
             </label>
             <label>
-                <input type="checkbox" name="cities[]" value="ephese">
-                Ephèse (Turquie)
+                <input type="checkbox" name="cities[]" value="antibes">
+                Antibes (France)
             </label>
             <label>
-                <input type="checkbox" name="cities[]" value="jerusalem">
-                Jérusalem (Israël)
-            </label>
-            <label>
-                <input type="checkbox" name="cities[]" value="leptis">
-                Leptis Magna (Libye)
+                <input type="checkbox" name="cities[]" value="nice">
+                Nice (France)
             </label>
             <label>
                 <input type="checkbox" name="cities[]" value="rome">
                 Rome (Italie)
             </label>
             <label>
+                <input type="checkbox" name="cities[]" value="ostie">
+                Ostie (Italie)
+            </label>
+            <label>
+                <input type="checkbox" name="cities[]" value="naples">
+                Naples (Italie)
+            </label>
+            <label>
+                <input type="checkbox" name="cities[]" value="herculanum">
+                Herculanum (Italie)
+            </label>
+            <label>
+                <input type="checkbox" name="cities[]" value="pompei">
+                Pompéi (Italie)
+            </label>
+            <label>
                 <input type="checkbox" name="cities[]" value="syracuse">
                 Syracuse (Italie)
             </label>
-        </div>
+            <label>
+                <input type="checkbox" name="cities[]" value="malte">
+                Malte (Malte)
+            </label>
+            <label>
+                <input type="checkbox" name="cities[]" value="agrigente">
+                Agrigente (Italie)
+            </label>
+            <label>
+                <input type="checkbox" name="cities[]" value="butrin">
+                Butrint (Albanie)
+            </label>
+            <label>
+                <input type="checkbox" name="cities[]" value="athenes">
+                Athènes (Grèce)
+            </label>
+            <label>
+                <input type="checkbox" name="cities[]" value="ephesus">
+                Éphèse (Turquie)
+            </label>
+            <label>
+                <input type="checkbox" name="cities[]" value="istanbul">
+                Istanbul (Turquie)
+            </label>
+            <label>
+                <input type="checkbox" name="cities[]" value="tipaza">
+                Tipaza (Algérie)
+            </label>
+            <label>
+                <input type="checkbox" name="cities[]" value="annaba">
+                Annaba (Algérie)
+            </label>
+            <label>
+                <input type="checkbox" name="cities[]" value="tunis">
+                Tunis (Tunisie)
+            </label>
+            <label>
+                <input type="checkbox" name="cities[]" value="carthage">
+                Carthage (Tunisie)
+            </label>
+            <label>
+                <input type="checkbox" name="cities[]" value="leptis">
+                Leptis Magna (Libye)
+            </label>
+            <label>
+                <input type="checkbox" name="cities[]" value="alexandrie">
+                Alexandrie (Égypte)
+            </label>
+            <label>
+                <input type="checkbox" name="cities[]" value="jerusalem">
+                Jérusalem (Israël/Palestine)
+            </label>
+            <label>
+                <input type="checkbox" name="cities[]" value="cesaree">
+                Césarée (Israël)
+            </label>
+            <label>
+                <input type="checkbox" name="cities[]" value="sidon">
+                Sidon (Liban)
+            </label>
+            <label>
+                <input type="checkbox" name="cities[]" value="jbeil">
+                Jbeil (Byblos, Liban)
+            </label>
+            <label>
+                <input type="checkbox" name="cities[]" value="antioche">
+                Antioche (Turquie)
+            </label>
+
+</div>
         <h6 class="titres">Niveau d'hotel :</h6>
         <div class="hotels">
             <label>Une étoile<input type="checkbox" value="un">
