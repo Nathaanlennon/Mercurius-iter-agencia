@@ -2,6 +2,11 @@
 
 include "header.php";
 
+if (!isset($info_util['id'])) {
+    header("Location: connexion.php");
+    exit;
+}
+
 $fichier = "../json/utilisateurs.json";
 
 $utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier), true) : [];
@@ -37,9 +42,12 @@ $info_util = $_SESSION;
     </tr>
 </table>
 <?php
-foreach ($_SESSION['voyages'] as $key => $value) {
-    echo "<a href='configuration_voyage.php?".$value."'>".$key."</a>";
+if (isset($_SESSION['voyages'])) {
+    foreach ($_SESSION['voyages'] as $key => $value) {
+        echo "<a href='configuration_voyage.php?" . $value . "'>" . $key . "</a>";
+    }
 }
+echo $_SESSION['id'];
 
 
 ?>

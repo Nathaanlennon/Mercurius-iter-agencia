@@ -2,12 +2,16 @@
 include "header.php";
 $fichier = "../json/utilisateurs.json";
 
+if (isset($info_util['id'])) {
+    header("Location: index.php");
+    exit;
+}
 
 $utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier), true) : [];
 
 $queue_dir = "queue"; // Dossier de la queue
 if (!file_exists($queue_dir)) {
-    mkdir($queue_dir, 0777, true);
+    mkdir("../json/$queue_dir", 0777, true);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -55,11 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $queue_file = $queue_dir . "/" . uniqid("user_", true) . ".json";
     file_put_contents($queue_file, json_encode($nv_util, JSON_PRETTY_PRINT));
-
-    $_SESSION["id"] = $nv_util["id"];
-    $_SESSION["email"] = $nv_util["email"];
-    $_SESSION["nom"] = $nv_util["nom"];
-    header("Location: index.php");
+    header("Location: connexion.php");
     exit;
 }
 ?>

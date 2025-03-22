@@ -1,19 +1,42 @@
 <?php
-
 include "header.php";
 
 
 $fichier = "../json/utilisateurs.json";
 
-// Charger les utilisateurs existants
+if (isset($info_util['id'])) {
+    header("Location: index.php");
+    exit;
+}
+
 $utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier), true) : [];
 
+if (isset($_COOKIE["sans-gluten"])) {
+    foreach ($utilisateurs as $utilisateur) {
+        if ($_COOKIE["sans-gluten"] === $utilisateur["id"]) {
+
+            if ($utilisateur["role"] === "Banni") {
+                echo "Vous avez été banni";
+                exit;
+            }
+
+            $_SESSION["id"] = $utilisateur["id"];
+            $_SESSION["email"] = $utilisateur["email"];
+            $_SESSION["nom"] = $utilisateur["nom"];
+            $_SESSION["role"] = $utilisateur["role"];
+            $_SESSION["voyages"] = $utilisateur["voyages"];
+
+            header("Location: index.php");
+            exit;
+        }
+    }
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST["email"]);
     $password = $_POST["password"];
 
-    foreach ($utilisateurs as $utilisateur) {
+    foreach ($utilisateurs as $utilisateur){
         if ($utilisateur["email"] === $email) {
             if (password_verify($password, $utilisateur["password"])){
                 if ($utilisateur["role"] === "Banni") {
@@ -26,18 +49,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["role"] = $utilisateur["role"];
                 $_SESSION["voyages"] = $utilisateur["voyages"];
 
-
-
-
+                setcookie ("sans-gluten", $_SESSION["id"], time()+7200);
 
                 header("Location: index.php");
                 exit;
             } else {
-                echo "<h1>Mot de passe incorrect</h1>";
+                echo "Identifiant incorrect";
                 exit;
             }
+
         }
     }
+    echo "Identifiant incorrect";
+    exit;
 }
 
 ?>
