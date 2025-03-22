@@ -1,4 +1,19 @@
 <?php
+session_start();
+
+$fichier = "utilisateurs.json";
+
+$utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier), true) : [];
+
+$info_util = null;
+if (isset($_SESSION['id'])) {
+    foreach ($utilisateurs as $utilisateur) {
+        if ($utilisateur['id'] == $_SESSION['id']) {
+            $info_util = $utilisateur;
+            break;
+        }
+    }
+}
 ?>
 
 <link rel="stylesheet" href="../Css/style.css">
@@ -28,6 +43,12 @@
             </div>
         </div>
         <nav>
+            <?php
+            // Vérifier si l'utilisateur est un administrateur
+            if (isset($info_util['role']) && $info_util['role'] === "admin") {
+                echo '<a href="admin.php">Admin</a>';
+            }
+            ?>
             <a href="presentation.php" class="purple">À propos</a>
             <a href="research.php" class="purple">Recherche</a>
             <a href="choice.php" class="red">Choix</a>
