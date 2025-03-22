@@ -1,6 +1,6 @@
 <?php
 include "header.php";
-$fichier = "utilisateurs.json";
+$fichier = "../json/utilisateurs.json";
 
 
 $utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier), true) : [];
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    $queue_file = $queue_dir . "/" . uniqid("user_", true) . ".json";
+
 
     $nv_util = [
         "id" => "0",

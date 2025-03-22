@@ -1,6 +1,26 @@
 <?php
 $queue_dir = "queue";
-$fichier_utilisateurs = "utilisateurs.json";
+$fichier_utilisateurs = "../json/utilisateurs.json";
+
+function array_fusion($array1, $array2) {
+    foreach ($array2 as $key => $value) {
+        echo $key. "<br>";
+        if (array_key_exists($key, $array1)) {
+            if (is_array($array1[$key]) && is_array($value)) {
+                echo "est <br>";
+                $array1[$key] = array_fusion($array1[$key], $value);
+            } else {
+                echo "non test <br>";
+                $array1[$key] = $value;
+            }
+        } else {
+            echo "pire <br>";
+            $array1[$key] = $value;
+        }
+    }
+    echo "saucisse";
+    return $array1;
+}
 
 if (!is_dir($queue_dir)) {
     exit();
@@ -26,12 +46,9 @@ while (true) {
             continue;
         }
         if ($data["id"] != 0) {
-            echo "modif";
             foreach ($utilisateurs as &$util) {
                 if ($util['id'] == $data['id']) {
-                    echo $data['id'];
-                    echo $data['nom'];
-                    $util = array_merge($util, $data);
+                    $util = array_fusion($util, $data);
                     echo "Modification de l'utilisateur ID: " . $data['id'] . "\n";
                     break; //
                 }

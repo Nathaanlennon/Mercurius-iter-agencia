@@ -2,7 +2,7 @@
 
 include "header.php";
 
-$fichier = "utilisateurs.json";
+$fichier = "../json/utilisateurs.json";
 
 $utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier), true) : [];
 
@@ -36,5 +36,12 @@ $info_util = $_SESSION;
             <br></td>
     </tr>
 </table>
+<?php
+foreach ($_SESSION['voyages'] as $key => $value) {
+    echo "<a href='configuration_voyage.php?".$value."'>".$key."</a>";
+}
+
+
+?>
 </body>
 </html>

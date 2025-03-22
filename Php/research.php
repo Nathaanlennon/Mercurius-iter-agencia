@@ -29,7 +29,7 @@ function has_city($trip, $city){
     <?php
     if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["action"])){
         echo "<div id=\"result\">";
-        $file = file_exists("../voyagetest.json") ? json_decode(file_get_contents("../voyagetest.json"), true) : [];
+        $file = file_exists("../json/voyagetest.json") ? json_decode(file_get_contents("../json/voyagetest.json"), true) : [];
         if ($file == null || $file == []) {
             echo "<p>Aucun voyage ne correspond à votre recherche.</p>";
         }
@@ -47,7 +47,7 @@ function has_city($trip, $city){
                         }
                     }
                 }
-                echo "<div class='result' style=';' onclick='window.location=\"print_voyage.php?id=". $voyage["id"]."\"'>"
+                echo "<div class='result' style=';' onclick='window.location=\"voyage_sheet.php?id=". $voyage["id"]."\"'>"
                 .$voyage["name"] ."<br> Prix moyen (2 personnes) : ". $voyage["price"] . "€";
                 echo "</div>";
             }

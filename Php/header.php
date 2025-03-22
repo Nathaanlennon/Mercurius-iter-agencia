@@ -1,9 +1,6 @@
 <?php
 session_start();
 
-$fichier = "utilisateurs.json";
-
-$utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier), true) : [];
 
 $info_util = $_SESSION;
 ?>

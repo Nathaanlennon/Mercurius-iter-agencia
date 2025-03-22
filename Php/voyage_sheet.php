@@ -1,8 +1,8 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])){
     $voyage["id"] = $_GET["id"];
-    if (file_exists("../voyagetest.json")) {
-        $file = json_decode(file_get_contents("../voyagetest.json"), true);
+    if (file_exists("../json/voyagetest.json")) {
+        $file = json_decode(file_get_contents("../json/voyagetest.json"), true);
         foreach ($file as $trip) {
             if($trip["id"] == $voyage["id"]) {
                 $voyage["name"] = $trip["name"];

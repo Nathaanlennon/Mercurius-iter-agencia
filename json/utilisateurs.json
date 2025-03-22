@@ -17,12 +17,15 @@
     },
     {
         "id": 2,
-        "nom": "b",
+        "nom": "dsqqgqsdgsgqsgq",
         "prenom": "b",
         "email": "b",
         "password": "$2y$10$B78SIJS3ryqQA01KWS2KsuIqCMsj54RrSujMpJmwA71kngVztOBEm",
         "role": "user",
-        "etat": "normal"
+        "etat": "normal",
+        "voyages": {
+            "Hispania": "id=2&depart=2025-03-22&nb_personnes=2&01=1&03=1&11=1&13=1&21=1&23=1"
+        }
     },
     {
         "id": 3,
@@ -46,5 +49,21 @@
         "id": 5,
         "nom": "ca",
         "email": "ca"
+    },
+    {
+        "0": "",
+        "id": 6
+    },
+    {
+        "0": "",
+        "id": 7
+    },
+    {
+        "0": "",
+        "id": 8
+    },
+    {
+        "0": "",
+        "id": 9
     }
 ]

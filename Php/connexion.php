@@ -3,10 +3,11 @@
 include "header.php";
 
 
-$fichier = "utilisateurs.json";
+$fichier = "../json/utilisateurs.json";
 
 // Charger les utilisateurs existants
 $utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier), true) : [];
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST["email"]);
@@ -19,11 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["email"] = $utilisateur["email"];
                 $_SESSION["nom"] = $utilisateur["nom"];
                 $_SESSION["role"] = $utilisateur["role"];
+                $_SESSION["voyages"] = $utilisateur["voyages"];
 
                 header("Location: index.php");
                 exit;
             } else {
-                echo "Identifiant incorrect.";
+                echo "<h1>Mot de passe incorrect</h1>";
                 exit;
             }
         }

@@ -3,7 +3,7 @@
 
 include "header.php";
 
-$fichier = "utilisateurs.json";
+$fichier = "../json/utilisateurs.json";
 
 $utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier), true) : [];
 

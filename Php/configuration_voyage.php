@@ -1,8 +1,17 @@
 <?php
+include "header.php";
+$queue_dir = "queue"; // Dossier de la queue
+if (!file_exists($queue_dir)) {
+    mkdir($queue_dir, 0777, true);
+}
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
+
+
     $voyage["id"] = $_GET["id"];
-    if (file_exists("../voyagetest.json")) {
-        $file = json_decode(file_get_contents("../voyagetest.json"), true);
+    if (file_exists("../json/voyagetest.json")) {
+        $file = json_decode(file_get_contents("../json/voyagetest.json"), true);
         foreach ($file as $trip) {
             if ($trip["id"] == $voyage["id"]) {
                 $voyage = $trip;
@@ -24,13 +33,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
                 }
             }
         }
+        $queue_file = $queue_dir . "/" . uniqid("user_", true) . ".json";
+        file_put_contents($queue_file, json_encode(["id"=>$_SESSION["id"], "voyages"=>[$voyage["name"]=>$_SERVER['QUERY_STRING']]], JSON_PRETTY_PRINT));
+        $_SESSION["voyages"][$voyage["name"]] = $_SERVER['QUERY_STRING'];
     }
+
 } else {
     header("Location: choice.php");
     exit();
 }
 
-include "header.php";
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
