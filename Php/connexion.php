@@ -16,11 +16,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     foreach ($utilisateurs as $utilisateur) {
         if ($utilisateur["email"] === $email) {
             if (password_verify($password, $utilisateur["password"])){
+                if ($utilisateur["role"] === "Banni") {
+                    echo "Vous avez été banni";
+                    exit;
+                }
                 $_SESSION["id"] = $utilisateur["id"];
                 $_SESSION["email"] = $utilisateur["email"];
                 $_SESSION["nom"] = $utilisateur["nom"];
                 $_SESSION["role"] = $utilisateur["role"];
                 $_SESSION["voyages"] = $utilisateur["voyages"];
+
+
 
                 header("Location: index.php");
                 exit;

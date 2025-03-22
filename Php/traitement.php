@@ -1,3 +1,4 @@
+#!/usr/bin/php
 <?php
 $queue_dir = "queue";
 $fichier_utilisateurs = "../json/utilisateurs.json";
