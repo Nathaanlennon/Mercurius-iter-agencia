@@ -1,0 +1,50 @@
+[
+    {
+        "id": 0,
+        "nom": "admin",
+        "email": "admin",
+        "password": "$2y$10$z1Ycl92b36l4OrDk3vFY\/OA8p0SIQy3JyrgkIlyUFUGuXfq3U3tkW",
+        "role": "admin"
+    },
+    {
+        "id": 1,
+        "nom": "aaa",
+        "prenom": "a",
+        "email": "aaa",
+        "password": "$2y$10$MqbRU9yJ5xIzm42c4dDPp.w98LczED0A5A4eLWaSU9vpoOUGlu5tG",
+        "role": "user",
+        "etat": "normal"
+    },
+    {
+        "id": 2,
+        "nom": "b",
+        "prenom": "b",
+        "email": "b",
+        "password": "$2y$10$B78SIJS3ryqQA01KWS2KsuIqCMsj54RrSujMpJmwA71kngVztOBEm",
+        "role": "user",
+        "etat": "normal"
+    },
+    {
+        "id": 3,
+        "nom": "ya",
+        "prenom": "y",
+        "email": "ya",
+        "password": "$2y$10$sVvDBChw2MNzjV0XBTe9cecSlQlWtNAtSmqS2hje1S0Ielb9G5Rou",
+        "role": "user",
+        "etat": "normal"
+    },
+    {
+        "id": 4,
+        "nom": "c",
+        "prenom": "c",
+        "email": "c",
+        "password": "$2y$10$YFVNEsxQi1NuFXxDV0tQn.DiLVOQgQ.ZFSy5gONNVvDrkSOc2OaAC",
+        "role": "user",
+        "etat": "normal"
+    },
+    {
+        "id": 5,
+        "nom": "ca",
+        "email": "ca"
+    }
+]

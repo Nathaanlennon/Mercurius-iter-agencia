@@ -6,13 +6,7 @@ $fichier = "utilisateurs.json";
 
 $utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier), true) : [];
 
-$info_util = null;
-foreach ($utilisateurs as $utilisateur) {
-    if ($utilisateur['id'] == $_SESSION['id']) {
-        $info_util = $utilisateur;
-        break;
-    }
-}
+$info_util = $_SESSION;
 ?>
 
 <html lang="fr">
