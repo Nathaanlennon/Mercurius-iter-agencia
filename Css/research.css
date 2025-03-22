@@ -31,7 +31,7 @@ form > h6 {
 
 }
 
-#cities {
+#stages {
     border: black solid 1px;
     border-radius: 5px;
     padding: 3px;
@@ -40,16 +40,16 @@ form > h6 {
     max-height: 5.8em;
 }
 
-#cities input[type="checkbox"] {
+#stages input[type="checkbox"] {
     display: none;
     visibility: hidden;
 }
 
-#cities label {
+#stages label {
     display: block;
 }
 
-#cities label:has(:checked) {
+#stages label:has(:checked) {
     background-color: #9a0000;
     color: white;
 }

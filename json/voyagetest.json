@@ -1,8 +1,8 @@
 [
   {
     "id": 0,
-    "name": "Septentrionalis",
-    "price": 1000,
+    "name": "Imperium",
+    "price": 5000,
     "stages": [
       "valence",
       "tarragone",
@@ -22,9 +22,20 @@
       "butrin",
       "athenes",
       "ephesus",
-      "istanbul"
+      "istanbul",
+      "tipaza",
+      "annaba",
+      "tunis",
+      "carthage",
+      "leptis",
+      "alexandrie",
+      "jerusalem",
+      "cesaree",
+      "sidon",
+      "jbeil",
+      "antioche"
     ],
-    "duration": 25
+    "duration": 40
   },
   {
     "id": 1,
@@ -86,8 +97,8 @@
   },
   {
     "id": 5,
-    "name": "Imperium",
-    "price": 5000,
+    "name": "Septentrionalis",
+    "price": 1000,
     "stages": [
       "valence",
       "tarragone",
@@ -107,19 +118,8 @@
       "butrin",
       "athenes",
       "ephesus",
-      "istanbul",
-      "tipaza",
-      "annaba",
-      "tunis",
-      "carthage",
-      "leptis",
-      "alexandrie",
-      "jerusalem",
-      "cesaree",
-      "sidon",
-      "jbeil",
-      "antioche"
+      "istanbul"
     ],
-    "duration": 40
+    "duration": 25
   }
 ]

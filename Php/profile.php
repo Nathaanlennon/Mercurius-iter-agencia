@@ -37,8 +37,10 @@ $info_util = $_SESSION;
     </tr>
 </table>
 <?php
-foreach ($_SESSION['voyages'] as $key => $value) {
-    echo "<a href='configuration_voyage.php?".$value."'>".$key."</a>";
+if(isset($_SESSION['voyages'])) {
+    foreach ($_SESSION['voyages'] as $key => $value) {
+        echo "<a href='configuration_voyage.php?".$value."'>".$key."</a>";
+    }
 }
 
 
