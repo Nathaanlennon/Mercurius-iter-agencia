@@ -5,15 +5,7 @@ $fichier = "utilisateurs.json";
 
 $utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier), true) : [];
 
-$info_util = null;
-if (isset($_SESSION['id'])) {
-    foreach ($utilisateurs as $utilisateur) {
-        if ($utilisateur['id'] == $_SESSION['id']) {
-            $info_util = $utilisateur;
-            break;
-        }
-    }
-}
+$info_util = $_SESSION;
 ?>
 
 <link rel="stylesheet" href="../Css/style.css">
@@ -44,7 +36,6 @@ if (isset($_SESSION['id'])) {
         </div>
         <nav>
             <?php
-            // Vérifier si l'utilisateur est un administrateur
             if (isset($info_util['role']) && $info_util['role'] === "admin") {
                 echo '<a href="admin.php">Admin</a>';
             }

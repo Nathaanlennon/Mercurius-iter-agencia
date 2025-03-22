@@ -58,6 +58,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     file_put_contents($queue_file, json_encode($nv_util, JSON_PRETTY_PRINT));
 
     $_SESSION["id"] = $nv_util["id"];
+    $_SESSION["email"] = $nv_util["email"];
+    $_SESSION["nom"] = $nv_util["nom"];
     header("Location: index.php");
     exit;
 }
