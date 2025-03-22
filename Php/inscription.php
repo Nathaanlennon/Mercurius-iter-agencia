@@ -49,8 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         "prenom" => $prenom,
         "email" => $email,
         "password" => $hashed_password,
-        "role" => "user",
-        "etat" => "normal",
+        "role" =>  "normal",
     ];
     $utilisateurs[] = $nv_util;
 

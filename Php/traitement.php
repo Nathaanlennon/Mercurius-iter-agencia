@@ -1,3 +1,4 @@
+#!/usr/bin/php
 <?php
 $queue_dir = "queue";
 $fichier_utilisateurs = "utilisateurs.json";
@@ -29,8 +30,6 @@ while (true) {
             echo "modif";
             foreach ($utilisateurs as &$util) {
                 if ($util['id'] == $data['id']) {
-                    echo $data['id'];
-                    echo $data['nom'];
                     $util = array_merge($util, $data);
                     echo "Modification de l'utilisateur ID: " . $data['id'] . "\n";
                     break; //
