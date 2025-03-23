@@ -1,6 +1,6 @@
 # Mercurius-iter-agencia
 
-lancer avant tout sur linux la commande dans le terminal pour lancer le script du traitement : nohup php traitement.php > /dev/null 2>&1 &
+lancer avant tout sur linux la commande dans le terminal pour lancer le script du traitement en arrière plan : nohup php traitement.php > /dev/null 2>&1 &
 
 pour arretez le script entrer : pkill -f traitement.php
 
