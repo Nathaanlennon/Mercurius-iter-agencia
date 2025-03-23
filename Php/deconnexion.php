@@ -1,6 +1,6 @@
 <?php
 session_start();
-setcookie ("Sans-gluten", $_SESSION["id"], time()-1);
+setcookie ("sans-gluten", $_SESSION["id"], time()-3600, "/");
 session_unset();
 session_destroy();
 header("Location: index.php");

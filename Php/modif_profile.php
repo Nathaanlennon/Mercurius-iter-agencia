@@ -1,6 +1,11 @@
 <?php
 include "header.php";
 
+$info_util = $_SESSION;
+if (!isset($info_util['id'])) {
+    header("Location: connexion.php");
+    exit;
+}
 $queue_dir = "queue"; // Dossier de la queue
 if (!file_exists($queue_dir)) {
     mkdir($queue_dir, 0777, true);
@@ -13,6 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'nom' => isset($_POST['nom']) ? $_POST['nom'] : $_SESSION['nom'],
         'email' => isset($_POST['email']) ? $_POST['email'] : $_SESSION['email']
     ];
+
+    if (!filter_var($nv_info['email'], FILTER_VALIDATE_EMAIL)) {
+        echo("Email invalide;");
+        exit;
+    }
 
     $_SESSION["email"] = $nv_info["email"];
     $_SESSION["nom"] = $nv_info["nom"];

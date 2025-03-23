@@ -21,7 +21,6 @@ if (!isset($info_util['role']) || $info_util['role'] !== "admin") {
 $utilisateurs_par_page = 10;
 $total_utilisateurs = count($utilisateurs);
 
-
 if (isset($_GET['id_specific'])) {
     $id_specific = $_GET['id_specific'];
     $utilisateurs = array_filter($utilisateurs, fn($user) => strpos($user['id'], $id_specific) !== false);
@@ -84,11 +83,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <td>
                     <form method="post">
                         <input type="hidden" name="util_id" value="<?= htmlspecialchars($util['id']) ?>">
-                        <select name="role">
+                        <label> <select name="role">
                             <option value="Normal" <?= $util['role'] == 'Normal' ? 'selected' : '' ?>>Normal</option>
                             <option value="VIP" <?= $util['role'] == 'VIP' ? 'selected' : '' ?>>VIP</option>
                             <option value="Banni" <?= $util['role'] == 'Banni' ? 'selected' : '' ?>>Banni</option>
-                        </select>
+                        </select> </label>
                         <button type="submit" name="maj_role">Modifier</button>
                     </form>
                 </td>

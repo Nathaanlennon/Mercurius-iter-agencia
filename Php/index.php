@@ -60,7 +60,7 @@ include "header.php"
                     <br>
                     Vivez un voyage inoubliable entre histoire, culture et mer
                 </p>
-                <a href="" class="link">Réserver</a>
+                <a href="http://localhost:63342/Mercurius-iter-agencia/Php/voyage_sheet.php?id=0" class="link">Réserver</a>
             </div>
 
             <div class="miniature"><img
@@ -97,7 +97,7 @@ include "header.php"
                     <br>
                     Une immersion inoubliable au cœur de l’Empire romain et des merveilles du sud méditerranéen !
                 </p>
-                <a href="" class="link">Réserver</a>
+                <a href="http://localhost:63342/Mercurius-iter-agencia/Php/voyage_sheet.php?id=1" class="link">Réserver</a>
             </div>
         </div>
     </div>

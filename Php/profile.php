@@ -2,7 +2,6 @@
 
 include "header.php";
 $info_util = $_SESSION;
-
 if (!isset($info_util['id'])) {
     header("Location: connexion.php");
     exit;
@@ -48,7 +47,6 @@ if (isset($_SESSION['voyages'])) {
         echo "<a href='configuration_voyage.php?" . $value . "'>" . $key . "</a>";
     }
 }
-echo $_SESSION['id'];
 
 
 ?>
