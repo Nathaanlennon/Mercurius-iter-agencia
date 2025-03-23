@@ -24,7 +24,15 @@
       "ephesus",
       "istanbul"
     ],
-    "duration": 38
+    "duration": 38,
+    "key-word": [
+      "Espagne",
+      "France",
+      "Italie",
+      "Malte",
+      "Grèce",
+      "Turquie"
+    ]
   },
   {
     "id": 1,
@@ -43,7 +51,16 @@
       "jbeil",
       "antioche"
     ],
-    "duration": 22
+    "duration": 22,
+    "key-word": [
+      "Algérie",
+      "Tunisie",
+      "Libye",
+      "Égypte",
+      "Israël",
+      "Liban",
+      "Syrie"
+    ]
   },
   {
     "id": 2,
@@ -54,7 +71,10 @@
       "tarragone",
       "barcelone"
     ],
-    "duration": 6
+    "duration": 6,
+    "key-word": [
+      "Espagne"
+    ]
   },
   {
     "id": 3,
@@ -66,7 +86,10 @@
       "antibes",
       "nice"
     ],
-    "duration": 8
+    "duration": 8,
+    "key-word": [
+      "France"
+    ]
   },
   {
     "id": 4,
@@ -82,7 +105,11 @@
       "malte",
       "agrigente"
     ],
-    "duration": 16
+    "duration": 16,
+    "key-word": [
+      "Italie",
+      "Malte"
+    ]
   },
   {
     "id": 5,
@@ -120,7 +147,22 @@
       "jbeil",
       "antioche"
     ],
-    "duration": 60
+    "duration": 60,
+    "key-word": [
+      "Espagne",
+      "France",
+      "Italie",
+      "Malte",
+      "Grèce",
+      "Turquie",
+      "Algérie",
+      "Tunisie",
+      "Libye",
+      "Égypte",
+      "Israël",
+      "Liban",
+      "Syrie"
+    ]
   },
   {
     "id": 6,
@@ -135,7 +177,11 @@
       "antibes",
       "nice"
     ],
-    "duration": 14
+    "duration": 14,
+    "key-word": [
+      "Espagne",
+      "France"
+    ]
   },
   {
     "id": 7,
@@ -147,7 +193,12 @@
       "ephesus",
       "istanbul"
     ],
-    "duration": 8
+    "duration": 8,
+    "key-word": [
+      "Grèce",
+      "Turquie",
+      "Albanie"
+    ]
   },
   {
     "id": 8,
@@ -160,7 +211,12 @@
       "tunis",
       "leptis"
     ],
-    "duration": 10
+    "duration": 10,
+    "key-word": [
+      "Algérie",
+      "Tunisie",
+      "Libye"
+    ]
   },
   {
     "id": 9,
@@ -173,7 +229,13 @@
       "jbeil",
       "antioche"
     ],
-    "duration": 10
+    "duration": 10,
+    "key-word": [
+      "Égypte",
+      "Israël",
+      "Liban",
+      "Syrie"
+    ]
   },
   {
     "id": 9,
@@ -184,9 +246,12 @@
       "antioche",
       "istanbul"
     ],
-    "duration": 6
+    "duration": 6,
+    "key-word": [
+      "Turquie",
+      "Grèce"
+    ]
   },
-
   {
     "id": 10,
     "name": "Gallia et Italia",
@@ -208,9 +273,14 @@
       "malte",
       "agrigente"
     ],
-    "duration": 30
+    "duration": 30,
+    "key-word": [
+      "Espagne",
+      "France",
+      "Italie",
+      "Malte"
+    ]
   },
-
   {
     "id": 11,
     "name": "Occidens Maximus",
@@ -237,24 +307,42 @@
       "tunis",
       "leptis"
     ],
-    "duration": 40
+    "duration": 40,
+    "key-word": [
+      "Espagne",
+      "France",
+      "Italie",
+      "Malte",
+      "Algérie",
+      "Tunisie",
+      "Libye"
+    ]
   },
   {
-  "id": 12,
-  "name": "Oriens Maximus",
-  "price": 1000,
-  "stages": [
-    "butrint",
-    "athenes",
-    "ephesus",
-    "istanbul",
-    "antioche",
-    "jbeil",
-    "sidon",
-    "jerusalem",
-    "alexandrie"
-  ],
-  "duration": 18
+    "id": 12,
+    "name": "Oriens Maximus",
+    "price": 1000,
+    "stages": [
+      "butrint",
+      "athenes",
+      "ephesus",
+      "istanbul",
+      "antioche",
+      "jbeil",
+      "sidon",
+      "jerusalem",
+      "alexandrie"
+    ],
+    "duration": 18,
+    "key-word": [
+      "Albanie",
+      "Grèce",
+      "Turquie",
+      "Syrie",
+      "Liban",
+      "Israël",
+      "Égypte"
+    ]
   },
   {
     "id": 13,
@@ -264,7 +352,11 @@
       "rome",
       "carthage"
     ],
-    "duration": 4
+    "duration": 4,
+    "key-word": [
+      "Italie",
+      "Tunisie"
+    ]
   },
   {
     "id": 14,
@@ -274,7 +366,11 @@
       "sidon",
       "leptis"
     ],
-    "duration": 4
+    "duration": 4,
+    "key-word": [
+      "Liban",
+      "Libye"
+    ]
   },
   {
     "id": 15,
@@ -285,6 +381,10 @@
       "athenes",
       "ephese"
     ],
-    "duration": 6
+    "duration": 6,
+    "key-word": [
+      "Italie",
+      "Grèce"
+    ]
   }
 ]
