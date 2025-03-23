@@ -3,73 +3,40 @@
         "id": 0,
         "nom": "admin",
         "prenom": "admin",
-        "email": "admin",
+        "email": "admin@gmail.com",
         "password": "$2y$10$QX4vaExW09QfZusrh7jYgeYO7Xrp7E83lGTFBrDfYe5ZSAPYlBYaC",
         "role": "admin"
     },
     {
-        "id": "1",
-        "nom": "aaa",
-        "prenom": "a",
-        "email": "a",
-        "password": "$2y$10$tJNJZDFUzzPbQZYFJpkuKO8w20cfa6mvQ11RtT6SVQcAECNHQtCnS",
-        "role": "VIP",
-        "voyages": {
-            "Occidens": "id=6"
-        }
-    },
-    {
-        "id": "2",
-        "nom": "bb",
-        "prenom": "b",
-        "email": "bb",
-        "password": "$2y$10$qRiTPiEWmMKCEj\/KfkpXQeDwV\/FXfBWYklj97zEPOs6S7z2ND2eJ2",
-        "role": "Banni"
-    },
-    {
-        "id": "3",
-        "nom": "r",
-        "prenom": "r",
-        "email": "r",
-        "password": "$2y$10$H0HN8vJ3kxveIeizD479Su1DD4bs1HujdW3cPjAy5mwUtDDX\/twkW",
-        "role": "Banni"
-    },
-    {
-        "id": 4,
-        "nom": "u",
-        "prenom": "u",
-        "email": "u",
-        "password": "$2y$10$cYJMhx6JNI2sz1dUCxia4.g5XDWt9Dh3kf1m9MQHBLDid0AgnuS5K",
+        "id": 1,
+        "nom": "michel",
+        "prenom": "paul",
+        "email": "mp@gmail.com",
+        "password": "$2y$10$ad5y6kFMCYDB5n598.b8p.uUJ5cL6nOoX1X3TCbg9LuW2K.ZAkUU.",
         "role": "normal"
     },
     {
-        "id": 5,
-        "nom": "aaa",
-        "prenom": "a",
-        "email": "aa@gmail.com",
-        "password": "$2y$10$ECalflwMBMR7GMplEtqUMeu4Gvck9gDKfub2DJrhMZJCU5MHwqUO2",
-        "role": "normal",
-        "voyages": {
-            "Imperium": "id=5",
-            "Septentrionalis": "id=0&depart=2025-03-23&nb_personnes=1&01=1&03=4&11=1&13=4&21=1&23=4&31=1&33=4&41=1&43=4&51=1&53=4&61=1&63=4&71=1&73=4&81=1&83=4&91=1&93=4&101=1&103=4&111=1&113=4&121=1&123=4&131=1&133=4&141=1&143=4&151=1&153=4&161=1&163=4&171=1&173=4&181=1&183=4"
-        }
+        "id": 2,
+        "nom": "dupont",
+        "prenom": "pierre",
+        "email": "dp@gmail.com",
+        "password": "$2y$10$ikOH2Xw3rKm7n4NV42GY.u1j4MO4aJqB3ZYfOX79ECVo8NSwVccUK",
+        "role": "normal"
     },
     {
-        "id": 7,
-        "nom": "bba",
-        "prenom": "b",
-        "email": "bb@gmail.com",
-        "password": "$2y$10$BL3kRnD.4ej7pXfA504zk.CryxLt5TO8PSIf4bdEyNyBIx8kFm3dG",
-        "role": "normal",
-        "voyages": {
-            "Hispania": {
-                "pay\u00e9": false,
-                "config": "id=2&depart=2025-03-23&nb_personnes=2&01=1&03=1&11=1&13=1&21=1&23=1"
-            },
-            "Roma": {
-                "pay\u00e9": false,
-                "config": "id=4&depart=2025-03-23&nb_personnes=2&01=1&03=1&11=1&13=1&21=1&23=1&31=1&33=1&41=1&43=1&51=1&53=1&61=1&63=1&71=1&73=1"
-            }
-        }
+        "id": 3,
+        "nom": "auguste",
+        "prenom": "philipe",
+        "email": "ap@gmail.com",
+        "password": "$2y$10$e1.DgzCEy7zQWO3Mzko9x..SbUnPY2DjNMsJDvx4fbv8ujbG2qjSq",
+        "role": "normal"
+    },
+    {
+        "id": 0,
+        "nom": "admin2",
+        "prenom": "admin2",
+        "email": "admin2@gmail.com",
+        "password": "$2y$10$QX4vaExW09QfZusrh7jYgeYO7Xrp7E83lGTFBrDfYe5ZSAPYlBYaC",
+        "role": "admin"
     }
 ]
