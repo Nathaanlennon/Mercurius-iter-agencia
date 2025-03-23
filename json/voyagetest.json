@@ -2,7 +2,7 @@
   {
     "id": 0,
     "name": "Septentrionalis",
-    "price": 1000,
+    "price": 2000,
     "stages": [
       "valence",
       "tarragone",
@@ -24,12 +24,20 @@
       "ephesus",
       "istanbul"
     ],
-    "duration": 38
+    "duration": 38,
+    "key-word": [
+      "Espagne",
+      "France",
+      "Italie",
+      "Malte",
+      "Grèce",
+      "Turquie"
+    ]
   },
   {
     "id": 1,
     "name": "Meridionalis",
-    "price": 1500,
+    "price": 1200,
     "stages": [
       "tipaza",
       "annaba",
@@ -43,35 +51,50 @@
       "jbeil",
       "antioche"
     ],
-    "duration": 22
+    "duration": 22,
+    "key-word": [
+      "Algérie",
+      "Tunisie",
+      "Libye",
+      "Égypte",
+      "Israël",
+      "Liban",
+      "Syrie"
+    ]
   },
   {
     "id": 2,
     "name": "Hispania",
-    "price": 2000,
+    "price": 400,
     "stages": [
       "valence",
       "tarragone",
       "barcelone"
     ],
-    "duration": 6
+    "duration": 6,
+    "key-word": [
+      "Espagne"
+    ]
   },
   {
     "id": 3,
     "name": "Gallia",
-    "price": 2500,
+    "price": 500,
     "stages": [
       "arles",
       "marseille",
       "antibes",
       "nice"
     ],
-    "duration": 8
+    "duration": 8,
+    "key-word": [
+      "France"
+    ]
   },
   {
     "id": 4,
     "name": "Roma",
-    "price": 3000,
+    "price": 900,
     "stages": [
       "rome",
       "ostie",
@@ -82,12 +105,16 @@
       "malte",
       "agrigente"
     ],
-    "duration": 16
+    "duration": 16,
+    "key-word": [
+      "Italie",
+      "Malte"
+    ]
   },
   {
     "id": 5,
     "name": "Imperium",
-    "price": 5000,
+    "price": 3100,
     "stages": [
       "valence",
       "tarragone",
@@ -120,12 +147,27 @@
       "jbeil",
       "antioche"
     ],
-    "duration": 60
+    "duration": 60,
+    "key-word": [
+      "Espagne",
+      "France",
+      "Italie",
+      "Malte",
+      "Grèce",
+      "Turquie",
+      "Algérie",
+      "Tunisie",
+      "Libye",
+      "Égypte",
+      "Israël",
+      "Liban",
+      "Syrie"
+    ]
   },
   {
     "id": 6,
     "name": "Occidens",
-    "price": 5000,
+    "price": 800,
     "stages": [
       "valence",
       "tarragone",
@@ -135,24 +177,33 @@
       "antibes",
       "nice"
     ],
-    "duration": 14
+    "duration": 14,
+    "key-word": [
+      "Espagne",
+      "France"
+    ]
   },
   {
     "id": 7,
     "name": "Oriens",
-    "price": 5000,
+    "price": 500,
     "stages": [
       "butrint",
       "athenes",
       "ephesus",
       "istanbul"
     ],
-    "duration": 8
+    "duration": 8,
+    "key-word": [
+      "Grèce",
+      "Turquie",
+      "Albanie"
+    ]
   },
   {
     "id": 8,
     "name": "Africa Proconsularis",
-    "price": 5000,
+    "price": 600,
     "stages": [
       "tipaza",
       "annaba",
@@ -160,12 +211,17 @@
       "tunis",
       "leptis"
     ],
-    "duration": 10
+    "duration": 10,
+    "key-word": [
+      "Algérie",
+      "Tunisie",
+      "Libye"
+    ]
   },
   {
     "id": 9,
     "name": "Aegyptus et Orientalis",
-    "price": 5000,
+    "price": 600,
     "stages": [
       "alexandrie",
       "jerusalem",
@@ -173,24 +229,33 @@
       "jbeil",
       "antioche"
     ],
-    "duration": 10
+    "duration": 10,
+    "key-word": [
+      "Égypte",
+      "Israël",
+      "Liban",
+      "Syrie"
+    ]
   },
   {
     "id": 9,
     "name": "Anatolia",
-    "price": 5000,
+    "price": 400,
     "stages": [
       "ephesus",
       "antioche",
       "istanbul"
     ],
-    "duration": 6
+    "duration": 6,
+    "key-word": [
+      "Turquie",
+      "Grèce"
+    ]
   },
-
   {
     "id": 10,
     "name": "Gallia et Italia",
-    "price": 5000,
+    "price": 1600,
     "stages": [
       "valence",
       "tarragone",
@@ -208,13 +273,18 @@
       "malte",
       "agrigente"
     ],
-    "duration": 30
+    "duration": 30,
+    "key-word": [
+      "Espagne",
+      "France",
+      "Italie",
+      "Malte"
+    ]
   },
-
   {
     "id": 11,
     "name": "Occidens Maximus",
-    "price": 5000,
+    "price": 2100,
     "stages": [
       "valence",
       "tarragone",
@@ -237,54 +307,84 @@
       "tunis",
       "leptis"
     ],
-    "duration": 40
+    "duration": 40,
+    "key-word": [
+      "Espagne",
+      "France",
+      "Italie",
+      "Malte",
+      "Algérie",
+      "Tunisie",
+      "Libye"
+    ]
   },
   {
-  "id": 12,
-  "name": "Oriens Maximus",
-  "price": 5000,
-  "stages": [
-    "butrint",
-    "athenes",
-    "ephesus",
-    "istanbul",
-    "antioche",
-    "jbeil",
-    "sidon",
-    "jerusalem",
-    "alexandrie"
-  ],
-  "duration": 18
+    "id": 12,
+    "name": "Oriens Maximus",
+    "price": 1000,
+    "stages": [
+      "butrint",
+      "athenes",
+      "ephesus",
+      "istanbul",
+      "antioche",
+      "jbeil",
+      "sidon",
+      "jerusalem",
+      "alexandrie"
+    ],
+    "duration": 18,
+    "key-word": [
+      "Albanie",
+      "Grèce",
+      "Turquie",
+      "Syrie",
+      "Liban",
+      "Israël",
+      "Égypte"
+    ]
   },
   {
     "id": 13,
     "name": "Punica Via",
-    "price": 5000,
+    "price": 300,
     "stages": [
       "rome",
       "carthage"
     ],
-    "duration": 4
+    "duration": 4,
+    "key-word": [
+      "Italie",
+      "Tunisie"
+    ]
   },
   {
     "id": 14,
     "name": "Mare Phoenicum",
-    "price": 360,
+    "price": 300,
     "stages": [
       "sidon",
       "leptis"
     ],
-    "duration": 4
+    "duration": 4,
+    "key-word": [
+      "Liban",
+      "Libye"
+    ]
   },
   {
     "id": 15,
     "name": "Magna Graecia",
-    "price": 490,
+    "price": 400,
     "stages": [
       "syracuse",
       "athenes",
       "ephese"
     ],
-    "duration": 6
+    "duration": 6,
+    "key-word": [
+      "Italie",
+      "Grèce"
+    ]
   }
 ]

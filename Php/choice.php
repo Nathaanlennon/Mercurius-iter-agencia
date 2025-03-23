@@ -22,7 +22,7 @@ $total_pages = ceil($total_voyages / $voyage_par_page);
 
 foreach ($voyages_page as $voyage) {
     echo "<div class='result' style=';' onclick='window.location=\"voyage_sheet.php?id=" . $voyage["id"] . "\"'>"
-        . $voyage["name"] . "<br> Prix moyen (2 personnes) : " . $voyage["price"] . "€";
+        . $voyage["name"] . "<br> Prix minimum (1 personnes) : " . $voyage["price"] . "€";
     echo "</div>";
 }
 ?>

@@ -34,7 +34,7 @@ include "header.php";
     <p>
         <?php
         echo "Nom : " . $voyage['name'] . "<br>";
-        echo "Prix moyen pour deux personnes: " . $voyage['price'] . "<br>";
+        echo "Prix minimum pour 1 personne: " . $voyage['price'] . "<br>";
         echo "Etapes : ";
         foreach ($voyage['stages'] as $stage) {
             echo $stage . " ";

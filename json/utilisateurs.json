@@ -2,49 +2,41 @@
     {
         "id": 0,
         "nom": "admin",
-        "email": "admin",
-        "password": "$2y$10$QX4vaExW09QfZusrh7jYgeYO7Xrp7E83lGTFBrDfYe5ZSAPYlBYaC"
+        "prenom": "admin",
+        "email": "admin@gmail.com",
+        "password": "$2y$10$QX4vaExW09QfZusrh7jYgeYO7Xrp7E83lGTFBrDfYe5ZSAPYlBYaC",
+        "role": "admin"
     },
     {
         "id": 1,
-        "nom": "a",
-        "prenom": "a",
-        "email": "a@gmail.com",
-        "password": "$2y$10$SWlljlBG4rFloLpjCGZu8.T8Fqe6GhDoguVNBZm1xWh9zr7A64g3i",
-        "role": "normal",
-        "voyages": {
-            "Imperium": {
-                "pay\u00e9": true,
-                "config": "id=5&depart=2025-03-23&nb_personnes=2&01=1&03=1&11=1&13=1&21=1&23=1&31=1&33=1&41=1&43=1&51=1&53=1&61=1&63=1&71=1&73=1&81=1&83=1&91=1&93=1&101=1&103=1&111=1&113=1&121=1&123=1&131=1&133=1&141=1&143=1&151=1&153=1&161=1&163=1&171=1&173=1&181=1&183=1&191=1&193=1&201=1&203=1&211=1&213=1&221=1&223=1&231=1&233=1&241=1&243=1&251=1&253=1&261=1&263=1&271=1&273=1&281=1&283=1&291=1&293=1"
-            },
-            "Hispania": {
-                "pay\u00e9": true,
-                "config": "id=2&depart=2025-03-28&nb_personnes=3&01=3&02%5B%5D=2&02%5B%5D=3&03=1&11=1&12%5B%5D=1&13=1&21=1&23=2"
-            },
-            "Septentrionalis": {
-                "pay\u00e9": false,
-                "config": "id=0&depart=2025-03-23&nb_personnes=1&01=1&03=1&11=1&13=1&21=1&23=1&31=1&33=1&41=1&43=1&51=1&53=1&61=1&63=1&71=1&73=1&81=1&83=1&91=1&93=1&101=1&103=1&111=1&113=1&121=1&123=1&131=1&133=1&141=1&143=1&151=1&153=1&161=1&163=1&171=1&173=1&181=1&183=1"
-            },
-            "Magna Graecia": {
-                "pay\u00e9": false,
-                "config": "id=15&depart=2025-03-23&nb_personnes=1&01=1&03=4&11=1&13=4&21=1&23=4"
-            },
-            "Mare Phoenicum": {
-                "pay\u00e9": false,
-                "config": "id=14&depart=2025-03-23&nb_personnes=1&01=1&03=4&11=1&13=4"
-            },
-            "Punica Via": {
-                "pay\u00e9": false,
-                "config": "id=13"
-            },
-            "Oriens Maximus": {
-                "pay\u00e9": false,
-                "config": "id=12"
-            },
-            "Meridionalis": {
-                "pay\u00e9": false,
-                "config": "id=1"
-            }
-        }
+        "nom": "michel",
+        "prenom": "paul",
+        "email": "mp@gmail.com",
+        "password": "$2y$10$ad5y6kFMCYDB5n598.b8p.uUJ5cL6nOoX1X3TCbg9LuW2K.ZAkUU.",
+        "role": "normal"
+    },
+    {
+        "id": 2,
+        "nom": "dupont",
+        "prenom": "pierre",
+        "email": "dp@gmail.com",
+        "password": "$2y$10$ikOH2Xw3rKm7n4NV42GY.u1j4MO4aJqB3ZYfOX79ECVo8NSwVccUK",
+        "role": "normal"
+    },
+    {
+        "id": 3,
+        "nom": "auguste",
+        "prenom": "philipe",
+        "email": "ap@gmail.com",
+        "password": "$2y$10$e1.DgzCEy7zQWO3Mzko9x..SbUnPY2DjNMsJDvx4fbv8ujbG2qjSq",
+        "role": "normal"
+    },
+    {
+        "id": 0,
+        "nom": "admin2",
+        "prenom": "admin2",
+        "email": "admin2@gmail.com",
+        "password": "$2y$10$QX4vaExW09QfZusrh7jYgeYO7Xrp7E83lGTFBrDfYe5ZSAPYlBYaC",
+        "role": "admin"
     }
 ]
