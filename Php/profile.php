@@ -41,14 +41,32 @@ $utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier),
             <br></td>
     </tr>
 </table>
-<?php
-if(isset($_SESSION['voyages'])) {
-    foreach ($_SESSION['voyages'] as $key => $value) {
-        echo "<a href='trip_recap.php?".$value["config"]."'>".$key."</a>";
-    }
-}
-
-
-?>
+<?php if (isset($_SESSION['voyages']) && !empty($_SESSION['voyages'])): ?>
+    <h2 class="title">Mes Voyages</h2>
+    <table>
+        <tr>
+            <th>Nom du voyage</th>
+            <th>Action</th>
+            <th>Etat de payement</th>
+        </tr>
+        <?php foreach ($_SESSION['voyages'] as $key => $voyage): ?>
+            <tr>
+                <td><?php echo htmlspecialchars($key); ?></td>
+                <td>
+                    <a href='trip_recap.php?<?php echo htmlspecialchars($voyage["config"]); ?>'><button>Voir Détails</button></a>
+                </td>
+                <td><?php if ($voyage['payé']){
+                        echo "payé";
+                        }
+                        else{
+                            echo"non payé";
+                        }
+                     ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+<?php else: ?>
+    <p>Aucun voyage sélectionné.</p>
+<?php endif; ?>
 </body>
 </html>
