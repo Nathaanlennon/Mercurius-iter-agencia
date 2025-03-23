@@ -1,4 +1,10 @@
+<?php
+
+include "header.php"
+?>
+
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -7,32 +13,6 @@
     <link rel="stylesheet" href="../Css/index.css">
 </head>
 <body>
-<div>
-    <header>
-        <div class="header">
-            <div id="logo"><a href="index.html"><img src="../assets/logo.png" alt="logo"></a></div>
-
-            <h1>Mercurius Iter Agencia</h1>
-
-            <div id="temp">
-                <div>
-
-                </div>
-                <div class="auth">
-                    <a href="inscription.html" class="red">Inscription</a>
-                    <a href="connexion.html" class="red">Connexion</a>
-                </div>
-            </div>
-        </div>
-        <nav>
-            <a href="presentation.html" class="purple">À propos</a>
-            <a href="research.html" class="purple">Recherche</a>
-            <a href="choice.html" class="red">Choix</a>
-            <a href="profile.html" class="red">Profil</a>
-        </nav>
-    </header>
-
-</div>
 
 <div class="content">
 
@@ -80,7 +60,7 @@
                     <br>
                     Vivez un voyage inoubliable entre histoire, culture et mer
                 </p>
-                <a href="" class="link">Réserver</a>
+                <a href="http://localhost:63342/Mercurius-iter-agencia/Php/voyage_sheet.php?id=0" class="link">Réserver</a>
             </div>
 
             <div class="miniature"><img
@@ -117,7 +97,7 @@
                     <br>
                     Une immersion inoubliable au cœur de l’Empire romain et des merveilles du sud méditerranéen !
                 </p>
-                <a href="" class="link">Réserver</a>
+                <a href="http://localhost:63342/Mercurius-iter-agencia/Php/voyage_sheet.php?id=1" class="link">Réserver</a>
             </div>
         </div>
     </div>

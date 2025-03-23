@@ -1,0 +1,390 @@
+[
+  {
+    "id": 0,
+    "name": "Septentrionalis",
+    "price": 2000,
+    "stages": [
+      "valence",
+      "tarragone",
+      "barcelone",
+      "arles",
+      "marseille",
+      "antibes",
+      "nice",
+      "rome",
+      "ostie",
+      "naples",
+      "herculanum",
+      "pompei",
+      "syracuse",
+      "malte",
+      "agrigente",
+      "butrin",
+      "athenes",
+      "ephesus",
+      "istanbul"
+    ],
+    "duration": 38,
+    "key-word": [
+      "Espagne",
+      "France",
+      "Italie",
+      "Malte",
+      "Grèce",
+      "Turquie"
+    ]
+  },
+  {
+    "id": 1,
+    "name": "Meridionalis",
+    "price": 1200,
+    "stages": [
+      "tipaza",
+      "annaba",
+      "tunis",
+      "carthage",
+      "leptis",
+      "alexandrie",
+      "jerusalem",
+      "cesaree",
+      "sidon",
+      "jbeil",
+      "antioche"
+    ],
+    "duration": 22,
+    "key-word": [
+      "Algérie",
+      "Tunisie",
+      "Libye",
+      "Égypte",
+      "Israël",
+      "Liban",
+      "Syrie"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Hispania",
+    "price": 400,
+    "stages": [
+      "valence",
+      "tarragone",
+      "barcelone"
+    ],
+    "duration": 6,
+    "key-word": [
+      "Espagne"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Gallia",
+    "price": 500,
+    "stages": [
+      "arles",
+      "marseille",
+      "antibes",
+      "nice"
+    ],
+    "duration": 8,
+    "key-word": [
+      "France"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Roma",
+    "price": 900,
+    "stages": [
+      "rome",
+      "ostie",
+      "naples",
+      "herculanum",
+      "pompei",
+      "syracuse",
+      "malte",
+      "agrigente"
+    ],
+    "duration": 16,
+    "key-word": [
+      "Italie",
+      "Malte"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Imperium",
+    "price": 3100,
+    "stages": [
+      "valence",
+      "tarragone",
+      "barcelone",
+      "arles",
+      "marseille",
+      "antibes",
+      "nice",
+      "rome",
+      "ostie",
+      "naples",
+      "herculanum",
+      "pompei",
+      "syracuse",
+      "malte",
+      "agrigente",
+      "butrint",
+      "athenes",
+      "ephesus",
+      "istanbul",
+      "tipaza",
+      "annaba",
+      "tunis",
+      "carthage",
+      "leptis",
+      "alexandrie",
+      "jerusalem",
+      "cesaree",
+      "sidon",
+      "jbeil",
+      "antioche"
+    ],
+    "duration": 60,
+    "key-word": [
+      "Espagne",
+      "France",
+      "Italie",
+      "Malte",
+      "Grèce",
+      "Turquie",
+      "Algérie",
+      "Tunisie",
+      "Libye",
+      "Égypte",
+      "Israël",
+      "Liban",
+      "Syrie"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Occidens",
+    "price": 800,
+    "stages": [
+      "valence",
+      "tarragone",
+      "barcelone",
+      "arles",
+      "marseille",
+      "antibes",
+      "nice"
+    ],
+    "duration": 14,
+    "key-word": [
+      "Espagne",
+      "France"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Oriens",
+    "price": 500,
+    "stages": [
+      "butrint",
+      "athenes",
+      "ephesus",
+      "istanbul"
+    ],
+    "duration": 8,
+    "key-word": [
+      "Grèce",
+      "Turquie",
+      "Albanie"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Africa Proconsularis",
+    "price": 600,
+    "stages": [
+      "tipaza",
+      "annaba",
+      "carthage",
+      "tunis",
+      "leptis"
+    ],
+    "duration": 10,
+    "key-word": [
+      "Algérie",
+      "Tunisie",
+      "Libye"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Aegyptus et Orientalis",
+    "price": 600,
+    "stages": [
+      "alexandrie",
+      "jerusalem",
+      "sidon",
+      "jbeil",
+      "antioche"
+    ],
+    "duration": 10,
+    "key-word": [
+      "Égypte",
+      "Israël",
+      "Liban",
+      "Syrie"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Anatolia",
+    "price": 400,
+    "stages": [
+      "ephesus",
+      "antioche",
+      "istanbul"
+    ],
+    "duration": 6,
+    "key-word": [
+      "Turquie",
+      "Grèce"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Gallia et Italia",
+    "price": 1600,
+    "stages": [
+      "valence",
+      "tarragone",
+      "barcelone",
+      "arles",
+      "marseille",
+      "antibes",
+      "nice",
+      "rome",
+      "ostie",
+      "naples",
+      "herculanum",
+      "pompei",
+      "syracuse",
+      "malte",
+      "agrigente"
+    ],
+    "duration": 30,
+    "key-word": [
+      "Espagne",
+      "France",
+      "Italie",
+      "Malte"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Occidens Maximus",
+    "price": 2100,
+    "stages": [
+      "valence",
+      "tarragone",
+      "barcelone",
+      "arles",
+      "marseille",
+      "antibes",
+      "nice",
+      "rome",
+      "ostie",
+      "naples",
+      "herculanum",
+      "pompei",
+      "syracuse",
+      "malte",
+      "agrigente",
+      "tipaza",
+      "annaba",
+      "carthage",
+      "tunis",
+      "leptis"
+    ],
+    "duration": 40,
+    "key-word": [
+      "Espagne",
+      "France",
+      "Italie",
+      "Malte",
+      "Algérie",
+      "Tunisie",
+      "Libye"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Oriens Maximus",
+    "price": 1000,
+    "stages": [
+      "butrint",
+      "athenes",
+      "ephesus",
+      "istanbul",
+      "antioche",
+      "jbeil",
+      "sidon",
+      "jerusalem",
+      "alexandrie"
+    ],
+    "duration": 18,
+    "key-word": [
+      "Albanie",
+      "Grèce",
+      "Turquie",
+      "Syrie",
+      "Liban",
+      "Israël",
+      "Égypte"
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Punica Via",
+    "price": 300,
+    "stages": [
+      "rome",
+      "carthage"
+    ],
+    "duration": 4,
+    "key-word": [
+      "Italie",
+      "Tunisie"
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Mare Phoenicum",
+    "price": 300,
+    "stages": [
+      "sidon",
+      "leptis"
+    ],
+    "duration": 4,
+    "key-word": [
+      "Liban",
+      "Libye"
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Magna Graecia",
+    "price": 400,
+    "stages": [
+      "syracuse",
+      "athenes",
+      "ephese"
+    ],
+    "duration": 6,
+    "key-word": [
+      "Italie",
+      "Grèce"
+    ]
+  }
+]

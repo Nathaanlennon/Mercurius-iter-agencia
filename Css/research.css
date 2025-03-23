@@ -1,6 +1,13 @@
+* *{
+    /*border:1px solid black;*/
+}
+
+.content{
+    display: flex;
+    justify-content: space-evenly;
+}
+
 form {
-    margin-left: auto;
-    margin-right: auto;
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -24,7 +31,7 @@ form > h6 {
 
 }
 
-#cities {
+#stages {
     border: black solid 1px;
     border-radius: 5px;
     padding: 3px;
@@ -33,16 +40,16 @@ form > h6 {
     max-height: 5.8em;
 }
 
-#cities input[type="checkbox"] {
+#stages input[type="checkbox"] {
     display: none;
     visibility: hidden;
 }
 
-#cities label {
+#stages label {
     display: block;
 }
 
-#cities label:has(:checked) {
+#stages label:has(:checked) {
     background-color: #9a0000;
     color: white;
 }
@@ -74,4 +81,13 @@ form > h6 {
 
 .titres {
     margin-bottom: 0.25em;
+}
+
+.result {
+    border-radius: 5px;
+    box-shadow: 5px 5px 7.5px #650065;
+    background-color: white;
+    padding: 0.5em;
+    text-align: center;
+    margin: 0.8em;
 }

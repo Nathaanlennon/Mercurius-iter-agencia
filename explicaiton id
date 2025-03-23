@@ -1,0 +1,20 @@
+Voici un fichier pour expliquer rapidement comment fonctionne le systeme d'id de recherche :
+
+Le systeme d'ID de recherche comporte plusieurs niveaux :
+
+Les villes : l'id des villes est simplement l'index de la ville dans le tableau des villes du voyage.
+
+Pour les input, cela va comme suit :
+1 : niveau d'hotel par étoile
+    les valeurs sont de 1 à 5
+2 : activités
+    1 : musée
+    2 : visites de ruines
+    3 : spectacle
+    4 : plage
+3 : transports pour le prochain point :
+    1 : avion
+    2 : voiture
+    3 : bateau
+    4 : train
+
