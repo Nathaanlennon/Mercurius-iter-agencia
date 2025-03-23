@@ -15,9 +15,6 @@ include "header.php"
 <body>
 <div class="content">
     <form>
-        <label>recherche rapide :
-            <input type="text">
-        </label>
     </form>
     <p>Mercurius Iter Agencia vous invite à un voyage hors du temps, où l'histoire et l'aventure se rencontrent au cœur
         de l'Empire Romain. Explorez les contrées majestueuses qui bordent la mer Méditerranée, et laissez-vous guider

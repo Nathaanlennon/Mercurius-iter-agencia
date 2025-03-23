@@ -33,12 +33,14 @@ include "header.php";
 <div class="content">
     <p>
         <?php
-        echo "Nom : " . $voyage['name'] . "<br>";
-        echo "Prix minimum pour 1 personne: " . $voyage['price'] . "<br>";
-        echo "Etapes : ";
+        echo "<b>Nom : </b>" . $voyage['name'] . "<br>";
+        echo "<b>Prix minimum pour 1 personne: </b>" . $voyage['price'] . "<br>";
+        echo "<b>Etapes : </b>";
         foreach ($voyage['stages'] as $stage) {
             echo $stage . " ";
+
         }
+        echo "<br>".file_get_contents("../descript_voyage/".$voyage["id"] . "description.txt");
         ?>
     </p>
     <br>

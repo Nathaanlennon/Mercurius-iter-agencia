@@ -13,6 +13,21 @@ function has_city($trip, $city)
     return false;
 }
 
+function word_in_key_word($word, $key_word)
+{
+    $word = strtolower($word);
+    foreach ($key_word as $key) {
+        if ($word == strtolower($key)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+{
+
+}
+
 echo "<div id=\"result\">";
 $file = file_exists("../json/voyagetest.json") ? json_decode(file_get_contents("../json/voyagetest.json"), true) : [];
 
@@ -49,33 +64,53 @@ $file = file_exists("../json/voyagetest.json") ? json_decode(file_get_contents("
                         }
                     }
                 }
-                if(isset($_GET["depart"]) && $_GET["depart"]!= '' && isset($_GET["retour"]) && $_GET["retour"]!= ''){
+                if (isset($_GET["depart"]) && $_GET["depart"] != '' && isset($_GET["retour"]) && $_GET["retour"] != '') {
 
-                    if((strtotime($_GET["retour"]) - strtotime($_GET["depart"]))/ (60 * 60 * 24) < $voyage["duration"]){
+                    if ((strtotime($_GET["retour"]) - strtotime($_GET["depart"])) / (60 * 60 * 24) < $voyage["duration"]) {
                         continue;
                     }
                 }
+                if (isset($_GET["key-word"]) && $_GET["key-word"] != '') {
+                    $key_word = explode(" ", $_GET["key-word"]);
+                    foreach ($key_word as $word) {
+                        if (!(word_in_key_word($word, $voyage["key-word"])) && !(strtolower($word) == strtolower($voyage["name"]))) {
+                            continue 2;
+                        }
+                    }
+                }
                 echo "<div class='result' style=';' onclick='window.location=\"voyage_sheet.php?id=" . $voyage["id"] . "\"'>"
-                    . $voyage["name"] . "<br> Prix minimum (". (isset($_GET["nb_utilisateurs"]) ? $_GET["nb_utilisateurs"] : 1) .") : " . $voyage["price"] * (isset($_GET["nb_utilisateurs"]) ? $_GET["nb_utilisateurs"] : 1). "€";
+                    . $voyage["name"] . "<br> Prix minimum (" . (isset($_GET["nb_utilisateurs"]) ? $_GET["nb_utilisateurs"] : 1) . ") : " . $voyage["price"] * (isset($_GET["nb_utilisateurs"]) ? $_GET["nb_utilisateurs"] : 1) . "€";
+                echo "<br>".file_get_contents("../descript_voyage/".$voyage["id"] . "resume.txt");
                 echo "</div>";
+
             }
         }
         echo "</div>";
     }
     ?>
     <form method="get">
-        <h6><label>Date de départ : <input type="date" name="depart" min=Date() <?php echo (isset($_GET["depart"]) ? "value='". $_GET["depart"]."'":'') ?></label>
+        <h6><label for="key-word">Mots clés : <input type="text" name="key-word"
+                                                     value="<?php echo(isset($_GET["key-word"]) ? $_GET["key-word"] : '') ?>"></label>
         </h6>
-        <h6><label>Date de retour : <input type="date" name="retour" min=Date() <?php echo (isset($_GET["retour"]) ? "value='". $_GET["retour"]."'":'') ?></label>
+        <h6><label>Date de départ : <input type="date" name="depart"
+                                           min=Date() <?php echo(isset($_GET["depart"]) ? "value='" . $_GET["depart"] . "'" : '') ?>
+            </label>
         </h6>
-        <h6><label for="nb_personnes">Nombre de personnes : <input type="number" name="nb_utilisateurs" min="1" max="10" value = "<?php echo (isset($_GET["nb_utilisateurs"]) ? $_GET["nb_utilisateurs"] : 2) ?>" required></label>
+        <h6><label>Date de retour : <input type="date" name="retour"
+                                           min=Date() <?php echo(isset($_GET["retour"]) ? "value='" . $_GET["retour"] . "'" : '') ?>
+            </label>
+        </h6>
+        <h6><label for="nb_personnes">Nombre de personnes : <input type="number" name="nb_utilisateurs" min="1" max="10"
+                                                                   value="<?php echo(isset($_GET["nb_utilisateurs"]) ? $_GET["nb_utilisateurs"] : 2) ?>"
+                                                                   required></label>
         </h6>
         <h6 class="titres">Villes souhaitées</h6>
         <div id="stages">
 
             <?php
             for ($i = 0; $i < count($file[0]["stages"]); $i++) {
-                echo "<label><input type=\"checkbox\" name=\"stages[]\" value=\"" . $file[0]["stages"][$i] . "\"". (isset($_GET["stages"])&& has_city($_GET, $file[0]["stages"][$i]) ? "checked" : "" ) .">" . $file[0]["stages"][$i] . "</label>";
+                echo "<label><input type=\"checkbox\" name=\"stages[]\" value=\"" . $file[0]["stages"][$i] . "\"" . (isset($_GET["stages"]) && has_city($_GET, $file[0]["stages"][$i]) ? "checked" : "") . ">" . $file[0]["stages"][$i] . "</label>";
+
             }
             ?>
 

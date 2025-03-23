@@ -6,7 +6,7 @@ if (!isset($info_util['id'])) {
     header("Location: connexion.php");
     exit;
 }
-$queue_dir = "queue"; // Dossier de la queue
+$queue_dir = "../queue"; // Dossier de la queue
 if (!file_exists($queue_dir)) {
     mkdir($queue_dir, 0777, true);
 }

@@ -9,7 +9,7 @@ if (isset($info_util['id'])) {
 
 $utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier), true) : [];
 
-$queue_dir = "queue"; // Dossier de la queue
+$queue_dir = "../queue"; // Dossier de la queue
 if (!file_exists($queue_dir)) {
     mkdir("../json/$queue_dir", 0777, true);
 }

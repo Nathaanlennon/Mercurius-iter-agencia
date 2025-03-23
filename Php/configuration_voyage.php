@@ -1,7 +1,7 @@
 <?php
 include "header.php";
 
-$queue_dir = "queue"; // Dossier de la queue
+$queue_dir = "../queue"; // Dossier de la queue
 if (!file_exists($queue_dir)) {
     mkdir($queue_dir, 0777, true);
 }
@@ -42,8 +42,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
             }
         }
         $queue_file = $queue_dir . "/" . uniqid("user_", true) . ".json";
-        file_put_contents($queue_file, json_encode(["id" => $_SESSION["id"], "voyages" => [$voyage["name"] => ["payé" => false, "config" => $_SERVER['QUERY_STRING']]]], JSON_PRETTY_PRINT));
-        $_SESSION["voyages"][$voyage["name"]] = ["payé" => false, "config" => $_SERVER['QUERY_STRING']];
+        if(isset($_GET["nb_personnes"])){
+            file_put_contents($queue_file, json_encode(["id" => $_SESSION["id"], "voyages" => [$voyage["name"] => ["payé" => false, "config" => $_SERVER['QUERY_STRING']]]], JSON_PRETTY_PRINT));
+            $_SESSION["voyages"][$voyage["name"]] = ["payé" => false, "config" => $_SERVER['QUERY_STRING']];
+        }
+
     }
 
 } else {
