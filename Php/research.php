@@ -38,7 +38,7 @@ $file = file_exists("../json/voyagetest.json") ? json_decode(file_get_contents("
         } else {
             foreach ($file as $voyage) {
                 if (isset($_GET["price"])) {
-                    if (!($voyage["price"] <= $_GET["price"])) {
+                    if (!($voyage["price"] * (isset($_GET["nb_utilisateurs"]) ? $_GET["nb_utilisateurs"] : 1) <= $_GET["price"])) {
                         continue;
                     }
                 }
@@ -56,7 +56,7 @@ $file = file_exists("../json/voyagetest.json") ? json_decode(file_get_contents("
                     }
                 }
                 echo "<div class='result' style=';' onclick='window.location=\"voyage_sheet.php?id=" . $voyage["id"] . "\"'>"
-                    . $voyage["name"] . "<br> Prix moyen (2 personnes) : " . $voyage["price"] . "€";
+                    . $voyage["name"] . "<br> Prix minimum (". (isset($_GET["nb_utilisateurs"]) ? $_GET["nb_utilisateurs"] : 1) .") : " . $voyage["price"] * (isset($_GET["nb_utilisateurs"]) ? $_GET["nb_utilisateurs"] : 1). "€";
                 echo "</div>";
             }
         }
@@ -68,7 +68,8 @@ $file = file_exists("../json/voyagetest.json") ? json_decode(file_get_contents("
         </h6>
         <h6><label>Date de retour : <input type="date" name="retour" min=Date() <?php echo (isset($_GET["retour"]) ? "value='". $_GET["retour"]."'":'') ?></label>
         </h6>
-
+        <h6><label for="nb_personnes">Nombre de personnes : <input type="number" name="nb_utilisateurs" min="1" max="10" value = "<?php echo (isset($_GET["nb_utilisateurs"]) ? $_GET["nb_utilisateurs"] : 2) ?>" required></label>
+        </h6>
         <h6 class="titres">Villes souhaitées</h6>
         <div id="stages">
 

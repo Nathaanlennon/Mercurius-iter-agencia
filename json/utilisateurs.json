@@ -9,37 +9,42 @@
         "id": 1,
         "nom": "a",
         "prenom": "a",
-        "email": "a",
-        "password": "$2y$10$tJNJZDFUzzPbQZYFJpkuKO8w20cfa6mvQ11RtT6SVQcAECNHQtCnS",
-        "role": "normal"
-    },
-    {
-        "id": 2,
-        "nom": "aaa",
-        "email": "a"
-    },
-    {
-        "id": 3,
-        "nom": "bb",
-        "prenom": "b",
-        "email": "bb",
-        "password": "$2y$10$qRiTPiEWmMKCEj\/KfkpXQeDwV\/FXfBWYklj97zEPOs6S7z2ND2eJ2",
-        "role": "normal"
-    },
-    {
-        "id": 4,
-        "nom": "r",
-        "prenom": "r",
-        "email": "r",
-        "password": "$2y$10$H0HN8vJ3kxveIeizD479Su1DD4bs1HujdW3cPjAy5mwUtDDX\/twkW",
-        "role": "normal"
-    },
-    {
-        "id": 5,
-        "nom": "u",
-        "prenom": "u",
-        "email": "u",
-        "password": "$2y$10$cYJMhx6JNI2sz1dUCxia4.g5XDWt9Dh3kf1m9MQHBLDid0AgnuS5K",
-        "role": "normal"
+        "email": "a@gmail.com",
+        "password": "$2y$10$SWlljlBG4rFloLpjCGZu8.T8Fqe6GhDoguVNBZm1xWh9zr7A64g3i",
+        "role": "normal",
+        "voyages": {
+            "Imperium": {
+                "pay\u00e9": true,
+                "config": "id=5&depart=2025-03-23&nb_personnes=2&01=1&03=1&11=1&13=1&21=1&23=1&31=1&33=1&41=1&43=1&51=1&53=1&61=1&63=1&71=1&73=1&81=1&83=1&91=1&93=1&101=1&103=1&111=1&113=1&121=1&123=1&131=1&133=1&141=1&143=1&151=1&153=1&161=1&163=1&171=1&173=1&181=1&183=1&191=1&193=1&201=1&203=1&211=1&213=1&221=1&223=1&231=1&233=1&241=1&243=1&251=1&253=1&261=1&263=1&271=1&273=1&281=1&283=1&291=1&293=1"
+            },
+            "Hispania": {
+                "pay\u00e9": true,
+                "config": "id=2&depart=2025-03-28&nb_personnes=3&01=3&02%5B%5D=2&02%5B%5D=3&03=1&11=1&12%5B%5D=1&13=1&21=1&23=2"
+            },
+            "Septentrionalis": {
+                "pay\u00e9": false,
+                "config": "id=0&depart=2025-03-23&nb_personnes=1&01=1&03=1&11=1&13=1&21=1&23=1&31=1&33=1&41=1&43=1&51=1&53=1&61=1&63=1&71=1&73=1&81=1&83=1&91=1&93=1&101=1&103=1&111=1&113=1&121=1&123=1&131=1&133=1&141=1&143=1&151=1&153=1&161=1&163=1&171=1&173=1&181=1&183=1"
+            },
+            "Magna Graecia": {
+                "pay\u00e9": false,
+                "config": "id=15&depart=2025-03-23&nb_personnes=1&01=1&03=4&11=1&13=4&21=1&23=4"
+            },
+            "Mare Phoenicum": {
+                "pay\u00e9": false,
+                "config": "id=14&depart=2025-03-23&nb_personnes=1&01=1&03=4&11=1&13=4"
+            },
+            "Punica Via": {
+                "pay\u00e9": false,
+                "config": "id=13"
+            },
+            "Oriens Maximus": {
+                "pay\u00e9": false,
+                "config": "id=12"
+            },
+            "Meridionalis": {
+                "pay\u00e9": false,
+                "config": "id=1"
+            }
+        }
     }
 ]

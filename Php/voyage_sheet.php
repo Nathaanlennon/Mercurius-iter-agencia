@@ -1,19 +1,18 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])){
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
     $voyage["id"] = $_GET["id"];
     if (file_exists("../json/voyagetest.json")) {
         $file = json_decode(file_get_contents("../json/voyagetest.json"), true);
         foreach ($file as $trip) {
-            if($trip["id"] == $voyage["id"]) {
+            if ($trip["id"] == $voyage["id"]) {
                 $voyage["name"] = $trip["name"];
-                $voyage["price"]=$trip["price"];
-                $voyage["stages"]=$trip["stages"];
+                $voyage["price"] = $trip["price"];
+                $voyage["stages"] = $trip["stages"];
                 break;
             }
         }
     }
-}
-else{
+} else {
     header("Location: research.php");
     exit();
 }
@@ -27,7 +26,7 @@ include "header.php";
     <meta charset="UTF-8">
     <title>Voyage</title>
     <link rel="stylesheet" href="../Css/style.css">
-    <link rel="stylesheet" href="../Css/research.css">
+    <link rel="stylesheet" href="../Css/trip_sheet.css">
 </head>
 <body>
 
@@ -37,12 +36,14 @@ include "header.php";
         echo "Nom : " . $voyage['name'] . "<br>";
         echo "Prix moyen pour deux personnes: " . $voyage['price'] . "<br>";
         echo "Etapes : ";
-        foreach ($voyage['stages'] as $stage){
+        foreach ($voyage['stages'] as $stage) {
             echo $stage . " ";
         }
         ?>
     </p>
     <br>
-        <a href="configuration_voyage.php?id=<?php echo $voyage["id"]?>">Réservation</a>
+        <a href="configuration_voyage.php?id=<?php echo $voyage["id"] ?>">Réservation</a>
+
+
 
 </div>

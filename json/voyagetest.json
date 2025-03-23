@@ -269,7 +269,7 @@
   {
     "id": 14,
     "name": "Mare Phoenicum",
-    "price": 5000,
+    "price": 360,
     "stages": [
       "sidon",
       "leptis"
@@ -279,7 +279,7 @@
   {
     "id": 15,
     "name": "Magna Graecia",
-    "price": 5000,
+    "price": 490,
     "stages": [
       "syracuse",
       "athenes",

@@ -1,0 +1,38 @@
+.content{
+    text-align: center;
+}
+
+.configuration {
+    border-radius: 5px;
+    box-shadow: 5px 5px 7.5px #650065;
+    background-color: white;
+    padding: 5%;
+    display: inline-block;
+
+}
+* {
+    /*border:solid black 1px;*/
+}
+h1{
+    margin: 0 0 1em 0;
+    font-size: 3em;
+    text-align: center;
+}
+.name{
+    font-weight: bold;
+}
+
+.trip{
+    margin-top:1em;
+    margin-bottom: 1em;
+}
+button[type="submit"]{
+    border-radius: 5px;
+    background-color: #650065;
+    color: white;
+    font-size: 2em;
+    &:hover{
+        background-color: #9a0000;
+    }
+}
+
