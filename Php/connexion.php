@@ -21,11 +21,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["email"] = $utilisateur["email"];
                 $_SESSION["nom"] = $utilisateur["nom"];
                 $_SESSION["role"] = $utilisateur["role"];
-                print_r($utilisateur);
                 $_SESSION["voyages"] = $utilisateur["voyages"];
-                print_r($_SESSION);
-//                header("Location: index.php");
-//                exit;
+                header("Location: index.php");
+                exit;
             } else {
                 echo "<h1>Mot de passe incorrect</h1>";
                 exit;

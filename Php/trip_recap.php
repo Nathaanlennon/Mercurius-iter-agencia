@@ -94,8 +94,23 @@ if (file_exists("../json/voyagetest.json")) {
 
 echo "<br>";
 echo "<br>";
-echo $_SESSION["voyages"][$voyage["name"]]["payé"] ? "Voyage payé" : ("voyage non payé <br><a href='configuration_voyage.php?" . $_SERVER['QUERY_STRING'] . "'>modification</a> <a href=''>paiement</a>");
+if ($_SESSION["voyages"][$voyage["name"]]["payé"]) {
+    echo "Voyage payé";
+} else {
+    echo
+        "voyage non payé <br><a href='configuration_voyage.php?" . $_SERVER['QUERY_STRING'] . "'>modification</a> ";
+
+    echo "<form action='../payement.php' method='post'>
+    <input type='hidden' value='".$price."' name='price'>
+    <input type='hidden' value='".$_SESSION["id"] . $voyage["id"] . implode('', array_map(function () {
+            return dechex(rand(0, 15));
+        }, range(1, 10)))."' name='id'>
+    <button type='submit'>Payement</button>
+</form>
+";
+}
 
 
 ?>
+
 
