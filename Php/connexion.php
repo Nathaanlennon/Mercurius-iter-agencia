@@ -5,7 +5,13 @@ include "header.php";
 
 $fichier = "../json/utilisateurs.json";
 
-// Charger les utilisateurs existants
+if (isset($info_util['id'])) {
+    header("Location: index.php");
+    exit;
+}
+
+
+
 $utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier), true) : [];
 
 
@@ -13,24 +19,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST["email"]);
     $password = $_POST["password"];
 
-    foreach ($utilisateurs as $utilisateur) {
-        if (isset($utilisateur["email"]) && ($utilisateur["email"] === $email)) {
-            if (password_verify($password, $utilisateur["password"])){
-                $_SESSION["id"] = $utilisateur["id"];
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo("Email invalide;");
+    }
+    else{
+        foreach ($utilisateurs as $utilisateur ){
+            if ($utilisateur["email"] == $email && password_verify($password, $utilisateur["password"])) {
+                if ($utilisateur["role"] === "Banni") {
+                    echo "Vous avez été banni";
+                    exit;
+                }
+                $_SESSION["id"] = (isset($utilisateur["id"]) ? $utilisateur["id"] : []);
+                $_SESSION["email"] = (isset($utilisateur["email"]) ? $utilisateur["email"] : []);
+                $_SESSION["nom"] = (isset($utilisateur["nom"]) ? $utilisateur["nom"] : []);
+                $_SESSION["role"] = (isset($utilisateur["role"]) ? $utilisateur["role"] : []);
+                $_SESSION["voyages"] = (isset($utilisateur["voyages"]) ? $utilisateur["voyages"] : []);
 
-                $_SESSION["email"] = $utilisateur["email"];
-                $_SESSION["nom"] = $utilisateur["nom"];
-                $_SESSION["role"] = $utilisateur["role"];
-                $_SESSION["voyages"] = $utilisateur["voyages"];
+                setcookie("sans-gluten", $_SESSION["id"], time() + 7200, "/");
                 header("Location: index.php");
-                exit;
-            } else {
-                echo "<h1>Mot de passe incorrect</h1>";
                 exit;
             }
         }
+        echo("Identifiant invalide");
     }
 }
+
+
 
 ?>
 <!DOCTYPE html>
@@ -52,11 +66,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <th colspan="2">Formulaire de connexion</th>
             <tr>
                 <td>E-mail :</td>
-                <td><label for="email"></label><input type="text" id="email" name="email"/></td>
+                <td><label for="email"></label><input type="text" id="email" name="email" required></td>
             </tr>
             <tr>
                 <td>Mot de passe :</td>
-                <td><label for="password"></label><input type="text" id="password" name="password"/></td>
+                <td><label for="password"></label><input type="text" id="password" name="password" required></td>
             </tr>
             <tr>
                 <td colspan="2" id="button">

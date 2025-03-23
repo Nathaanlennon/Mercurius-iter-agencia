@@ -3,6 +3,27 @@ session_start();
 
 
 $info_util = $_SESSION;
+
+$fichier = "../json/utilisateurs.json";
+
+$utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier), true) : [];
+
+if (isset($_COOKIE["sans-gluten"])&&(!isset($_SESSION['id']))) {
+    foreach ($utilisateurs as $utilisateur) {
+        if ($_COOKIE["sans-gluten"] == $utilisateur["id"]) {
+            if ($utilisateur["role"] == "Banni") {
+                echo "Vous avez été banni";
+                exit;
+            }
+
+            $_SESSION["id"] =  (isset($utilisateur["id"]) ? $utilisateur["id"]:[]);
+            $_SESSION["email"] =(isset($utilisateur["email"]) ? $utilisateur["email"]:[]);
+            $_SESSION["nom"] = (isset($utilisateur["nom"]) ? $utilisateur["nom"]:[]);
+            $_SESSION["role"] = (isset($utilisateur["role"]) ? $utilisateur["role"]:[]);
+            $_SESSION["voyages"] = (isset($utilisateur["voyages"]) ? $utilisateur["voyages"]:[]);
+        }
+    }
+}
 ?>
 
 <link rel="stylesheet" href="../Css/style.css">

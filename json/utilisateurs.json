@@ -1,0 +1,45 @@
+[
+    {
+        "id": 0,
+        "nom": "admin",
+        "email": "admin",
+        "password": "$2y$10$QX4vaExW09QfZusrh7jYgeYO7Xrp7E83lGTFBrDfYe5ZSAPYlBYaC"
+    },
+    {
+        "id": 1,
+        "nom": "a",
+        "prenom": "a",
+        "email": "a",
+        "password": "$2y$10$tJNJZDFUzzPbQZYFJpkuKO8w20cfa6mvQ11RtT6SVQcAECNHQtCnS",
+        "role": "normal"
+    },
+    {
+        "id": 2,
+        "nom": "aaa",
+        "email": "a"
+    },
+    {
+        "id": 3,
+        "nom": "bb",
+        "prenom": "b",
+        "email": "bb",
+        "password": "$2y$10$qRiTPiEWmMKCEj\/KfkpXQeDwV\/FXfBWYklj97zEPOs6S7z2ND2eJ2",
+        "role": "normal"
+    },
+    {
+        "id": 4,
+        "nom": "r",
+        "prenom": "r",
+        "email": "r",
+        "password": "$2y$10$H0HN8vJ3kxveIeizD479Su1DD4bs1HujdW3cPjAy5mwUtDDX\/twkW",
+        "role": "normal"
+    },
+    {
+        "id": 5,
+        "nom": "u",
+        "prenom": "u",
+        "email": "u",
+        "password": "$2y$10$cYJMhx6JNI2sz1dUCxia4.g5XDWt9Dh3kf1m9MQHBLDid0AgnuS5K",
+        "role": "normal"
+    }
+]

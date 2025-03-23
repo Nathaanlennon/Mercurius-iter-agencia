@@ -1,8 +1,8 @@
 [
   {
     "id": 0,
-    "name": "Imperium",
-    "price": 5000,
+    "name": "Septentrionalis",
+    "price": 1000,
     "stages": [
       "valence",
       "tarragone",
@@ -22,20 +22,9 @@
       "butrin",
       "athenes",
       "ephesus",
-      "istanbul",
-      "tipaza",
-      "annaba",
-      "tunis",
-      "carthage",
-      "leptis",
-      "alexandrie",
-      "jerusalem",
-      "cesaree",
-      "sidon",
-      "jbeil",
-      "antioche"
+      "istanbul"
     ],
-    "duration": 40
+    "duration": 38
   },
   {
     "id": 1,
@@ -54,7 +43,7 @@
       "jbeil",
       "antioche"
     ],
-    "duration": 15
+    "duration": 22
   },
   {
     "id": 2,
@@ -65,7 +54,7 @@
       "tarragone",
       "barcelone"
     ],
-    "duration": 5
+    "duration": 6
   },
   {
     "id": 3,
@@ -93,12 +82,12 @@
       "malte",
       "agrigente"
     ],
-    "duration": 12
+    "duration": 16
   },
   {
     "id": 5,
-    "name": "Septentrionalis",
-    "price": 1000,
+    "name": "Imperium",
+    "price": 5000,
     "stages": [
       "valence",
       "tarragone",
@@ -115,11 +104,187 @@
       "syracuse",
       "malte",
       "agrigente",
-      "butrin",
+      "butrint",
+      "athenes",
+      "ephesus",
+      "istanbul",
+      "tipaza",
+      "annaba",
+      "tunis",
+      "carthage",
+      "leptis",
+      "alexandrie",
+      "jerusalem",
+      "cesaree",
+      "sidon",
+      "jbeil",
+      "antioche"
+    ],
+    "duration": 60
+  },
+  {
+    "id": 6,
+    "name": "Occidens",
+    "price": 5000,
+    "stages": [
+      "valence",
+      "tarragone",
+      "barcelone",
+      "arles",
+      "marseille",
+      "antibes",
+      "nice"
+    ],
+    "duration": 14
+  },
+  {
+    "id": 7,
+    "name": "Oriens",
+    "price": 5000,
+    "stages": [
+      "butrint",
       "athenes",
       "ephesus",
       "istanbul"
     ],
-    "duration": 25
+    "duration": 8
+  },
+  {
+    "id": 8,
+    "name": "Africa Proconsularis",
+    "price": 5000,
+    "stages": [
+      "tipaza",
+      "annaba",
+      "carthage",
+      "tunis",
+      "leptis"
+    ],
+    "duration": 10
+  },
+  {
+    "id": 9,
+    "name": "Aegyptus et Orientalis",
+    "price": 5000,
+    "stages": [
+      "alexandrie",
+      "jerusalem",
+      "sidon",
+      "jbeil",
+      "antioche"
+    ],
+    "duration": 10
+  },
+  {
+    "id": 9,
+    "name": "Anatolia",
+    "price": 5000,
+    "stages": [
+      "ephesus",
+      "antioche",
+      "istanbul"
+    ],
+    "duration": 6
+  },
+
+  {
+    "id": 10,
+    "name": "Gallia et Italia",
+    "price": 5000,
+    "stages": [
+      "valence",
+      "tarragone",
+      "barcelone",
+      "arles",
+      "marseille",
+      "antibes",
+      "nice",
+      "rome",
+      "ostie",
+      "naples",
+      "herculanum",
+      "pompei",
+      "syracuse",
+      "malte",
+      "agrigente"
+    ],
+    "duration": 30
+  },
+
+  {
+    "id": 11,
+    "name": "Occidens Maximus",
+    "price": 5000,
+    "stages": [
+      "valence",
+      "tarragone",
+      "barcelone",
+      "arles",
+      "marseille",
+      "antibes",
+      "nice",
+      "rome",
+      "ostie",
+      "naples",
+      "herculanum",
+      "pompei",
+      "syracuse",
+      "malte",
+      "agrigente",
+      "tipaza",
+      "annaba",
+      "carthage",
+      "tunis",
+      "leptis"
+    ],
+    "duration": 40
+  },
+  {
+  "id": 12,
+  "name": "Oriens Maximus",
+  "price": 5000,
+  "stages": [
+    "butrint",
+    "athenes",
+    "ephesus",
+    "istanbul",
+    "antioche",
+    "jbeil",
+    "sidon",
+    "jerusalem",
+    "alexandrie"
+  ],
+  "duration": 18
+  },
+  {
+    "id": 13,
+    "name": "Punica Via",
+    "price": 5000,
+    "stages": [
+      "rome",
+      "carthage"
+    ],
+    "duration": 4
+  },
+  {
+    "id": 14,
+    "name": "Mare Phoenicum",
+    "price": 5000,
+    "stages": [
+      "sidon",
+      "leptis"
+    ],
+    "duration": 4
+  },
+  {
+    "id": 15,
+    "name": "Magna Graecia",
+    "price": 5000,
+    "stages": [
+      "syracuse",
+      "athenes",
+      "ephese"
+    ],
+    "duration": 6
   }
 ]
