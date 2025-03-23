@@ -2,7 +2,7 @@
   {
     "id": 0,
     "name": "Septentrionalis",
-    "price": 1000,
+    "price": 2000,
     "stages": [
       "valence",
       "tarragone",
@@ -29,7 +29,7 @@
   {
     "id": 1,
     "name": "Meridionalis",
-    "price": 1500,
+    "price": 1200,
     "stages": [
       "tipaza",
       "annaba",
@@ -48,7 +48,7 @@
   {
     "id": 2,
     "name": "Hispania",
-    "price": 2000,
+    "price": 400,
     "stages": [
       "valence",
       "tarragone",
@@ -59,7 +59,7 @@
   {
     "id": 3,
     "name": "Gallia",
-    "price": 2500,
+    "price": 500,
     "stages": [
       "arles",
       "marseille",
@@ -71,7 +71,7 @@
   {
     "id": 4,
     "name": "Roma",
-    "price": 3000,
+    "price": 900,
     "stages": [
       "rome",
       "ostie",
@@ -87,7 +87,7 @@
   {
     "id": 5,
     "name": "Imperium",
-    "price": 5000,
+    "price": 3100,
     "stages": [
       "valence",
       "tarragone",
@@ -125,7 +125,7 @@
   {
     "id": 6,
     "name": "Occidens",
-    "price": 5000,
+    "price": 800,
     "stages": [
       "valence",
       "tarragone",
@@ -140,7 +140,7 @@
   {
     "id": 7,
     "name": "Oriens",
-    "price": 5000,
+    "price": 500,
     "stages": [
       "butrint",
       "athenes",
@@ -152,7 +152,7 @@
   {
     "id": 8,
     "name": "Africa Proconsularis",
-    "price": 5000,
+    "price": 600,
     "stages": [
       "tipaza",
       "annaba",
@@ -165,7 +165,7 @@
   {
     "id": 9,
     "name": "Aegyptus et Orientalis",
-    "price": 5000,
+    "price": 600,
     "stages": [
       "alexandrie",
       "jerusalem",
@@ -178,7 +178,7 @@
   {
     "id": 9,
     "name": "Anatolia",
-    "price": 5000,
+    "price": 400,
     "stages": [
       "ephesus",
       "antioche",
@@ -190,7 +190,7 @@
   {
     "id": 10,
     "name": "Gallia et Italia",
-    "price": 5000,
+    "price": 1600,
     "stages": [
       "valence",
       "tarragone",
@@ -214,7 +214,7 @@
   {
     "id": 11,
     "name": "Occidens Maximus",
-    "price": 5000,
+    "price": 2100,
     "stages": [
       "valence",
       "tarragone",
@@ -242,7 +242,7 @@
   {
   "id": 12,
   "name": "Oriens Maximus",
-  "price": 5000,
+  "price": 1000,
   "stages": [
     "butrint",
     "athenes",
@@ -259,7 +259,7 @@
   {
     "id": 13,
     "name": "Punica Via",
-    "price": 5000,
+    "price": 300,
     "stages": [
       "rome",
       "carthage"
@@ -269,7 +269,7 @@
   {
     "id": 14,
     "name": "Mare Phoenicum",
-    "price": 5000,
+    "price": 300,
     "stages": [
       "sidon",
       "leptis"
@@ -279,7 +279,7 @@
   {
     "id": 15,
     "name": "Magna Graecia",
-    "price": 5000,
+    "price": 400,
     "stages": [
       "syracuse",
       "athenes",
