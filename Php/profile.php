@@ -1,6 +1,7 @@
 <?php
 
 include "header.php";
+$info_util = $_SESSION;
 
 if (!isset($info_util['id'])) {
     header("Location: connexion.php");
@@ -11,7 +12,7 @@ $fichier = "../json/utilisateurs.json";
 
 $utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier), true) : [];
 
-$info_util = $_SESSION;
+
 ?>
 
 <html lang="fr">

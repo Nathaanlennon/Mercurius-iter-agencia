@@ -13,9 +13,9 @@ $utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier),
 
 if (isset($_COOKIE["sans-gluten"])) {
     foreach ($utilisateurs as $utilisateur) {
-        if ($_COOKIE["sans-gluten"] === $utilisateur["id"]) {
+        if ($_COOKIE["sans-gluten"] == $utilisateur["id"]) {
 
-            if ($utilisateur["role"] === "Banni") {
+            if ($utilisateur["role"] == "Banni") {
                 echo "Vous avez été banni";
                 exit;
             }
@@ -37,20 +37,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
 
     foreach ($utilisateurs as $utilisateur){
-        if ($utilisateur["email"] === $email) {
+        if ($utilisateur["email"] == $email) {
             if (password_verify($password, $utilisateur["password"])){
                 if ($utilisateur["role"] === "Banni") {
                     echo "Vous avez été banni";
                     exit;
                 }
-                $_SESSION["id"] = $utilisateur["id"];
-                $_SESSION["email"] = $utilisateur["email"];
-                $_SESSION["nom"] = $utilisateur["nom"];
-                $_SESSION["role"] = $utilisateur["role"];
-                $_SESSION["voyages"] = $utilisateur["voyages"];
+                $_SESSION["id"] =  (isset($utilisateur["id"]) ? $utilisateur["id"]:[]);
+                $_SESSION["email"] =(isset($utilisateur["email"]) ? $utilisateur["email"]:[]);
+                $_SESSION["nom"] = (isset($utilisateur["nom"]) ? $utilisateur["nom"]:[]);
+                $_SESSION["role"] = (isset($utilisateur["role"]) ? $utilisateur["role"]:[]);
+                $_SESSION["voyages"] = (isset($utilisateur["voyages"]) ? $utilisateur["voyages"]:[]);
 
-                setcookie ("sans-gluten", $_SESSION["id"], time()+7200);
-
+                setcookie ("sans-gluten", $_SESSION["id"], time()+7200, "/");
                 header("Location: index.php");
                 exit;
             } else {
