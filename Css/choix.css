@@ -1,12 +1,3 @@
-.titre {
-    background-color: #f7c041;
-    border-radius: 5px;
-    text-align: Center;
-    width: fit-content;
-    margin: auto;
-    padding: 0.25em;
-}
-
 .result {
     border-radius: 5px;
     box-shadow: 5px 5px 7.5px #650065;
@@ -38,3 +29,4 @@
     background-color: #9a0000;
     color: white;
 }
+

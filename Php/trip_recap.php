@@ -22,7 +22,7 @@ if (file_exists("../json/voyagetest.json")) {
         echo "<h2>" . $voyage["name"] . "</h2>";
 
         $price = 0;
-
+        echo "Avion départ : ". ($price+=100  * $_GET["nb_personnes"]) . "€<br>";
         for ($i = 0; $i < count($voyage["stages"]); $i++) {
             echo $voyage["stages"][$i] . "<br>";
             for ($j = 1; $j < 4; $j++) {
@@ -30,7 +30,7 @@ if (file_exists("../json/voyagetest.json")) {
                     switch ($j) {
                         case 1:
                             echo "niveau d'hotel : " . $_GET[$i . $j] . " étoile(s) ";
-                            echo -$price + $price += ((2 ** $_GET[$i . $j] - 1) * 25 * ($voyage["duration"]) / count($voyage["stages"]));
+                            echo -$price + $price += ((2 ** $_GET[$i . $j] - 1) * 25 * $_GET["nb_personnes"] * ($voyage["duration"]) / count($voyage["stages"]));
                             echo "€";
                             break;
                         case 2:
@@ -39,15 +39,15 @@ if (file_exists("../json/voyagetest.json")) {
                                 switch ($activity) {
                                     case 1:
                                         echo "musée ";
-                                        echo -$price + ($price += 10) . "€";
+                                        echo -$price + ($price += 10 * $_GET["nb_personnes"]) . "€";
                                         break;
                                     case 2:
                                         echo "visites de ruines ";
-                                        echo -$price + ($price += 20) . "€";
+                                        echo -$price + ($price += 20 * $_GET["nb_personnes"]) . "€";
                                         break;
                                     case 3:
                                         echo "spectacle ";
-                                        echo -$price + ($price += 30) . "€";
+                                        echo -$price + ($price += 30 * $_GET["nb_personnes"]) . "€";
                                         break;
                                     case 4:
                                         echo "plage ";
@@ -61,19 +61,19 @@ if (file_exists("../json/voyagetest.json")) {
                             switch ($_GET[$i . $j]) {
                                 case 1:
                                     echo "avion ";
-                                    echo -$price + ($price += 100) . "€";
+                                    echo -$price + ($price += 100 * $_GET["nb_personnes"]) . "€";
                                     break;
                                 case 2:
                                     echo "train ";
-                                    echo -$price + ($price += 50) . "€";
+                                    echo -$price + ($price += 50 * $_GET["nb_personnes"]) . "€";
                                     break;
                                 case 3:
                                     echo "voiture ";
-                                    echo -$price + ($price += 60) . "€";
+                                    echo -$price + ($price += 60 * $_GET["nb_personnes"]) . "€";
                                     break;
                                 case 4:
                                     echo "bateau ";
-                                    echo -$price + ($price += 80) . "€";
+                                    echo -$price + ($price += 80 * $_GET["nb_personnes"]) . "€";
                                     break;
 
                             }

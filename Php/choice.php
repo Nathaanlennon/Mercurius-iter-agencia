@@ -35,16 +35,16 @@ foreach ($voyages_page as $voyage) {
     <link rel="stylesheet" href="../Css/choix.css">
 </head>
 <body>
-    <div class="pagination">
-        <?php if ($page > 1): ?>
-            <a href="?page=<?= $page - 1 ?>">Précédent</a>
-        <?php endif; ?>
+<div class="pagination">
+    <?php if ($page > 1): ?>
+        <a href="?page=<?= $page - 1 ?>">Précédent</a>
+    <?php endif; ?>
 
-        <span>Page <?= $page ?> sur <?= $total_pages ?></span>
+    <span>Page <?= $page ?> sur <?= $total_pages ?></span>
 
-            <?php if ($page < $total_pages): ?>
-            <a href="?page=<?= $page + 1 ?>">Suivant</a>
-        <?php endif; ?>
-    </div>
+    <?php if ($page < $total_pages): ?>
+        <a href="?page=<?= $page + 1 ?>">Suivant</a>
+    <?php endif; ?>
+</div>
 </body>
 </html>
