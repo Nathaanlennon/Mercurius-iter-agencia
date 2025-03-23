@@ -49,7 +49,8 @@ $file = file_exists("../json/voyagetest.json") ? json_decode(file_get_contents("
                         }
                     }
                 }
-                if(isset($_GET["depart"]) && isset($_GET["retour"])){
+                if(isset($_GET["depart"]) && $_GET["depart"]!= '' && isset($_GET["retour"]) && $_GET["retour"]!= ''){
+
                     if((strtotime($_GET["retour"]) - strtotime($_GET["depart"]))/ (60 * 60 * 24) < $voyage["duration"]){
                         continue;
                     }
@@ -65,7 +66,7 @@ $file = file_exists("../json/voyagetest.json") ? json_decode(file_get_contents("
     <form method="get">
         <h6><label>Date de départ : <input type="date" name="depart" min=Date() <?php echo (isset($_GET["depart"]) ? "value='". $_GET["depart"]."'":'') ?></label>
         </h6>
-        <h6><label>Date de départ : <input type="date" name="retour" min=Date() <?php echo (isset($_GET["retour"]) ? "value='". $_GET["retour"]."'":'') ?></label>
+        <h6><label>Date de retour : <input type="date" name="retour" min=Date() <?php echo (isset($_GET["retour"]) ? "value='". $_GET["retour"]."'":'') ?></label>
         </h6>
 
         <h6 class="titres">Villes souhaitées</h6>
@@ -78,7 +79,7 @@ $file = file_exists("../json/voyagetest.json") ? json_decode(file_get_contents("
             ?>
 
         </div>
-        <h6 class="titres">Niveau d'hotel :</h6>
+
 
         <h6><label>budget :
                 <input name="price" type="range" min="0" step="10" value="<?php

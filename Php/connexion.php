@@ -14,16 +14,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
 
     foreach ($utilisateurs as $utilisateur) {
-        if ($utilisateur["email"] === $email) {
+        if (isset($utilisateur["email"]) && ($utilisateur["email"] === $email)) {
             if (password_verify($password, $utilisateur["password"])){
                 $_SESSION["id"] = $utilisateur["id"];
+
                 $_SESSION["email"] = $utilisateur["email"];
                 $_SESSION["nom"] = $utilisateur["nom"];
                 $_SESSION["role"] = $utilisateur["role"];
+                print_r($utilisateur);
                 $_SESSION["voyages"] = $utilisateur["voyages"];
-
-                header("Location: index.php");
-                exit;
+                print_r($_SESSION);
+//                header("Location: index.php");
+//                exit;
             } else {
                 echo "<h1>Mot de passe incorrect</h1>";
                 exit;

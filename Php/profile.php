@@ -39,7 +39,7 @@ $info_util = $_SESSION;
 <?php
 if(isset($_SESSION['voyages'])) {
     foreach ($_SESSION['voyages'] as $key => $value) {
-        echo "<a href='configuration_voyage.php?".$value."'>".$key."</a>";
+        echo "<a href='trip_recap.php?".$value["config"]."'>".$key."</a>";
     }
 }
 

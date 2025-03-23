@@ -4,7 +4,10 @@ $queue_dir = "queue"; // Dossier de la queue
 if (!file_exists($queue_dir)) {
     mkdir($queue_dir, 0777, true);
 }
-
+if (!isset($_SESSION['id'])) {
+    header("Location: connexion.php");
+    exit;
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
 
@@ -17,6 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
                 $voyage = $trip;
                 break;
             }
+        }
+        if(!isset($_SESSION["voyages"]) || ((isset($_SESSION["voyages"][$voyage["name"]]) && $_SESSION["voyages"][$voyage["name"]]["payé"]))){
+            header("Location: choice.php");
+            exit();
         }
         if (isset($_GET["depart"])) {
             $depart = $_GET["depart"];
@@ -34,8 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
             }
         }
         $queue_file = $queue_dir . "/" . uniqid("user_", true) . ".json";
-        file_put_contents($queue_file, json_encode(["id"=>$_SESSION["id"], "voyages"=>[$voyage["name"]=>$_SERVER['QUERY_STRING']]], JSON_PRETTY_PRINT));
-        $_SESSION["voyages"][$voyage["name"]] = $_SERVER['QUERY_STRING'];
+        file_put_contents($queue_file, json_encode(["id"=>$_SESSION["id"], "voyages"=>[$voyage["name"]=>["payé"=>false, "config"=>$_SERVER['QUERY_STRING']]]], JSON_PRETTY_PRINT));
+        $_SESSION["voyages"][$voyage["name"]] = ["payé" => false, "config"=>$_SERVER['QUERY_STRING']];
     }
 
 } else {
