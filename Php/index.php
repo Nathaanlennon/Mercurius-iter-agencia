@@ -9,14 +9,14 @@ include "header.php"
 <head>
     <meta charset="UTF-8">
     <title>Page d'accueil</title>
-    <link rel="stylesheet" href="../Css/style.css">
+    <link rel="stylesheet" href="../Css/dark_side.css">
     <link rel="stylesheet" href="../Css/index.css">
 </head>
 <body>
 
 <div class="content">
 
-    <p>Mercurius Iter Agencia vous invite à un voyage hors du temps, où l'histoire et l'aventure se rencontrent au cœur
+    <p class="">Mercurius Iter Agencia vous invite à un voyage hors du temps, où l'histoire et l'aventure se rencontrent au cœur
         de l'Empire Romain. Explorez les contrées majestueuses qui bordent la mer Méditerranée, et laissez-vous guider
         par l'esprit du dieu Mercure à travers un monde de découvertes sans fin. Offrez-vous une expérience sur mesure,
         où vous avez le pouvoir de choisir votre itinéraire, de personnaliser chaque étape et de vivre l'Empire Romain
