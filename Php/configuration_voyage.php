@@ -67,13 +67,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
 
 <body>
 <script>
-    function calcul_price(price_tab, nb_personnes, duration) {
-        let total = 0;
+    function calcul_price(price_tab, nb_personnes) {
+        alert("price_tab : " + price_tab);
+        let total = 100;
         for (let i = 0; i < price_tab.length; i++) {
-            for (let j = 1; j < price_tab[i].length; j++) {
+            for (let j = 0; j < price_tab[i].length; j++) {
                 total += (price_tab[i][j] * nb_personnes);
             }
-            total += (price_tab[i][0] * duration/<?php echo count($voyage['stages'])?> * nb_personnes);
         }
         return total;
     }
@@ -85,12 +85,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
         <?php
 
         for ($i = 0; $i < count($voyage["stages"]); $i++) {
-            for ($j = 0; $j < 3; $j++) {
-                echo "price[" . $i . "][" . $j . "] = " . (${$i . ($j + 1)} ?? 1) . ";";
+            echo "price[" . $i . "][0] = ".(2 ** ((${$i . "1"} ?? 1)-1)) * 25 * 2 . ";\n";
+            if (isset(${$i."2"})){
+                foreach (${$i . "2"} as $activity) {
+                    switch ($activity) {
+                        case 1:
+                            echo "price[" . $i . "][1] += 10;\n";
+                            break;
+                        case 2:
+                            echo "price[" . $i . "][1] += 20;\n";
+                            break;
+                        case 3:
+                            echo "price[" . $i . "][1] += 30;\n";
+                            break;
+                    }
+                }
             }
+            if(isset(${$i . "3"})){
+                switch (${$i . "3"}) {
+                    case 1:
+                        echo "price[" . $i . "][2] += 100;\n";
+                        break;
+                    case 2:
+                        echo "price[" . $i . "][2] += 60;\n";
+                        break;
+                    case 3:
+                        echo "price[" . $i . "][2] += 80;\n";
+                        break;
+                    case 4:
+                        echo "price[" . $i . "][2] += 50;\n";
+                        break;
+                }
+            }
+
         }
         ?>
-        document.getElementById("price").textContent = calcul_price(price, <?php echo(($nb_personnes ?? 1) . "," . $voyage["duration"])?>).toString();
+        document.getElementById("price").textContent = calcul_price(price, <?php echo($nb_personnes ?? 1)?>).toString();
     });
 </script>
 <div class="content">
@@ -106,6 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
                                                                    required></label>
             <br>
             <br>
+            <b>Avion de départ : 100€</b>
             <?php
 
             for ($i = 0; $i < count($voyage["stages"]); $i++) {

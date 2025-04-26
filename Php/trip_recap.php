@@ -44,7 +44,7 @@ if (!($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"]))) {
                         switch ($j) {
                             case 1:
                                 echo "niveau d'hotel : " . $_GET[$i . $j] . " étoile(s) ";
-                                echo -$price + $price += ((2 ** $_GET[$i . $j] - 1) * 25 * $_GET["nb_personnes"] * ($voyage["duration"]) / count($voyage["stages"]));
+                                echo -$price + $price += ((2 ** $_GET[$i . $j] - 1) * 25 * $_GET["nb_personnes"] * 2);
                                 echo "€";
                                 break;
                             case 2:
@@ -78,16 +78,16 @@ if (!($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"]))) {
                                         echo -$price + ($price += 100 * $_GET["nb_personnes"]) . "€";
                                         break;
                                     case 2:
-                                        echo "train ";
-                                        echo -$price + ($price += 50 * $_GET["nb_personnes"]) . "€";
-                                        break;
-                                    case 3:
                                         echo "voiture ";
                                         echo -$price + ($price += 60 * $_GET["nb_personnes"]) . "€";
                                         break;
-                                    case 4:
+                                    case 3:
                                         echo "bateau ";
                                         echo -$price + ($price += 80 * $_GET["nb_personnes"]) . "€";
+                                        break;
+                                    case 4:
+                                        echo "train ";
+                                        echo -$price + ($price += 50 * $_GET["nb_personnes"]) . "€";
                                         break;
 
                                 }
