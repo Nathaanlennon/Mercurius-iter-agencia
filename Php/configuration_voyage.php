@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
             }
         }
         $queue_file = $queue_dir . "/" . uniqid("user_", true) . ".json";
-        if(isset($_GET["nb_personnes"])){
+        if (isset($_GET["nb_personnes"])) {
             file_put_contents($queue_file, json_encode(["id" => $_SESSION["id"], "voyages" => [$voyage["name"] => ["payé" => false, "config" => $_SERVER['QUERY_STRING']]]], JSON_PRETTY_PRINT));
             $_SESSION["voyages"][$voyage["name"]] = ["payé" => false, "config" => $_SERVER['QUERY_STRING']];
         }
@@ -64,17 +64,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
     <link rel="stylesheet" href="../Css/style.css">
     <link rel="stylesheet" href="../Css/trip_config.css">
 </head>
+
 <body>
+<script>
+    function calcul_price(price_tab, nb_personnes, duration) {
+        let total = 0;
+        for (let i = 0; i < price_tab.length; i++) {
+            for (let j = 1; j < price_tab[i].length; j++) {
+                total += (price_tab[i][j] * nb_personnes);
+            }
+            total += (price_tab[i][0] * duration/<?php echo count($voyage['stages'])?> * nb_personnes);
+        }
+        return total;
+    }
+
+    window.addEventListener("load", function () {
+        let price = Array.from({length: <?php echo count($voyage["stages"]) ?> }, () => Array(3).fill(0));
+
+
+        <?php
+
+        for ($i = 0; $i < count($voyage["stages"]); $i++) {
+            for ($j = 0; $j < 3; $j++) {
+                echo "price[" . $i . "][" . $j . "] = " . (${$i . ($j + 1)} ?? 1) . ";";
+            }
+        }
+        ?>
+        document.getElementById("price").textContent = calcul_price(price, <?php echo(($nb_personnes ?? 1) . "," . $voyage["duration"])?>).toString();
+    });
+</script>
 <div class="content">
     <div class="configuration">
         <h1><?php echo $voyage["name"] ?></h1>
         <form action="configuration_voyage.php" method="get">
             <input type="hidden" name="id" value="<?php echo $voyage["id"] ?>">
             <label for="depart">Date de départ : <input type="date" name="depart" min="<?php echo date('Y-m-d') . "\"
-                                                value=\"" . (isset($depart) ? $depart : date('Y-m-d')) ?>"
+                                                value=\"" . ($depart ?? date('Y-m-d')) ?>"
                                                         required></label>
             <label for="nb_personnes">Nombre de personnes : <input type="number" name="nb_personnes" min="1" max="10"
-                                                                   value="<?php echo(isset($nb_personnes) ? $nb_personnes : 1) ?>"
+                                                                   value="<?php echo($nb_personnes ?? 1) ?>"
                                                                    required></label>
             <br>
             <br>
@@ -92,6 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
     <option value=\"5\"" . ((isset(${$i . "1"}) && (${$i . "1"} == "5")) ? 'selected' : '') . ">5</option>
 </select><br>";
 
+
                 echo "activités : 
     <label><input type='checkbox' name=\"" . $i . "2[]\" value=\"1\"" . ((isset(${$i . "2"}) && in_array("1", ${$i . "2"})) ? ' checked' : '') . "> musée</label>
     <label><input type='checkbox' name=\"" . $i . "2[]\" value=\"2\"" . ((isset(${$i . "2"}) && in_array("2", ${$i . "2"})) ? ' checked' : '') . "> visite de ruines</label>
@@ -105,7 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
     <label><input type='radio' name=\"" . $i . "3\" value=\"4\"" . ((isset(${$i . "3"}) && (${$i . "3"} == "4")) ? 'checked' : '') . "> train</label><br>";
                 echo "</span>";
             }
-
+            echo "<b>Prix total : <span id=\"price\">0</span>€</b>";
             echo "<br><button type=\"submit\">Valider</button> </button>";
             ?>
         </form>
