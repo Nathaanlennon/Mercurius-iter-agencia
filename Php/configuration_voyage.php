@@ -67,8 +67,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
 
 <body>
 <script>
+    let price = Array.from({length: <?php echo count($voyage["stages"]) ?> }, () => Array(3).fill(0));
+
     function calcul_price(price_tab, nb_personnes) {
-        alert("price_tab : " + price_tab);
+        // alert("price_tab : " + price_tab);
         let total = 100;
         for (let i = 0; i < price_tab.length; i++) {
             for (let j = 0; j < price_tab[i].length; j++) {
@@ -79,7 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
     }
 
     window.addEventListener("load", function () {
-        let price = Array.from({length: <?php echo count($voyage["stages"]) ?> }, () => Array(3).fill(0));
 
 
         <?php
@@ -120,13 +121,79 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
 
         }
         ?>
+
+
+
         document.getElementById("price").textContent = calcul_price(price, <?php echo($nb_personnes ?? 1)?>).toString();
+
+
+        const trips = document.getElementById("form").querySelectorAll('div.trip');
+        trips.forEach((trip, index_trip)=>{
+            const champs=trip.querySelectorAll('select, input, button');
+            console.log(champs);
+
+
+            champs.forEach(champ=>{
+                champ.addEventListener('input', ()=>{
+                    switch (champ.nodeName){
+                        case 'SELECT':
+                            // console.log("select"+ index_trip);
+                            price[index_trip][0] = champ.value;
+                            break;
+                        case 'INPUT':
+                            // console.log("input"+ index_trip);
+                            switch (champ.type){
+                                case 'checkbox':
+                                    // console.log("checkbox" + index_trip);
+                                    price[index_trip][1]=champ.value;
+                                    break;
+                                case 'radio':
+                                    // console.log("radio" + index_trip);
+                                    price[index_trip][2]=champ.value;
+                                    break;
+                            }
+                            break;
+                    }
+                    console.log(price);
+                    document.getElementById("price").textContent = calcul_price(price, <?php echo($nb_personnes ?? 1)?>).toString();
+                })
+
+            });
+
+        });
+
+
+
     });
+
+
+    //document.getElementById("form").addEventListener("change", function (){
+    //    price[0][0] ++;
+    //    alert("issou");
+    //    document.getElementById("price").textContent = calcul_price(price, <?php //echo($nb_personnes ?? 1)?>//).toString();
+    //
+    //});
+
+    //let parent = document.getElementsByClassName("trip")[0];
+    //alert(parent);
+    //Array.from((document.getElementsByClassName("trip")[0].children)).forEach((child, index)=>{
+    //    child.addEventListener("change", function(){
+    //        price[index][0] ++;
+    //        alert("issou");
+    //        document.getElementById("price").textContent = calcul_price(price, <?php //echo($nb_personnes ?? 1)?>//).toString();
+    //
+    //    });
+    //})
+    //for(let i =0;i< <?php //echo count($voyage["stages"]) ?>//;i++){
+    //
+    //}
+
+
 </script>
 <div class="content">
     <div class="configuration">
         <h1><?php echo $voyage["name"] ?></h1>
-        <form action="configuration_voyage.php" method="get">
+        <form action="configuration_voyage.php" method="get" id="form">
             <input type="hidden" name="id" value="<?php echo $voyage["id"] ?>">
             <label for="depart">Date de départ : <input type="date" name="depart" min="<?php echo date('Y-m-d') . "\"
                                                 value=\"" . ($depart ?? date('Y-m-d')) ?>"
@@ -140,7 +207,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
             <?php
 
             for ($i = 0; $i < count($voyage["stages"]); $i++) {
-                echo "<div class='trip'>";
+                echo "<div class='trip' id='".$i."'>";
                 $stage = $voyage["stages"][$i];
                 echo "<span class='name'>" . $stage . " :</span><br>";
                 echo "niveau hotel : <select name=\"" . $i . "1\">
@@ -164,9 +231,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
     <label><input type='radio' name=\"" . $i . "3\" value=\"3\"" . ((isset(${$i . "3"}) && (${$i . "3"} == "3")) ? 'checked' : '') . "> bateau</label>
     <label><input type='radio' name=\"" . $i . "3\" value=\"4\"" . ((isset(${$i . "3"}) && (${$i . "3"} == "4")) ? 'checked' : '') . "> train</label><br>";
                 echo "</span>";
+                echo"</div>"; //le div démoniaque
             }
             echo "<b>Prix total : <span id=\"price\">0</span>€</b>";
-            echo "<br><button type=\"submit\">Valider</button> </button>";
+            echo "<br><button type=\"submit\">Valider</button>";
             ?>
         </form>
     </div>
