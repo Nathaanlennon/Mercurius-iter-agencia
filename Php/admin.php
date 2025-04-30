@@ -3,7 +3,7 @@
 
 include "header.php";
 
-$queue_dir = "queue";
+$queue_dir = "../queue";
 if (!file_exists($queue_dir)) {
     mkdir($queue_dir, 0777, true);
 }
@@ -17,6 +17,7 @@ if (!isset($info_util['role']) || $info_util['role'] !== "admin") {
     header("Location: index.php");
     exit;
 }
+$utilisateurs = array_filter($utilisateurs, fn($user) => $user['role'] !== 'admin');
 
 $utilisateurs_par_page = 10;
 $total_utilisateurs = count($utilisateurs);
@@ -62,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../Css/style.css">
     <link rel="stylesheet" href="../Css/admin.css">
 </head>
+
 <body>
 <div class="content">
 
@@ -81,13 +83,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <tr>
                 <td><?= htmlspecialchars($util['id']) ?></td>
                 <td>
-                    <form method="post">
+                    <form method="post" class="change-form">
                         <input type="hidden" name="util_id" value="<?= htmlspecialchars($util['id']) ?>">
-                        <label> <select name="role">
-                            <option value="Normal" <?= $util['role'] == 'Normal' ? 'selected' : '' ?>>Normal</option>
-                            <option value="VIP" <?= $util['role'] == 'VIP' ? 'selected' : '' ?>>VIP</option>
-                            <option value="Banni" <?= $util['role'] == 'Banni' ? 'selected' : '' ?>>Banni</option>
-                        </select> </label>
+                        <label>
+                            <select name="role">
+                                <option value="Normal" <?= $util['role'] == 'Normal' ? 'selected' : '' ?>>Normal</option>
+                                <option value="VIP" <?= $util['role'] == 'VIP' ? 'selected' : '' ?>>VIP</option>
+                                <option value="Banni" <?= $util['role'] == 'Banni' ? 'selected' : '' ?>>Banni</option>
+                            </select>
+                        </label>
                         <button type="submit" name="maj_role">Modifier</button>
                     </form>
                 </td>
@@ -108,5 +112,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
 </div>
+<script>
+    document.querySelectorAll('.change-form').forEach(form => {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const submitButton = form.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+
+            const formData = new FormData(form);
+            formData.append('maj_role', '1');
+
+            fetch('admin.php', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erreur réseau');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    alert('Modification réussie !');
+                })
+                .catch(error => {
+                    console.error('Erreur:', error);
+                    alert('Échec de la modification');
+                })
+                .finally(() => {
+                    setTimeout(() => {
+                        submitButton.disabled = false;
+                    }, 5000);
+                });
+        });
+    });
+</script>
+
+
 </body>
 </html>

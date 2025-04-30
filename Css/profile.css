@@ -42,6 +42,13 @@ button{
     font-family: Hadriatic ,sans-serif;
 }
 
+input {
+
+    border: none;
+
+    outline: none
+
+}
 
 
 

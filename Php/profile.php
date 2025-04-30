@@ -1,46 +1,134 @@
 <?php
-
 include "header.php";
+
 $info_util = $_SESSION;
 if (!isset($info_util['id'])) {
     header("Location: connexion.php");
     exit;
 }
 
-$fichier = "../json/utilisateurs.json";
+// Traitement du formulaire
+$queue_dir = "../queue";
+if (!file_exists($queue_dir)) {
+    mkdir($queue_dir, 0777, true);
+}
 
-$utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier), true) : [];
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_POST['action'] === 'delete_voyage' && isset($_POST['voyage'])) {
+        $voyageToDelete = $_POST['voyage'];
 
+        // Vérifier que le voyage existe et n'est pas payé
+        if (isset($_SESSION['voyages'][$voyageToDelete]) && !$_SESSION['voyages'][$voyageToDelete]['payé']) {
+            $suppression = [
+                'id' => $_SESSION['id'],
+                'action' => 'delete_voyage',
+                'voyage' => $voyageToDelete
+            ];
 
+            $queue_file = $queue_dir . "/" . uniqid("delete_", true) . ".json";
+            file_put_contents($queue_file, json_encode($suppression, JSON_PRETTY_PRINT));
+
+            unset($_SESSION['voyages'][$voyageToDelete]);
+        }
+
+        header("Location: profile.php");
+        exit;
+    }
+
+    $nv_info = [
+        'id' => $_SESSION['id'],
+        'nom' => $_POST['nom'] ?? $_SESSION['nom'],
+        'email' => $_POST['email'] ?? $_SESSION['email']
+    ];
+
+    if (!filter_var($nv_info['email'], FILTER_VALIDATE_EMAIL)) {
+        echo "Email invalide.";
+        exit;
+    }
+
+    $_SESSION['email'] = $nv_info['email'];
+    $_SESSION['nom'] = $nv_info['nom'];
+
+    $queue_file = $queue_dir . "/" . uniqid("user_", true) . ".json";
+    file_put_contents($queue_file, json_encode($nv_info, JSON_PRETTY_PRINT));
+    header("Location: profile.php");
+    exit;
+}
 ?>
 
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Page d'inscription</title>
+    <title>Profil</title>
     <link rel="stylesheet" href="../Css/style.css">
     <link rel="stylesheet" href="../Css/profile.css">
+    <script>
+        function enableNomEditing() {
+            document.getElementById('nom').removeAttribute('readonly');
+            document.getElementById('nom-edit-buttons').style.display = 'inline';
+            document.getElementById('nom-modify-button').style.display = 'none';
+        }
 
+        function cancelNomEditing() {
+            document.getElementById('nom').setAttribute('readonly', true);
+            document.getElementById('nom-edit-buttons').style.display = 'none';
+            document.getElementById('nom-modify-button').style.display = 'inline';
+            document.getElementById('nom').value = '<?php echo htmlspecialchars($_SESSION['nom']); ?>';
+        }
+
+        function enableEmailEditing() {
+            document.getElementById('email').removeAttribute('readonly');
+            document.getElementById('email-edit-buttons').style.display = 'inline';
+            document.getElementById('email-modify-button').style.display = 'none';
+        }
+
+        function cancelEmailEditing() {
+            document.getElementById('email').setAttribute('readonly', true);
+            document.getElementById('email-edit-buttons').style.display = 'none';
+            document.getElementById('email-modify-button').style.display = 'inline';
+            document.getElementById('email').value = '<?php echo htmlspecialchars($_SESSION['email']); ?>';
+        }
+    </script>
 </head>
 
 <body>
 <h1 class="title">Profil</h1>
-<table>
-    <tr>
-        <th>Nom</th>
-        <td><?php echo $info_util['nom']; ?></td>
-        <td>
-            <a href="modif_profile.php"><button>modifier</button></a>
-            <br></td>
-    </tr>
-    <tr>
-        <th>E-mail</th>
-        <td><?php echo $info_util['email']; ?></td>
-        <td>
-            <a href="modif_profile.php"><button>modifier</button></a>
-            <br></td>
-    </tr>
-</table>
+<form method="POST">
+    <table>
+        <tr>
+            <th>Nom</th>
+            <td>
+                <input type="text" id="nom" name="nom" value="<?php echo htmlspecialchars($_SESSION['nom']); ?>" readonly />
+            </td>
+            <td>
+                <div id="nom-modify-button">
+                    <button type="button" onclick="enableNomEditing()">Modifier</button>
+                </div>
+                <div id="nom-edit-buttons" style="display: none;">
+                    <button type="submit">Confirmer</button>
+                    <button type="button" onclick="cancelNomEditing()">Annuler</button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>E-mail</th>
+            <td>
+                <input type="text" id="email" name="email" value="<?php echo htmlspecialchars($_SESSION['email']); ?>" readonly />
+            </td>
+            <td>
+                <div id="email-modify-button">
+                    <button type="button" onclick="enableEmailEditing()">Modifier</button>
+                </div>
+                <div id="email-edit-buttons" style="display: none;">
+                    <button type="submit">Confirmer</button>
+                    <button type="button" onclick="cancelEmailEditing()">Annuler</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+</form>
+
 <?php if (isset($_SESSION['voyages']) && !empty($_SESSION['voyages'])): ?>
     <h2 class="title">Mes Voyages</h2>
     <table>
@@ -53,20 +141,24 @@ $utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier),
             <tr>
                 <td><?php echo htmlspecialchars($key); ?></td>
                 <td>
-                    <a href='trip_recap.php?<?php echo htmlspecialchars($voyage["config"]); ?>'><button>Voir Détails</button></a>
+                    <a href='trip_recap.php?<?php echo htmlspecialchars($voyage["config"]); ?>'>
+                        <button>Voir Détails</button>
+                    </a>
+                    <?php if (!$voyage['payé']): ?>
+                        <form method="POST" style="display:inline;">
+                            <input type="hidden" name="action" value="delete_voyage">
+                            <input type="hidden" name="voyage" value="<?php echo htmlspecialchars($key); ?>">
+                            <button type="submit">Annuler</button>
+                        </form>
+                    <?php endif; ?>
                 </td>
-                <td><?php if ($voyage['payé']){
-                        echo "payé";
-                        }
-                        else{
-                            echo"non payé";
-                        }
-                     ?></td>
+                <td><?php echo $voyage['payé'] ? "payé" : "non payé"; ?></td>
             </tr>
         <?php endforeach; ?>
     </table>
 <?php else: ?>
     <p>Aucun voyage sélectionné.</p>
 <?php endif; ?>
+
 </body>
 </html>
