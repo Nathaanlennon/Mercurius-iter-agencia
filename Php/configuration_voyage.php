@@ -68,125 +68,135 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
 <body>
 <script>
     let price = Array.from({length: <?php echo count($voyage["stages"]) ?> }, () => Array(3).fill(0));
+    let activities_price = [10, 20, 30, 0];
+    let transports_price = [100, 60, 80, 50];
+    let nb_personnes = 1;
 
-    function calcul_price(price_tab, nb_personnes) {
-        // alert("price_tab : " + price_tab);
-        let total = 100;
-        for (let i = 0; i < price_tab.length; i++) {
-            for (let j = 0; j < price_tab[i].length; j++) {
-                total += (price_tab[i][j] * nb_personnes);
-            }
+    // Calcule le prix total d'un stage donné
+    function calcul_stage(stage, nb_personnes) {
+        // stage est un tableau : [niveauHotel, activités[], transport]
+        let total = 0;
+
+        // [0] : niveau hôtel
+        const niveauHotel = stage[0] ?? 1;
+        total += (2 ** (niveauHotel - 1)) * 25 * 2;
+
+        // [1] : activités
+        const activites = stage[1] ?? 0;
+        for (let i = 0; i < 4; i++) {
+            total += (activities_price[i] * ((activites & (1 << i)) !== 0));
         }
+
+        // [2] : transport
+        const transport = stage[2] ?? 1;
+        total += transports_price[transport - 1]
+
+        stage.forEach(s=>{
+            console.log(typeof s);
+        })
+
+        return total*nb_personnes;
+    }
+
+    // Calcule le prix total pour tous les stages
+    function calcul_price(data, nb_personnes = 1) {
+        let total = 100*nb_personnes;
+
+        data.forEach(stage => {
+            total += calcul_stage(stage, nb_personnes);
+        });
+
         return total;
     }
+
 
     window.addEventListener("load", function () {
 
 
+        //init
         <?php
 
         for ($i = 0; $i < count($voyage["stages"]); $i++) {
-            echo "price[" . $i . "][0] = ".(2 ** ((${$i . "1"} ?? 1)-1)) * 25 * 2 . ";\n";
-            if (isset(${$i."2"})){
+            echo "price[" . $i . "][0] = " .(${$i . "1"} ?? 1). ";\n";
+
+            if (isset(${$i . "2"})) {
                 foreach (${$i . "2"} as $activity) {
                     switch ($activity) {
                         case 1:
-                            echo "price[" . $i . "][1] += 10;\n";
+                            echo "price[" . $i . "][1] += ".(1).";\n";
                             break;
                         case 2:
-                            echo "price[" . $i . "][1] += 20;\n";
+                            echo "price[" . $i . "][1] += ".(2).";\n";
                             break;
                         case 3:
-                            echo "price[" . $i . "][1] += 30;\n";
+                            echo "price[" . $i . "][1] += ".(4).";\n";
                             break;
+                        case 4:
+                            echo "price[" . $i . "][1] += ".(8).";\n";
                     }
                 }
             }
-            if(isset(${$i . "3"})){
-                switch (${$i . "3"}) {
-                    case 1:
-                        echo "price[" . $i . "][2] += 100;\n";
-                        break;
-                    case 2:
-                        echo "price[" . $i . "][2] += 60;\n";
-                        break;
-                    case 3:
-                        echo "price[" . $i . "][2] += 80;\n";
-                        break;
-                    case 4:
-                        echo "price[" . $i . "][2] += 50;\n";
-                        break;
-                }
-            }
+
+            echo "price[" . $i . "][2] =". (${$i . "3"}??1) ."\n";
 
         }
+
         ?>
+        nb_personnes = <?php echo($nb_personnes ?? 1) ?>;
+        document.getElementById("avion").textContent = (nb_personnes*100).toString();
 
+        //fin init
 
+        console.log(price);
 
-        document.getElementById("price").textContent = calcul_price(price, <?php echo($nb_personnes ?? 1)?>).toString();
+        /** @type {HTMLInputElement} */
+        const number_input = document.getElementById("nb_personnes");
+        number_input.addEventListener("change", ()=>{
+            nb_personnes = number_input.value;
+            console.log(nb_personnes)
+            document.getElementById("avion").textContent = (nb_personnes*100).toString();
+            document.getElementById("price").textContent = calcul_price(price, nb_personnes).toString();
+
+        });
+        document.getElementById("price").textContent = calcul_price(price, nb_personnes).toString();
 
 
         const trips = document.getElementById("form").querySelectorAll('div.trip');
-        trips.forEach((trip, index_trip)=>{
-            const champs=trip.querySelectorAll('select, input, button');
+        trips.forEach((trip, index_trip) => {
+            const champs = trip.querySelectorAll('select, input, button');
             console.log(champs);
 
 
-            champs.forEach(champ=>{
-                champ.addEventListener('input', ()=>{
-                    switch (champ.nodeName){
+            champs.forEach(champ => {
+                champ.addEventListener('input', () => {
+                    switch (champ.nodeName) {
                         case 'SELECT':
                             // console.log("select"+ index_trip);
                             price[index_trip][0] = champ.value;
                             break;
                         case 'INPUT':
                             // console.log("input"+ index_trip);
-                            switch (champ.type){
+                            switch (champ.type) {
                                 case 'checkbox':
-                                    // console.log("checkbox" + index_trip);
-                                    price[index_trip][1]=champ.value;
+                                    console.log("checkbox" + index_trip);
+                                    price[index_trip][1] ^= (1<<champ.value-1);
                                     break;
                                 case 'radio':
                                     // console.log("radio" + index_trip);
-                                    price[index_trip][2]=champ.value;
+                                    price[index_trip][2] = champ.value;
                                     break;
                             }
                             break;
                     }
                     console.log(price);
-                    document.getElementById("price").textContent = calcul_price(price, <?php echo($nb_personnes ?? 1)?>).toString();
+                    document.getElementById("price").textContent = calcul_price(price, nb_personnes).toString();
                 })
 
             });
 
         });
 
-
-
     });
-
-
-    //document.getElementById("form").addEventListener("change", function (){
-    //    price[0][0] ++;
-    //    alert("issou");
-    //    document.getElementById("price").textContent = calcul_price(price, <?php //echo($nb_personnes ?? 1)?>//).toString();
-    //
-    //});
-
-    //let parent = document.getElementsByClassName("trip")[0];
-    //alert(parent);
-    //Array.from((document.getElementsByClassName("trip")[0].children)).forEach((child, index)=>{
-    //    child.addEventListener("change", function(){
-    //        price[index][0] ++;
-    //        alert("issou");
-    //        document.getElementById("price").textContent = calcul_price(price, <?php //echo($nb_personnes ?? 1)?>//).toString();
-    //
-    //    });
-    //})
-    //for(let i =0;i< <?php //echo count($voyage["stages"]) ?>//;i++){
-    //
-    //}
 
 
 </script>
@@ -198,16 +208,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
             <label for="depart">Date de départ : <input type="date" name="depart" min="<?php echo date('Y-m-d') . "\"
                                                 value=\"" . ($depart ?? date('Y-m-d')) ?>"
                                                         required></label>
-            <label for="nb_personnes">Nombre de personnes : <input type="number" name="nb_personnes" min="1" max="10"
+            <label for="nb_personnes">Nombre de personnes : <input type="number" name="nb_personnes" id="nb_personnes" min="1" max="10"
                                                                    value="<?php echo($nb_personnes ?? 1) ?>"
                                                                    required></label>
             <br>
             <br>
-            <b>Avion de départ : 100€</b>
+            <b>Avion de départ : <span id="avion"></span>€</b>
             <?php
 
             for ($i = 0; $i < count($voyage["stages"]); $i++) {
-                echo "<div class='trip' id='".$i."'>";
+                echo "<div class='trip' id='" . $i . "'>";
                 $stage = $voyage["stages"][$i];
                 echo "<span class='name'>" . $stage . " :</span><br>";
                 echo "niveau hotel : <select name=\"" . $i . "1\">
@@ -230,8 +240,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
     <label><input type='radio' name=\"" . $i . "3\" value=\"2\"" . ((isset(${$i . "3"}) && (${$i . "3"} == "2")) ? 'checked' : '') . "> voiture</label>
     <label><input type='radio' name=\"" . $i . "3\" value=\"3\"" . ((isset(${$i . "3"}) && (${$i . "3"} == "3")) ? 'checked' : '') . "> bateau</label>
     <label><input type='radio' name=\"" . $i . "3\" value=\"4\"" . ((isset(${$i . "3"}) && (${$i . "3"} == "4")) ? 'checked' : '') . "> train</label><br>";
-                echo "</span>";
-                echo"</div>"; //le div démoniaque
+                echo "</div>"; //le div démoniaque
             }
             echo "<b>Prix total : <span id=\"price\">0</span>€</b>";
             echo "<br><button type=\"submit\">Valider</button>";

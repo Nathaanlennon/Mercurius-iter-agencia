@@ -44,7 +44,7 @@ if (!($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"]))) {
                         switch ($j) {
                             case 1:
                                 echo "niveau d'hotel : " . $_GET[$i . $j] . " étoile(s) ";
-                                echo -$price + $price += ((2 ** $_GET[$i . $j] - 1) * 25 * $_GET["nb_personnes"] * 2);
+                                echo -$price + $price += ((2 ** ($_GET[$i . $j] - 1) * 25 * $_GET["nb_personnes"] * 2));
                                 echo "€";
                                 break;
                             case 2:
