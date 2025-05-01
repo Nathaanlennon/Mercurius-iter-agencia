@@ -41,15 +41,66 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
                 }
             }
         }
-        $queue_file = $queue_dir . "/" . uniqid("user_", true) . ".json";
-        if (isset($_GET["nb_personnes"])) {
-            file_put_contents($queue_file, json_encode(["id" => $_SESSION["id"], "voyages" => [$voyage["name"] => ["payé" => false, "config" => $_SERVER['QUERY_STRING']]]], JSON_PRETTY_PRINT));
-            $_SESSION["voyages"][$voyage["name"]] = ["payé" => false, "config" => $_SERVER['QUERY_STRING']];
-        }
+//        $queue_file = $queue_dir . "/" . uniqid("user_", true) . ".json";
+//        if (isset($_GET["nb_personnes"])) {
+//            file_put_contents($queue_file, json_encode(["id" => $_SESSION["id"], "voyages" => [$voyage["name"] => ["payé" => false, "config" => $_SERVER['QUERY_STRING']]]], JSON_PRETTY_PRINT));
+//            $_SESSION["voyages"][$voyage["name"]] = ["payé" => false, "config" => $_SERVER['QUERY_STRING']];
+//        }
 
     }
 
-} else {
+} elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["id"])) {
+
+    $voyage["id"] = $_POST["id"];
+    if (file_exists("../json/voyagetest.json")) {
+        $file = json_decode(file_get_contents("../json/voyagetest.json"), true);
+        foreach ($file as $trip) {
+            if ($trip["id"] == $voyage["id"]) {
+                $voyage = $trip;
+                break;
+            }
+        }
+        if (!isset($_SESSION["voyages"]) || (isset($_SESSION["voyages"][$voyage["name"]]) && $_SESSION["voyages"][$voyage["name"]]["payé"])) {
+            header("Location: choice.php");
+            exit();
+        }
+        if (isset($_POST["depart"])) {
+            $depart = $_POST["depart"];
+        }
+
+        if (isset($_POST["nb_personnes"])) {
+            $nb_personnes = $_POST["nb_personnes"];
+        }
+
+        for ($i = 0; $i < count($voyage["stages"]); $i++) {
+            for ($j = 1; $j < 4; $j++) {
+                if (isset($_POST[$i . $j])) {
+                    ${$i . $j} = $_POST[$i . $j];
+                }
+            }
+        }
+
+        $queue_file = $queue_dir . "/" . uniqid("user_", true) . ".json";
+        if (isset($_POST["nb_personnes"])) {
+            file_put_contents($queue_file, json_encode([
+                "id" => $_SESSION["id"],
+                "voyages" => [
+                    $voyage["name"] => [
+                        "payé" => false,
+                        "config" => http_build_query($_POST)
+                    ]
+                ]
+            ], JSON_PRETTY_PRINT));
+            $_SESSION["voyages"][$voyage["name"]] = [
+                "payé" => false,
+                "config" => http_build_query($_POST)
+            ];
+        }
+    }
+    header("Location: profile.php");
+}
+
+else {
     header("Location: choice.php");
     exit();
 }
@@ -237,7 +288,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
 <div class="content">
     <div class="configuration">
         <h1><?php echo $voyage["name"] ?></h1>
-        <form action="configuration_voyage.php" method="get" id="form">
+        <form action="configuration_voyage.php" method="post" id="form">
             <input type="hidden" name="id" value="<?php echo $voyage["id"] ?>">
             <label for="depart">Date de départ : <input type="date" name="depart" min="<?php echo date('Y-m-d') . "\"
                                                 value=\"" . ($depart ?? date('Y-m-d')) ?>"
@@ -277,8 +328,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
                 echo "</div>"; //le div démoniaque
             }
             echo "<b>Prix total : <span id=\"price\">0</span>€</b>";
-            echo "<br><button type=\"submit\">Valider</button>";
+            echo "<br><button type=\"submit\" onClick='link()'>Valider</button>";
             ?>
+            <script>function link(){
+                    window.location.href="profile.php";
+                }
+            </script>
         </form>
     </div>
 
