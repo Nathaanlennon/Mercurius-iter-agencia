@@ -196,6 +196,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
 
         });
 
+        //ici on met à jour l'url
+        const form = document.getElementById("form");
+
+        form.addEventListener("input", (event) => {
+            const input = event.target;
+            const name = input.name;
+            const currentParams = new URLSearchParams(window.location.search);
+
+            if (input.type === "checkbox") {
+                const checkboxes = form.querySelectorAll(`input[name="${name}"]`);
+                const selected = [];
+
+                checkboxes.forEach(cb => {
+                    if (cb.checked) selected.push(cb.value);
+                });
+
+                currentParams.delete(name);
+                selected.forEach(val => currentParams.append(name, val));
+
+            } else if (input.type === "radio") {
+                currentParams.set(name, input.value);
+
+            } else {
+                if (input.value) {
+                    currentParams.set(name, input.value);
+                } else {
+                    currentParams.delete(name);
+                }
+            }
+
+            const newUrl = window.location.pathname + "?" + currentParams.toString();
+            history.replaceState({}, "", newUrl);
+        });
+
     });
 
 
