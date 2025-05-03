@@ -1,6 +1,7 @@
 <?php
 include "header.php";
 
+
 $queue_dir = "../queue"; // Dossier de la queue
 if (!file_exists($queue_dir)) {
     mkdir($queue_dir, 0777, true);
