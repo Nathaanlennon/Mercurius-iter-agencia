@@ -68,7 +68,7 @@
 }
 
 .hotels label:has(:checked) {
-    background-color: #950065;
+    background-color: #650065;
     color: white;
     border: none;
 }

@@ -9,7 +9,7 @@ include "header.php"
 <head>
     <meta charset="UTF-8">
     <title>Page d'accueil</title>
-    <link rel="stylesheet" href="../Css/dark_side.css">
+    <link rel="stylesheet" href="../Css/style.css">
     <link rel="stylesheet" href="../Css/index.css">
 </head>
 <body>
