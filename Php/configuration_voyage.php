@@ -328,13 +328,9 @@ else {
                 echo "</div>"; //le div démoniaque
             }
             echo "<b>Prix total : <span id=\"price\">0</span>€</b>";
-            echo "<br><button type=\"submit\" onClick='link()'>Valider</button>";
+            echo "<br><button type=\"submit\" onClick='window.location.href=\"profile.php\")'>Valider</button>";
             ?>
-            <script>function link(){
-                    window.location.href="profile.php";
-                }
-            </script>
-        </form>
+
     </div>
 
 </div>

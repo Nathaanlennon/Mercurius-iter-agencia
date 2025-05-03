@@ -53,7 +53,7 @@ $file = file_exists("../json/voyagetest.json") ? json_decode(file_get_contents("
         } else {
             foreach ($file as $voyage) {
                 if (isset($_GET["price"])) {
-                    if (!($voyage["price"] * (isset($_GET["nb_utilisateurs"]) ? $_GET["nb_utilisateurs"] : 1) <= $_GET["price"])) {
+                    if (!($voyage["price"] * ($_GET["nb_utilisateurs"] ?? 1) <= $_GET["price"])) {
                         continue;
                     }
                 }
@@ -79,7 +79,7 @@ $file = file_exists("../json/voyagetest.json") ? json_decode(file_get_contents("
                     }
                 }
                 echo "<div class='result' style=';' onclick='window.location=\"voyage_sheet.php?id=" . $voyage["id"] . "\"'>"
-                    . $voyage["name"] . "<br> Prix minimum (" . (isset($_GET["nb_utilisateurs"]) ? $_GET["nb_utilisateurs"] : 1) . ") : " . $voyage["price"] * (isset($_GET["nb_utilisateurs"]) ? $_GET["nb_utilisateurs"] : 1) . "€";
+                    . $voyage["name"] . "<br> Prix minimum (" . ($_GET["nb_utilisateurs"] ?? 1) . ") : " . $voyage["price"] * ($_GET["nb_utilisateurs"] ?? 1) . "€";
                 echo "<br>".file_get_contents("../descript_voyage/".$voyage["id"] . "resume.txt");
                 echo "</div>";
 
@@ -90,7 +90,7 @@ $file = file_exists("../json/voyagetest.json") ? json_decode(file_get_contents("
     ?>
     <form method="get">
         <h6><label for="key-word">Mots clés : <input type="text" name="key-word"
-                                                     value="<?php echo(isset($_GET["key-word"]) ? $_GET["key-word"] : '') ?>"></label>
+                                                     value="<?php echo($_GET["key-word"] ?? '') ?>"></label>
         </h6>
         <h6><label>Date de départ : <input type="date" name="depart"
                                            min=Date() <?php echo(isset($_GET["depart"]) ? "value='" . $_GET["depart"] . "'" : '') ?>
@@ -101,7 +101,7 @@ $file = file_exists("../json/voyagetest.json") ? json_decode(file_get_contents("
             </label>
         </h6>
         <h6><label for="nb_personnes">Nombre de personnes : <input type="number" name="nb_utilisateurs" min="1" max="10"
-                                                                   value="<?php echo(isset($_GET["nb_utilisateurs"]) ? $_GET["nb_utilisateurs"] : 2) ?>"
+                                                                   value="<?php echo($_GET["nb_utilisateurs"] ?? 2) ?>"
                                                                    required></label>
         </h6>
         <h6 class="titres">Villes souhaitées</h6>
@@ -119,12 +119,12 @@ $file = file_exists("../json/voyagetest.json") ? json_decode(file_get_contents("
 
         <h6><label>budget :
                 <input name="price" type="range" min="0" step="10" value="<?php
-                echo isset($_GET["price"]) ? $_GET["price"] : 5000;
+                echo $_GET["price"] ?? 5000;
                 ?>" max="10000"
                        oninput="this.nextElementSibling.value = this.value">
                 <output>
                     <?php
-                    echo isset($_GET["price"]) ? $_GET["price"] : 5000;
+                    echo $_GET["price"] ?? 5000;
                     ?></output>
                 €
             </label></h6>
