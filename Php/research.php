@@ -1,5 +1,5 @@
 <?php
-include "header.php";
+
 
 function has_city($trip, $city)
 {
@@ -24,11 +24,7 @@ function word_in_key_word($word, $key_word)
     return false;
 }
 
-{
 
-}
-
-echo "<div id=\"result\">";
 $file = file_exists("../json/voyagetest.json") ? json_decode(file_get_contents("../json/voyagetest.json"), true) : [];
 
 ?>
@@ -42,6 +38,64 @@ $file = file_exists("../json/voyagetest.json") ? json_decode(file_get_contents("
     <link rel="stylesheet" href="../Css/research.css">
 </head>
 <body>
+<?php
+include "header.php";
+?>
+<script>
+
+    let trips = [];
+    let nb_personnes = <?= $_GET["nb_utilisateurs"] ?? 1 ?>;
+
+
+    function print_trips(trips_list) {
+        const result = document.getElementById("trips");
+        result.innerHTML = "";
+        trips_list.forEach(trip => {
+            const div = document.createElement("div");
+            div.className = "result";
+            div.innerHTML = trip.name + "<br> Prix minimum : " + trip.price * nb_personnes + "€" +
+                "<br> Durée : " + trip.duration + " jours";
+            div.onclick = function () {
+                window.location = "voyage_sheet.php?id=" + trip.id;
+            };
+            result.appendChild(div);
+        });
+
+    }
+
+    window.addEventListener("load", function () {
+        const form = document.getElementById("tri");
+        form.addEventListener("change", function () {
+            const type = document.getElementById("type").value;
+            const ordre = document.getElementById("ordre").value;
+            switch (type) {
+                case "prix":
+                    trips.sort((a, b) =>
+                        ordre === "croissant" ? a.price - b.price : b.price - a.price
+                    );
+                    break;
+
+                case "duree":
+                    trips.sort((a, b) =>
+                        ordre === "croissant" ? a.duration - b.duration : b.duration - a.duration
+                    );
+                    break;
+
+                case "nom":
+                    trips.sort((a, b) =>
+                        ordre === "croissant" ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name)
+                    );
+                    break;
+
+                default:
+                    console.warn("Type de tri inconnu :", type);
+            }
+
+            print_trips(trips);
+        });
+    });
+
+</script>
 
 <div class="content">
 
@@ -51,6 +105,24 @@ $file = file_exists("../json/voyagetest.json") ? json_decode(file_get_contents("
         if ($file == null || $file == []) {
             echo "<p>Aucun voyage ne correspond à votre recherche.</p>";
         } else {
+            echo "<form id='tri'>"
+                . "<label for='tri'>Trier par : </label>"
+                . "<select name='type' id='type'>"
+                . "<option value='prix'>Prix</option>"
+                . "<option value='duree'>Durée</option>"
+                . "<option value='nom'>Nom</option>"
+                . "</select>"
+
+                . "<label for='ordre'>Ordre : </label>"
+                . "<select name='ordre' id='ordre'>"
+                . "<option value='croissant'>Croissant</option>"
+                . "<option value='decroissant'>Décroissant</option>"
+                . "</select>"
+
+                . "</form>"
+                . "<div id='trips'>";
+
+
             foreach ($file as $voyage) {
                 if (isset($_GET["price"])) {
                     if (!($voyage["price"] * ($_GET["nb_utilisateurs"] ?? 1) <= $_GET["price"])) {
@@ -78,17 +150,19 @@ $file = file_exists("../json/voyagetest.json") ? json_decode(file_get_contents("
                         }
                     }
                 }
+                echo "<script>trips.push({name: \"" . addslashes($voyage['name']) . "\", id: {$voyage['id']}, price: {$voyage['price']}, duration: {$voyage['duration']}});</script>";
                 echo "<div class='result' style=';' onclick='window.location=\"voyage_sheet.php?id=" . $voyage["id"] . "\"'>"
                     . $voyage["name"] . "<br> Prix minimum (" . ($_GET["nb_utilisateurs"] ?? 1) . ") : " . $voyage["price"] * ($_GET["nb_utilisateurs"] ?? 1) . "€";
-                echo "<br>".file_get_contents("../descript_voyage/".$voyage["id"] . "resume.txt");
+                echo "<br>" . file_get_contents("../descript_voyage/" . $voyage["id"] . "resume.txt");
                 echo "</div>";
-
             }
+            echo "</div>";
+            echo "<script>console.log(trips);\nprint_trips(trips)</script>";
         }
         echo "</div>";
     }
     ?>
-    <form method="get">
+    <form method="get" class="research">
         <h6><label for="key-word">Mots clés : <input type="text" name="key-word"
                                                      value="<?php echo($_GET["key-word"] ?? '') ?>"></label>
         </h6>
@@ -101,7 +175,7 @@ $file = file_exists("../json/voyagetest.json") ? json_decode(file_get_contents("
             </label>
         </h6>
         <h6><label for="nb_personnes">Nombre de personnes : <input type="number" name="nb_utilisateurs" min="1" max="10"
-                                                                   value="<?php echo($_GET["nb_utilisateurs"] ?? 2) ?>"
+                                                                   value="<?= $_GET["nb_utilisateurs"] ?? 2 ?>"
                                                                    required></label>
         </h6>
         <h6 class="titres">Villes souhaitées</h6>
