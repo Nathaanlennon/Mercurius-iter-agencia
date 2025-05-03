@@ -3,13 +3,14 @@ include "header.php";
 
 $fichier = "../json/utilisateurs.json";
 
-// Redirige si déjà connecté
 if (isset($info_util['id'])) {
     header("Location: index.php");
     exit;
 }
 
 $utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier), true) : [];
+
+$message = ""; // <-- Pour stocker les messages à transmettre au JS
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST["email"]);
@@ -18,17 +19,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     foreach ($utilisateurs as $utilisateur) {
         if ($utilisateur["email"] == $email && password_verify($password, $utilisateur["password"])) {
             if ($utilisateur["role"] === "Banni") {
-                echo "    <script>
-                            alert('Votre compte a été banni.');
-                            window.location.href = 'index.php';
-                          </script>";
-                exit;
+                $message = "banni";
+                break;
             }
-            $_SESSION["id"] = isset($utilisateur["id"]) ? $utilisateur["id"] : [];
-            $_SESSION["email"] = isset($utilisateur["email"]) ? $utilisateur["email"] : [];
-            $_SESSION["nom"] = isset($utilisateur["nom"]) ? $utilisateur["nom"] : [];
-            $_SESSION["role"] = isset($utilisateur["role"]) ? $utilisateur["role"] : [];
-            $_SESSION["voyages"] = isset($utilisateur["voyages"]) ? $utilisateur["voyages"] : [];
+            $_SESSION["id"] = $utilisateur["id"] ?? [];
+            $_SESSION["email"] = $utilisateur["email"] ?? [];
+            $_SESSION["nom"] = $utilisateur["nom"] ?? [];
+            $_SESSION["role"] = $utilisateur["role"] ?? [];
+            $_SESSION["voyages"] = $utilisateur["voyages"] ?? [];
 
             setcookie("sans-gluten", $_SESSION["id"], time() + 7200, "/");
             header("Location: index.php");
@@ -36,9 +34,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    echo("Identifiant invalide");
+    if (!$message) {
+        $message = "invalide";
+    }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -47,7 +48,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="../Css/style.css">
     <link rel="stylesheet" href="../Css/auth.css">
 </head>
-<body>
+<body class="authentification">
+
 
 <div class="content">
     <form method="POST" id="loginForm">
@@ -76,33 +78,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </table>
     </form>
 </div>
-
-<script>
-    function toggleVisibility() {
-        var passwordField = document.getElementById("password");
-        var type = passwordField.type === "password" ? "text" : "password";
-        passwordField.type = type;
-    }
-
-    document.getElementById("loginForm").addEventListener("submit", function(e) {
-        const email = document.getElementById("email").value.trim();
-        const password = document.getElementById("password").value;
-
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (email === "" || password === "") {
-            alert("Tous les champs doivent être remplis.");
-            e.preventDefault();
-            return;
-        }
-
-        if (!emailRegex.test(email)) {
-            alert("Adresse email invalide.");
-            e.preventDefault();
-            return;
-        }
-    });
-</script>
+<div id="login-message" data-status="<?= htmlspecialchars($message) ?>" style="display: none;"></div>
+<script src="connexion.js"></script>
 
 </body>
 </html>

@@ -7,6 +7,11 @@ if (!isset($info_util['id'])) {
     exit;
 }
 
+if (!isset($_SESSION['id'])) {
+    header("Location: connexion.php");
+    exit;
+}
+
 // Traitement du formulaire
 $queue_dir = "../queue";
 if (!file_exists($queue_dir)) {
@@ -92,7 +97,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </script>
 </head>
 
-<body>
+<body class="profil">
+
 <h1 class="title">Profil</h1>
 <form method="POST">
     <table>

@@ -8,10 +8,11 @@ if (isset($info_util['id'])) {
 }
 
 $utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier), true) : [];
+$message = "";
 
 $queue_dir = "../queue";
 if (!file_exists($queue_dir)) {
-    mkdir("../json/$queue_dir", 0777, true);
+    mkdir($queue_dir, 0777, true);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -23,40 +24,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mdp_confirm = $_POST["mdp_confirm"];
 
     if ($email !== $email_confirm) {
-        echo "Les emails ne correspondent pas !";
+        $message = "email_mismatch";
+    } elseif ($password !== $mdp_confirm) {
+        $message = "password_mismatch";
+    } elseif (array_filter($utilisateurs, fn($u) => $u["email"] === $email)) {
+        $message = "email_exists";
+    } else {
+        $nv_id = count($utilisateurs) > 0 ? max(array_column($utilisateurs, "id")) + 1 : 1;
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        $nv_util = [
+            "id" => "0",
+            "nom" => $nom,
+            "prenom" => $prenom,
+            "email" => $email,
+            "password" => $hashed_password,
+            "role" => "normal",
+        ];
+
+        $utilisateurs[] = $nv_util;
+        $queue_file = $queue_dir . "/" . uniqid("user_", true) . ".json";
+        file_put_contents($queue_file, json_encode($nv_util, JSON_PRETTY_PRINT));
+
+        header("Location: connexion.php");
         exit;
     }
-
-    if ($password !== $mdp_confirm) {
-        echo "Les mots de passe ne correspondent pas !";
-        exit;
-    }
-
-    foreach ($utilisateurs as $utilisateur) {
-        if ($utilisateur["email"] === $email) {
-            exit("Erreur : cet email est déjà utilisé.");
-        }
-    }
-
-    $nv_id = count($utilisateurs) > 0 ? max(array_column($utilisateurs, "id")) + 1 : 1;
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-    $nv_util = [
-        "id" => "0",
-        "nom" => $nom,
-        "prenom" => $prenom,
-        "email" => $email,
-        "password" => $hashed_password,
-        "role" => "normal",
-    ];
-    $utilisateurs[] = $nv_util;
-
-    $queue_file = $queue_dir . "/" . uniqid("user_", true) . ".json";
-    file_put_contents($queue_file, json_encode($nv_util, JSON_PRETTY_PRINT));
-    header("Location: connexion.php");
-    exit;
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -67,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="../Css/auth.css">
 </head>
 
-<body>
+<body class="authentification">
 <div class="content">
     <form method="POST" id="formInscription">
         <table>
@@ -116,36 +111,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </table>
     </form>
 </div>
-
-<script>
-    document.getElementById("formInscription").addEventListener("submit", function(e) {
-        const nom = document.getElementById("nom").value.trim();
-        const prenom = document.getElementById("prenom").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const emailConfirm = document.getElementById("email_confirm").value.trim();
-        const password = document.getElementById("password").value;
-        const mdpConfirm = document.getElementById("mdp_confirm").value;
-
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (!nom || !prenom || !email || !emailConfirm || !password || !mdpConfirm) {
-            alert("Tous les champs doivent être remplis.");
-            e.preventDefault();
-            return;
-        }
-
-        if (!emailRegex.test(email)) {
-            alert("L'adresse email n'est pas valide.");
-            e.preventDefault();
-            return;
-        }
-    });
-
-    function toggleVisibility(fieldId) {
-        const field = document.getElementById(fieldId);
-        field.type = field.type === "password" ? "text" : "password";
-    }
-</script>
+<div id="signup-message" data-status="<?= htmlspecialchars($message) ?>" style="display: none;"></div>
+<script src="inscription.js"></script>
 
 </body>
 </html>

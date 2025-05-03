@@ -47,5 +47,6 @@ foreach ($voyages_page as $voyage) {
         <a href="?page=<?= $page + 1 ?>">Suivant</a>
     <?php endif; ?>
 </div>
+
 </body>
 </html>

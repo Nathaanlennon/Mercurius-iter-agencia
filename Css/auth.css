@@ -1,12 +1,9 @@
-
 table, tr, th, td {
-    border: 1px solid #650065;
-
-
+    border: 1px solid var(--link-hover-bg); /* Utilisation de la variable pour les bordures */
 }
 
 table {
-    border: 1px solid black;
+    border: 1px solid var(--link-hover-bg); /* Bordure adaptative en fonction du mode */
     border-spacing: 0;
     border-radius: 5px;
     margin: auto;
@@ -15,21 +12,18 @@ table {
 th {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    background: #9a0000;
-    color: white;
+    background: var(--link-hover-bg); /* Changer la couleur de fond en fonction du mode */
+    color: var(--th-text-color); /* Changer la couleur du texte en fonction du mode */
 }
 
 td {
-
-    background: #f7c041
+    background: var(--p-bg); /* Changer la couleur de fond en fonction du mode */
 }
 
 #button {
     border-radius: 5px;
     text-align: center;
 }
-
-
 
 tr:last-child td {
     border-bottom-left-radius: 5px;
@@ -40,8 +34,6 @@ th, td {
     padding: 0.2em;
     font-size: 2em;
 }
-
-
 
 input[type="text"] {
     width: 20em;
@@ -56,7 +48,7 @@ input[type="text"] {
 
 .input-container input {
     width: 100%;
-    padding-right: 40px; /* laisse de l'espace pour le bouton */
+    padding-right: 40px; /* Laisse de l'espace pour le bouton */
     box-sizing: border-box;
 }
 

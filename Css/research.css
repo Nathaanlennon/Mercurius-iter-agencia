@@ -1,8 +1,8 @@
-* *{
+* * {
     /*border:1px solid black;*/
 }
 
-.content{
+.content {
     display: flex;
     justify-content: space-evenly;
 }
@@ -14,13 +14,10 @@ form {
     border-radius: 5px;
     width: 50%;
     font-size: 30px;
-    background-color: white;
+    background-color: var(--p-bg);
     padding-bottom: 0.5em;
-    box-shadow: 5px 5px 7.5px #650065;
-}
-
-form * {
-
+    box-shadow: 5px 5px 7.5px var(--p-shadow);
+    color: var(--text-color);
 }
 
 form > h6 {
@@ -28,16 +25,17 @@ form > h6 {
     padding-left: 0.5em;
     padding-right: 0.5em;
     border-radius: 15px;
-
 }
 
 #stages {
-    border: black solid 1px;
+    border: var(--text-color) solid 1px;
     border-radius: 5px;
     padding: 3px;
     font-size: 20px;
     overflow-y: auto;
     max-height: 5.8em;
+    background-color: var(--p-bg);
+    color: var(--text-color);
 }
 
 #stages input[type="checkbox"] {
@@ -57,37 +55,40 @@ form > h6 {
 .hotels {
     font-size: 20px;
     text-align: center;
+    color: var(--text-color);
 }
-.hotels label{
 
+.hotels label {
     border-radius: 5px;
-    border: black solid 1px;
+    border: var(--text-color) solid 1px;
     text-align: center;
     margin: 0.5em;
-
+    background-color: var(--p-bg);
+    color: var(--text-color);
 }
 
 .hotels label:has(:checked) {
     background-color: #950065;
     color: white;
-    border:none;
+    border: none;
 }
 
 .hotels input[type="checkbox"] {
     display: none;
     visibility: hidden;
-
 }
 
 .titres {
     margin-bottom: 0.25em;
+    color: var(--text-color);
 }
 
 .result {
     border-radius: 5px;
-    box-shadow: 5px 5px 7.5px #650065;
-    background-color: white;
+    box-shadow: 5px 5px 7.5px var(--p-shadow);
+    background-color: var(--p-bg);
     padding: 0.5em;
     text-align: center;
     margin: 0.8em;
+    color: var(--text-color);
 }
