@@ -112,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 </div>
 <div id="signup-message" data-status="<?= htmlspecialchars($message) ?>" style="display: none;"></div>
-<script src="inscription.js"></script>
+<script src="../js/inscription.js"></script>
 
 </body>
 </html>
