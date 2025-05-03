@@ -63,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../Css/style.css">
     <link rel="stylesheet" href="../Css/admin.css">
 </head>
+
 <body>
 <div class="content">
 
@@ -74,6 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <table>
         <tr>
             <th>ID</th>
+            <th>Email</th>
             <th>Etat</th>
         </tr>
         <?php
@@ -81,14 +83,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ?>
             <tr>
                 <td><?= htmlspecialchars($util['id']) ?></td>
+                <td><?= htmlspecialchars($util['email']) ?></td>
                 <td>
-                    <form method="post">
+                    <form method="post" class="change-form">
                         <input type="hidden" name="util_id" value="<?= htmlspecialchars($util['id']) ?>">
-                        <label> <select name="role">
+                        <label>
+                            <select name="role">
                                 <option value="Normal" <?= $util['role'] == 'Normal' ? 'selected' : '' ?>>Normal</option>
                                 <option value="VIP" <?= $util['role'] == 'VIP' ? 'selected' : '' ?>>VIP</option>
                                 <option value="Banni" <?= $util['role'] == 'Banni' ? 'selected' : '' ?>>Banni</option>
-                            </select> </label>
+                            </select>
+                        </label>
                         <button type="submit" name="maj_role">Modifier</button>
                     </form>
                 </td>
@@ -109,5 +114,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
 </div>
+<script src="../js/admin.js"></script>
+
+
+
 </body>
 </html>
