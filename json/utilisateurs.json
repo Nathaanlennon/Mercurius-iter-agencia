@@ -31,15 +31,23 @@
     },
     {
         "id": "3",
-        "nom": "auguste",
+        "nom": "augustefdsgsdfsdfg d df fd s fg",
         "prenom": "philipe",
         "email": "ap@gmail.com",
         "password": "$2y$10$e1.DgzCEy7zQWO3Mzko9x..SbUnPY2DjNMsJDvx4fbv8ujbG2qjSq",
         "role": "normal",
         "voyages": {
             "Hispania": {
-                "pay\u00e9": false,
+                "pay\u00e9": true,
                 "config": "id=2&depart=2025-05-01&nb_personnes=1&01=5&02%5B0%5D=1&02%5B1%5D=2&03=1&11=5&13=4&21=1&22%5B0%5D=2&23=4"
+            },
+            "Septentrionalis": {
+                "pay\u00e9": true,
+                "config": "id=0&depart=2025-05-04&nb_personnes=1&01=1&03=1&11=1&13=1&21=1&23=1&31=1&33=1&41=1&43=1&51=1&53=1&61=1&63=1&71=1&73=1&81=1&83=1&91=1&93=1&101=1&103=1&111=1&113=1&121=1&123=1&131=1&133=1&141=1&143=1&151=1&153=1&161=1&163=1&171=1&173=1&181=1&183=1"
+            },
+            "Imperium": {
+                "pay\u00e9": false,
+                "config": "id=5&depart=2025-05-04&nb_personnes=1&01=1&03=1&11=1&13=1&21=1&23=1&31=1&33=1&41=1&43=1&51=1&53=1&61=1&63=1&71=1&73=1&81=1&83=1&91=1&93=1&101=1&103=1&111=1&113=1&121=1&123=1&131=1&133=1&141=1&143=1&151=1&153=1&161=1&163=1&171=1&173=1&181=1&183=1&191=1&193=1&201=1&203=1&211=1&213=1&221=1&223=1&231=1&233=1&241=1&243=1&251=1&253=1&261=1&263=1&271=1&273=1&281=1&283=1&291=1&293=1"
             }
         }
     },
@@ -50,5 +58,64 @@
         "email": "admin2@gmail.com",
         "password": "$2y$10$QX4vaExW09QfZusrh7jYgeYO7Xrp7E83lGTFBrDfYe5ZSAPYlBYaC",
         "role": "admin"
+    },
+    {
+        "id": 5,
+        "nom": "op",
+        "prenom": "op",
+        "email": "op@gmail.com",
+        "password": "$2y$10$HvnCcY6L8uwSdgsLjzSHV.r3Tr.fnDUKV1VLoZlUdojb1wibbd2AO",
+        "role": "normal"
+    },
+    {
+        "id": 6,
+        "voyages": {
+            "Meridionalis": {
+                "pay\u00e9": false,
+                "config": "id=1&depart=2025-05-04&nb_personnes=1&01=1&03=1&11=1&13=1&21=1&23=1&31=1&33=1&41=1&43=1&51=1&53=1&61=1&63=1&71=1&73=1&81=1&83=1&91=1&93=1&101=1&103=1"
+            }
+        }
+    },
+    {
+        "id": 7,
+        "voyages": {
+            "Meridionalis": {
+                "pay\u00e9": true
+            }
+        }
+    },
+    {
+        "id": 8,
+        "voyages": {
+            "Meridionalis": {
+                "pay\u00e9": false,
+                "config": "id=1&depart=2025-05-04&nb_personnes=1&01=1&03=1&11=1&13=1&21=1&23=1&31=1&33=1&41=1&43=1&51=1&53=1&61=1&63=1&71=1&73=1&81=1&83=1&91=1&93=1&101=1&103=1"
+            }
+        }
+    },
+    {
+        "id": 9,
+        "voyages": {
+            "Gallia": {
+                "pay\u00e9": false,
+                "config": "id=3&depart=2025-05-04&nb_personnes=1&01=1&03=1&11=1&13=1&21=1&23=1&31=1&33=1"
+            }
+        }
+    },
+    {
+        "id": 10,
+        "voyages": {
+            "Meridionalis": {
+                "pay\u00e9": true
+            }
+        }
+    },
+    {
+        "id": 11,
+        "voyages": {
+            "Gallia": {
+                "pay\u00e9": true
+            }
+        }
     }
 ]

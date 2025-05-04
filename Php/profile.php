@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $queue_file = $queue_dir . "/" . uniqid("delete_", true) . ".json";
             file_put_contents($queue_file, json_encode($suppression, JSON_PRETTY_PRINT));
 
+            unset($_SESSION['panier'][$voyageToDelete]);
             unset($_SESSION['voyages'][$voyageToDelete]);
         }
 
