@@ -19,7 +19,6 @@ function array_fusion($array1, $array2)
     }
     return $array1;
 }
-
 if (!is_dir($queue_dir)) {
     exit();
 }
@@ -46,9 +45,20 @@ while (true) {
         if ($data["id"] != 0) {
             foreach ($utilisateurs as &$util) {
                 if ($util['id'] == $data['id']) {
-                    $util = array_fusion($util, $data);
-                    echo "Modification de l'utilisateur ID: " . $data['id'] . "\n";
-                    break; //
+
+                    if (isset($data['action']) && $data['action'] === 'delete_voyage' && isset($data['voyage'])) {
+                        $voyage = $data['voyage'];
+                        if (isset($util['voyages'][$voyage])) {
+                            unset($util['voyages'][$voyage]);
+                            echo "Voyage '$voyage' supprimé pour l'utilisateur ID: " . $data['id'] . "\n";
+                        } else {
+                            echo "Voyage '$voyage' introuvable pour l'utilisateur ID: " . $data['id'] . "\n";
+                        }
+                    } else {
+                        $util = array_fusion($util, $data);
+                        echo "Modification de l'utilisateur ID: " . $data['id'] . "\n";
+                    }
+                    break;
                 }
             }
 
@@ -60,6 +70,8 @@ while (true) {
 
         }
         unlink($file);
+        print_r($utilisateurs);
+        echo "BATARD";
     }
     file_put_contents($fichier_utilisateurs, json_encode($utilisateurs, JSON_PRETTY_PRINT));
     echo "Traitement de la queue terminé.";
