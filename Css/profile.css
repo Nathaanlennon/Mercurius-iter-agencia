@@ -33,14 +33,14 @@ td, th {
     height: 50px;
 }
 
-#button {
-    border-radius: 5px;
-    text-align: center;
-}
+/*#button {*/
+/*    border-radius: 5px;*/
+/*    text-align: center;*/
+/*}*/
 
-button {
-    font-family: Hadriatic, sans-serif;
-}
+/*button {*/
+/*    font-family: Hadriatic, sans-serif;*/
+/*}*/
 
 input {
     border: none;
