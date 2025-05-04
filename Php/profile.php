@@ -147,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <tr>
                 <td><?php echo htmlspecialchars($key); ?></td>
                 <td>
-                    <button onclick="href='trip_recap.php?<?php echo htmlspecialchars($voyage["config"]); ?>">Voir détail</button>
+                    <button onclick="window.location.href='trip_recap.php?<?php echo (htmlspecialchars($voyage["config"])); ?>'">Voir détail</button>
                     <?php if (!$voyage['payé']): ?>
                         <form method="POST" style="display:inline;">
                             <input type="hidden" name="action" value="delete_voyage">
