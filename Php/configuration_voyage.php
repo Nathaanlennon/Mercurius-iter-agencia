@@ -11,8 +11,6 @@ if (!isset($_SESSION['id'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
-
-
     $voyage["id"] = $_GET["id"];
     if (file_exists("../json/voyagetest.json")) {
         $file = json_decode(file_get_contents("../json/voyagetest.json"), true);
@@ -41,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
                 }
             }
         }
+
 //        $queue_file = $queue_dir . "/" . uniqid("user_", true) . ".json";
 //        if (isset($_GET["nb_personnes"])) {
 //            file_put_contents($queue_file, json_encode(["id" => $_SESSION["id"], "voyages" => [$voyage["name"] => ["payé" => false, "config" => $_SERVER['QUERY_STRING']]]], JSON_PRETTY_PRINT));
@@ -96,11 +95,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
                 "config" => http_build_query($_POST)
             ];
         }
+        if (isset($_SESSION['panier'])) {
+            $trip_panier = -1;
+            foreach ($_SESSION['panier'] as $key=> $stage) {
+                if($key == $voyage["name"]) {
+                    $_SESSION['panier'][$key]=["payé" => false,
+                        "config" => http_build_query($_POST)];
+                    $_SESSION['panier'][$key]['duree'] = (count($voyage["stages"]));
+                    $_SESSION['panier'][$key]['id'] = $voyage["id"];
+                    $trip_panier = 1;
+                    break;
+                }
+            }
+            if($trip_panier == -1){
+                $_SESSION['panier'][$voyage['name']] = ["payé" => false,
+                    "config" => http_build_query($_POST), "duree" => (count($voyage["stages"])), "id" => $voyage["id"]];
+            }
+        }
+        else{
+            $_SESSION['panier'][$voyage['name']] = ["payé" => false,
+                "config" => http_build_query($_POST), "duree" => (count($voyage["stages"])), "id" => $voyage["id"]];
+        }
     }
     header("Location: profile.php");
-}
-
-else {
+} else {
     header("Location: choice.php");
     exit();
 }
@@ -142,16 +160,16 @@ else {
         const transport = stage[2] ?? 1;
         total += transports_price[transport - 1]
 
-        stage.forEach(s=>{
+        stage.forEach(s => {
             console.log(typeof s);
         })
 
-        return total*nb_personnes;
+        return total * nb_personnes;
     }
 
     // Calcule le prix total pour tous les stages
     function calcul_price(data, nb_personnes = 1) {
-        let total = 100*nb_personnes;
+        let total = 100 * nb_personnes;
 
         data.forEach(stage => {
             total += calcul_stage(stage, nb_personnes);
@@ -168,33 +186,33 @@ else {
         <?php
 
         for ($i = 0; $i < count($voyage["stages"]); $i++) {
-            echo "price[" . $i . "][0] = " .(${$i . "1"} ?? 1). ";\n";
+            echo "price[" . $i . "][0] = " . (${$i . "1"} ?? 1) . ";\n";
 
             if (isset(${$i . "2"})) {
                 foreach (${$i . "2"} as $activity) {
                     switch ($activity) {
                         case 1:
-                            echo "price[" . $i . "][1] += ".(1).";\n";
+                            echo "price[" . $i . "][1] += " . (1) . ";\n";
                             break;
                         case 2:
-                            echo "price[" . $i . "][1] += ".(2).";\n";
+                            echo "price[" . $i . "][1] += " . (2) . ";\n";
                             break;
                         case 3:
-                            echo "price[" . $i . "][1] += ".(4).";\n";
+                            echo "price[" . $i . "][1] += " . (4) . ";\n";
                             break;
                         case 4:
-                            echo "price[" . $i . "][1] += ".(8).";\n";
+                            echo "price[" . $i . "][1] += " . (8) . ";\n";
                     }
                 }
             }
 
-            echo "price[" . $i . "][2] =". (${$i . "3"}??1) ."\n";
+            echo "price[" . $i . "][2] =" . (${$i . "3"} ?? 1) . "\n";
 
         }
 
         ?>
         nb_personnes = <?php echo($nb_personnes ?? 1) ?>;
-        document.getElementById("avion").textContent = (nb_personnes*100).toString();
+        document.getElementById("avion").textContent = (nb_personnes * 100).toString();
 
         //fin init
 
@@ -202,10 +220,10 @@ else {
 
         /** @type {HTMLInputElement} */
         const number_input = document.getElementById("nb_personnes");
-        number_input.addEventListener("change", ()=>{
+        number_input.addEventListener("change", () => {
             nb_personnes = number_input.value;
             console.log(nb_personnes)
-            document.getElementById("avion").textContent = (nb_personnes*100).toString();
+            document.getElementById("avion").textContent = (nb_personnes * 100).toString();
             document.getElementById("price").textContent = calcul_price(price, nb_personnes).toString();
 
         });
@@ -230,7 +248,7 @@ else {
                             switch (champ.type) {
                                 case 'checkbox':
                                     console.log("checkbox" + index_trip);
-                                    price[index_trip][1] ^= (1<<champ.value-1);
+                                    price[index_trip][1] ^= (1 << champ.value - 1);
                                     break;
                                 case 'radio':
                                     // console.log("radio" + index_trip);
@@ -293,7 +311,8 @@ else {
             <label for="depart">Date de départ : <input type="date" name="depart" min="<?php echo date('Y-m-d') . "\"
                                                 value=\"" . ($depart ?? date('Y-m-d')) ?>"
                                                         required></label>
-            <label for="nb_personnes">Nombre de personnes : <input type="number" name="nb_personnes" id="nb_personnes" min="1" max="10"
+            <label for="nb_personnes">Nombre de personnes : <input type="number" name="nb_personnes" id="nb_personnes"
+                                                                   min="1" max="10"
                                                                    value="<?php echo($nb_personnes ?? 1) ?>"
                                                                    required></label>
             <br>

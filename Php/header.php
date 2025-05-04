@@ -53,12 +53,15 @@ if (isset($_COOKIE["sans-gluten"]) && !isset($_SESSION['id'])) {
         <nav>
             <?php
             if (isset($info_util['role']) && $info_util['role'] === "admin") {
-                echo '<a href="admin.php">Admin</a>';
+                echo '<a href="admin.php" class="purple">Admin</a>';
             }
             ?>
             <a href="presentation.php" class="purple">À propos</a>
             <a href="research.php" class="purple">Recherche</a>
             <a href="choice.php" class="red">Choix</a>
+            <?php if (isset($_SESSION['panier'])) {
+                echo "<a href='panier.php' class='red'>Panier</a>";
+            } ?>
             <button id="theme-toggle">Mode sombre</button>
         </nav>
     </header>

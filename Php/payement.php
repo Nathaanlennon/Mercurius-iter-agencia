@@ -2,6 +2,13 @@
 include "header.php";
 include "../getapikey/getapikey.php";
 
+
+$info_util = $_SESSION;
+if (!isset($info_util['id'])) {
+    header("Location: connexion.php");
+    exit;
+}
+
 $queue_dir = "../queue"; // Dossier de la queue
 if (!file_exists($queue_dir)) {
     mkdir($queue_dir, 0777, true);
@@ -9,19 +16,34 @@ if (!file_exists($queue_dir)) {
 
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
     if ($_GET["status"] === "accepted") {
-        $voyage["id"] = substr($_GET["transaction"], 1, 1);
-        $file = json_decode(file_get_contents("../json/voyagetest.json"), true);
-        foreach ($file as $trip) {
-            if ($trip["id"] == $voyage["id"]) {
-                $voyage = $trip;
-                break;
-            }
-        }
-        echo "<h1>Paiement effectué avec succès</h1>";
-        $queue_file = $queue_dir . "/" . uniqid("user_", true) . ".json";
-        file_put_contents($queue_file, json_encode(["id" => (substr($_GET["transaction"], 0, 1)), "voyages" => [$voyage["name"] => ["payé" => true]]], JSON_PRETTY_PRINT));
+        switch (substr($_GET['transaction'], 2, 1)){
+            case 0:
+                $voyage["id"] = substr($_GET["transaction"], 1, 1);
+                $file = json_decode(file_get_contents("../json/voyagetest.json"), true);
+                foreach ($file as $trip) {
+                    if ($trip["id"] == $voyage["id"]) {
+                        $voyage = $trip;
+                        break;
+                    }
+                }
+                echo "<h1>Paiement effectué avec succès</h1>";
+                $queue_file = $queue_dir . "/" . uniqid("user_", true) . ".json";
+                file_put_contents($queue_file, json_encode(["id" => (substr($_GET["transaction"], 0, 1)), "voyages" => [$voyage["name"] => ["payé" => true]]], JSON_PRETTY_PRINT));
 
-        $_SESSION["voyages"][$voyage["name"]]["payé"] = true;
+                $_SESSION["voyages"][$voyage["name"]]["payé"] = true;
+                break;
+            case 1:
+                foreach ($_SESSION['panier'] as $key => $tab) {
+                    $tab["payé"] = true;
+                    $_SESSION["voyages"][$key]["payé"] = true;
+                    $queue_file = $queue_dir . "/" . uniqid("user_", true) . ".json";
+                    print_r($_SESSION["panier"]);
+                    file_put_contents($queue_file, json_encode(["id" => (substr($_GET["transaction"], 0, 1)), "voyages" => [$key => ["payé" => true]]], JSON_PRETTY_PRINT));
+                }
+                break;
+        }
+
+
         echo "<a href='index.php'>Retour à la page d'accueil</a>";
     } else if ($_GET["status"] === "denied") {
         echo "<h1>Erreur lors du paiement</h1>";
