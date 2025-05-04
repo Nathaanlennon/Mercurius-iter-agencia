@@ -18,11 +18,11 @@ mdp : dp
 email : ap@gmail.com
 mdp : ap
 
-email : lz@gmail.com
-mdp lz
+email : admin2@gmail.com
+mdp : 000
 
-email : b@gmail.com
-mdp : b
+email : op@gmail.com
+mdp : op
 
 pour acceder aux administrateurs, le mot de passe est : 000
 
@@ -34,3 +34,7 @@ Elles sont en .json
 Voyages : les voyages sont composés de l'id du voyage, le nom, le prix minimum pour une personne, la durée, une liste de toutes les étapes et une liste des mots clés.
 
 La base de donnee utilisateurs.json contient les nom prenom email mot de passe et etat de chaque utilisateur. l'etat est par defaut a normal, sauf si l'admin le change, l'etat banni l'interdit de se connecter
+
+### L'identifiant des transactions : 
+
+Les transactions ont un identifiant de 15 caractères hexa ; le premier correspond au type de transaction (normale ou panier) ; le deuxieme le nombre de chiffres de l'id ; les m suivants l'id de l'utilisateur ; ensuite le nombre de chffres de l'id du voyage ; les n suivants l'id du voyage ; le reste est completé aléatoirement
