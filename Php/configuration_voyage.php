@@ -40,14 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
             }
         }
 
-//        $queue_file = $queue_dir . "/" . uniqid("user_", true) . ".json";
-//        if (isset($_GET["nb_personnes"])) {
-//            file_put_contents($queue_file, json_encode(["id" => $_SESSION["id"], "voyages" => [$voyage["name"] => ["payé" => false, "config" => $_SERVER['QUERY_STRING']]]], JSON_PRETTY_PRINT));
-//            $_SESSION["voyages"][$voyage["name"]] = ["payé" => false, "config" => $_SERVER['QUERY_STRING']];
-//        }
-
+//
     }
-
+//pour enregistrer les données, on récupère les valeurs ezt on met à jour la base de donnée
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["id"])) {
 
     $voyage["id"] = $_POST["id"];
@@ -150,6 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
 
             if (isset(${$i . "2"})) {
                 foreach (${$i . "2"} as $activity) {
+                    // du binaire bitflag
                     switch ($activity) {
                         case 1:
                             echo "price[" . $i . "][1] += " . (1) . ";\n";
@@ -172,6 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
 
         ?>
         nb_personnes = <?php echo($nb_personnes ?? 1) ?>;
+        //pour le prix de l'avion de départ
         document.getElementById("avion").textContent = (nb_personnes * 100).toString();
 
         //fin init

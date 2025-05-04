@@ -41,7 +41,7 @@ if (isset($_COOKIE["sans-gluten"]) && !isset($_SESSION['id'])) {
                     <?php
                     if (isset($_SESSION['id'])) {
                         echo '<a href="profile.php" class="red">Profil</a>';
-                        echo '<a href="deconnexion.php" class="red">Déconnexion</a>';
+                        echo '<a href="../script/deconnexion.php" class="red">Déconnexion</a>';
                     } else {
                         echo '<a href="inscription.php" class="red">Inscription</a>';
                         echo '<a href="connexion.php" class="red">Connexion</a>';

@@ -14,11 +14,15 @@ if (!file_exists($queue_dir)) {
     mkdir($queue_dir, 0777, true);
 }
 
+//la méthode get correspond au retour du payement après passage à cybank
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
     if ($_GET["status"] === "accepted") {
         switch (substr($_GET['transaction'], 0, 1)){
+            //cas 0 pour un seul voyage en normal
             case 0:
+                //mise à jour de la base de donnée
                 $voyage["id"] = substr($_GET["transaction"], 4, substr($_GET["transaction"], 3, 1));
+                //on suit la logique de l'id transaction
                 $file = json_decode(file_get_contents("../json/voyagetest.json"), true);
                 foreach ($file as $trip) {
                     if ($trip["id"] == $voyage["id"]) {
@@ -36,7 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
                     unset($_SESSION['panier'][$voyage["name"]]);
                 }
                 break;
+                //cas 1 pour utilisation du panier
             case 1:
+                //mise à jour de la base de donnée
                 foreach ($_SESSION['panier'] as $key => $tab) {
                     $_SESSION["voyages"][$key]["payé"] = true;
                     $queue_file = $queue_dir . "/" . uniqid("user_", true) . ".json";
@@ -51,6 +57,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     } else if ($_GET["status"] === "denied") {
         echo "<h1>Erreur lors du paiement</h1>";
     }
+
+    //méthode post pour envoyer la requête de paiement
 } else if (($_SERVER["REQUEST_METHOD"] != "POST") || !isset($_POST["price"]) || !isset($_POST["id"])) {
     header("location:index.php");
     exit();

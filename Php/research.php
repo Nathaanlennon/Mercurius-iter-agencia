@@ -60,9 +60,11 @@ include "header.php";
         if ($file == null || $file == []) {
             echo "<p>Aucun voyage ne correspond à votre recherche.</p>";
         } else {
+            // le tri
             echo "<form id='tri'>"
                 . "<label for='tri'>Trier par : </label>"
                 . "<select name='type' id='type'>"
+                . "<option value=''>Aucun</option>"
                 . "<option value='prix'>Prix</option>"
                 . "<option value='duree'>Durée</option>"
                 . "<option value='nom'>Nom</option>"
@@ -77,7 +79,7 @@ include "header.php";
                 . "</form>"
                 . "<div id='trips'>";
 
-
+            //le filtrage qui parcours la base de donnée et passe à chaque fois que les conditions en sont pas remplies
             foreach ($file as $voyage) {
                 if (isset($_GET["price"])) {
                     if (!($voyage["price"] * ($_GET["nb_utilisateurs"] ?? 1) <= $_GET["price"])) {
