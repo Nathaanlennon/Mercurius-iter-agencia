@@ -81,16 +81,16 @@ a {
     align-self: center;
 }
 
-a:hover {
-    background-color: var(--link-hover-bg);
+a:hover{
+    background-color: #9a0000;
     color: var(--link-hover-color);
 }
 
-a.purple:hover {
+a.purple:hover, #theme-toggle:hover {
     background-color: #650065;
 }
 
-a.red:hover {
+a.red:hover, :root[data-theme="dark"] #theme-toggle:hover   {
     background-color: #9a0000;
 }
 
@@ -159,8 +159,11 @@ button {
     font-family: hadriatic, sans-serif;
     font-size: 0.75em;
     padding: 0.2em;
-    cursor: pointer;
     border-radius: 5px;
+}
+
+button:hover {
+    background:#650065;
 }
 
 body.profil th {
@@ -202,7 +205,6 @@ body.authentification td {
     color: black;
     padding: 0.5em 1em;
     border-radius: 5px;
-    cursor: pointer;
     border: none;
     font-size: 1rem;
 }

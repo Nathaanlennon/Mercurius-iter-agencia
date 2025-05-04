@@ -1,13 +1,18 @@
 <?php
+include "header.php";
+
+$info_util = $_SESSION;
+if (!isset($info_util['id'])) {
+    header("Location: connexion.php");
+    exit;
+}
 
 if (!($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"]))) {
     header("Location: ../index.php");
     exit();
-
-} else {
-    include "header.php";
-
 }
+
+
 ?>
 
 <!DOCTYPE html>
