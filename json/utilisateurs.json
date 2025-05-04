@@ -61,60 +61,15 @@
     },
     {
         "id": 5,
-        "nom": "op",
+        "nom": "opo",
         "prenom": "op",
         "email": "op@gmail.com",
         "password": "$2y$10$HvnCcY6L8uwSdgsLjzSHV.r3Tr.fnDUKV1VLoZlUdojb1wibbd2AO",
-        "role": "normal"
-    },
-    {
-        "id": 6,
-        "voyages": {
-            "Meridionalis": {
-                "pay\u00e9": false,
-                "config": "id=1&depart=2025-05-04&nb_personnes=1&01=1&03=1&11=1&13=1&21=1&23=1&31=1&33=1&41=1&43=1&51=1&53=1&61=1&63=1&71=1&73=1&81=1&83=1&91=1&93=1&101=1&103=1"
-            }
-        }
-    },
-    {
-        "id": 7,
-        "voyages": {
-            "Meridionalis": {
-                "pay\u00e9": true
-            }
-        }
-    },
-    {
-        "id": 8,
-        "voyages": {
-            "Meridionalis": {
-                "pay\u00e9": false,
-                "config": "id=1&depart=2025-05-04&nb_personnes=1&01=1&03=1&11=1&13=1&21=1&23=1&31=1&33=1&41=1&43=1&51=1&53=1&61=1&63=1&71=1&73=1&81=1&83=1&91=1&93=1&101=1&103=1"
-            }
-        }
-    },
-    {
-        "id": 9,
+        "role": "normal",
         "voyages": {
             "Gallia": {
                 "pay\u00e9": false,
                 "config": "id=3&depart=2025-05-04&nb_personnes=1&01=1&03=1&11=1&13=1&21=1&23=1&31=1&33=1"
-            }
-        }
-    },
-    {
-        "id": 10,
-        "voyages": {
-            "Meridionalis": {
-                "pay\u00e9": true
-            }
-        }
-    },
-    {
-        "id": 11,
-        "voyages": {
-            "Gallia": {
-                "pay\u00e9": true
             }
         }
     }

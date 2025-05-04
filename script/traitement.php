@@ -42,7 +42,7 @@ while (true) {
             unlink($file);
             continue;
         }
-        if ($data["id"] != 0) {
+        if ($data["id"] != 0 ) {
             foreach ($utilisateurs as &$util) {
                 if ($util['id'] == $data['id']) {
 
@@ -62,7 +62,7 @@ while (true) {
                 }
             }
 
-        } else {
+        } elseif(isset($date['email']) && isset($data['password']) && isset($data['nom']) && isset($data['prenom'])){
             end($utilisateurs);
             $data["id"] = key($utilisateurs) + 1;
             $utilisateurs[] = $data;
