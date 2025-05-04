@@ -13,10 +13,21 @@ $queue_dir = "../queue"; // Dossier de la queue
 if (!file_exists($queue_dir)) {
     mkdir($queue_dir, 0777, true);
 }
-
+?>
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Réservation</title>
+        <link rel="stylesheet" href="../Css/style.css">
+        <link rel="stylesheet" href="../Css/trip_sheet.css">
+    </head>
+<?php
 //la méthode get correspond au retour du payement après passage à cybank
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
     if ($_GET["status"] === "accepted") {
+        echo "<div class='content'>";
+        echo "<div id='recap'>";
         switch (substr($_GET['transaction'], 0, 1)){
             //cas 0 pour un seul voyage en normal
             case 0:
@@ -42,6 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
                 break;
                 //cas 1 pour utilisation du panier
             case 1:
+                echo "<h1>Paiement effectué avec succès</h1>";
                 //mise à jour de la base de donnée
                 foreach ($_SESSION['panier'] as $key => $tab) {
                     $_SESSION["voyages"][$key]["payé"] = true;
@@ -53,7 +65,11 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         }
 
 
+
+
         echo "<a href='index.php'>Retour à la page d'accueil</a>";
+        echo "</div>";
+        echo "</div>";
     } else if ($_GET["status"] === "denied") {
         echo "<h1>Erreur lors du paiement</h1>";
     }
