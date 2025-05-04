@@ -70,8 +70,6 @@ while (true) {
 
         }
         unlink($file);
-        print_r($utilisateurs);
-        echo "BATARD";
     }
     file_put_contents($fichier_utilisateurs, json_encode($utilisateurs, JSON_PRETTY_PRINT));
     echo "Traitement de la queue terminé.";
