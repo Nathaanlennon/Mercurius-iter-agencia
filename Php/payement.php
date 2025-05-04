@@ -31,6 +31,10 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
                 file_put_contents($queue_file, json_encode(["id" => (substr($_GET["transaction"], 2, substr($_GET["transaction"], 1, 1))), "voyages" => [$voyage["name"] => ["payé" => true]]], JSON_PRETTY_PRINT));
 
                 $_SESSION["voyages"][$voyage["name"]]["payé"] = true;
+
+                if(isset($_SESSION['panier'][$voyage["name"]])) {
+                    unset($_SESSION['panier'][$voyage["name"]]);
+                }
                 break;
             case 1:
                 foreach ($_SESSION['panier'] as $key => $tab) {

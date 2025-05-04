@@ -118,7 +118,7 @@ if (!($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"]))) {
         $nb_trip = strlen((string)$voyage['id']);
         echo "<form action='payement.php' method='post'>
     <input type='hidden' value='" . $price . "' name='price'>
-    <input type='hidden' value='" . (0) . $_SESSION["id"] . $voyage["id"] .  implode('', array_map(function () { //0 means it's a simple transaction
+    <input type='hidden' value='" . (0) . $nb_user. $_SESSION["id"] .$nb_trip. $voyage["id"] .  implode('', array_map(function () { //0 means it's a simple transaction
                 return dechex(rand(0, 15));
             }, range(1, 7 - $nb_trip-$nb_user))) . "' name='id'>
     <button type='submit'>Payement</button>
