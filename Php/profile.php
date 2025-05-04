@@ -36,7 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             unset($_SESSION['voyages'][$voyageToDelete]);
         }
 
-        header("Location: profile.php");
         exit;
     }
 
@@ -56,7 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $queue_file = $queue_dir . "/" . uniqid("user_", true) . ".json";
     file_put_contents($queue_file, json_encode($nv_info, JSON_PRETTY_PRINT));
-    header("Location: profile.php");
     exit;
 }
 ?>
@@ -69,8 +67,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="../Css/style.css">
     <link rel="stylesheet" href="../Css/profile.css">
     <script>
-        const nomInitial = "<?php echo htmlspecialchars($_SESSION['nom']); ?>";
-        const emailInitial = "<?php echo htmlspecialchars($_SESSION['email']); ?>";
+        globalthis.nomInitial = "<?php echo htmlspecialchars($_SESSION['nom']); ?>";
+        globalthis.emailInitial = "<?php echo htmlspecialchars($_SESSION['email']); ?>";
     </script>
     <script src="../js/profile.js"></script>
 </head>
@@ -78,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body class="profil">
 
 <h1 class="title">Profil</h1>
-<form method="POST">
+<form method="POST" id="profile-form">
     <table>
         <tr>
             <th>Nom</th>
@@ -115,7 +113,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <?php if (isset($_SESSION['voyages']) && !empty($_SESSION['voyages'])): ?>
     <h2 class="title">Mes Voyages</h2>
-    <table>
+    <div id="voyages-container">
+    <table id="voyages-table">
         <tr>
             <th>Nom du voyage</th>
             <th>Action</th>
@@ -127,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <td>
                     <button onclick="window.location.href='trip_recap.php?<?php echo htmlspecialchars($voyage["config"]); ?>'">Voir détail</button>
                     <?php if (!$voyage['payé']): ?>
-                        <form method="POST" style="display:inline;">
+                        <form method="POST" class="delete-voyage-form" style="display:inline;">
                             <input type="hidden" name="action" value="delete_voyage">
                             <input type="hidden" name="voyage" value="<?php echo htmlspecialchars($key); ?>">
                             <button type="submit">Annuler</button>
@@ -138,6 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </tr>
         <?php endforeach; ?>
     </table>
+    </div>
 <?php else: ?>
     <p>Aucun voyage sélectionné.</p>
 <?php endif; ?>

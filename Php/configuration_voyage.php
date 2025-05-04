@@ -5,10 +5,6 @@ $queue_dir = "../queue"; // Dossier de la queue
 if (!file_exists($queue_dir)) {
     mkdir($queue_dir, 0777, true);
 }
-if (!isset($_SESSION['id'])) {
-    header("Location: connexion.php");
-    exit;
-}
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
     $voyage["id"] = $_GET["id"];
@@ -19,10 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
                 $voyage = $trip;
                 break;
             }
-        }
-        if (!isset($_SESSION["voyages"]) || ((isset($_SESSION["voyages"][$voyage["name"]]) && $_SESSION["voyages"][$voyage["name"]]["payé"]))) {
-            header("Location: choice.php");
-            exit();
         }
         if (isset($_GET["depart"])) {
             $depart = $_GET["depart"];
@@ -55,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
             }
         }
         if (!isset($_SESSION["voyages"]) || (isset($_SESSION["voyages"][$voyage["name"]]) && $_SESSION["voyages"][$voyage["name"]]["payé"])) {
-            header("Location: choice.php");
+            header("Location: connexion.php");
             exit();
         }
         if (isset($_POST["depart"])) {
@@ -113,9 +105,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
         }
     }
     header("Location: profile.php");
-} else {
-    header("Location: choice.php");
-    exit();
 }
 
 
