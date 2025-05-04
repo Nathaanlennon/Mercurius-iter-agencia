@@ -69,32 +69,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="../Css/style.css">
     <link rel="stylesheet" href="../Css/profile.css">
     <script>
-        function enableNomEditing() {
-            document.getElementById('nom').removeAttribute('readonly');
-            document.getElementById('nom-edit-buttons').style.display = 'inline';
-            document.getElementById('nom-modify-button').style.display = 'none';
-        }
-
-        function cancelNomEditing() {
-            document.getElementById('nom').setAttribute('readonly', true);
-            document.getElementById('nom-edit-buttons').style.display = 'none';
-            document.getElementById('nom-modify-button').style.display = 'inline';
-            document.getElementById('nom').value = '<?php echo htmlspecialchars($_SESSION['nom']); ?>';
-        }
-
-        function enableEmailEditing() {
-            document.getElementById('email').removeAttribute('readonly');
-            document.getElementById('email-edit-buttons').style.display = 'inline';
-            document.getElementById('email-modify-button').style.display = 'none';
-        }
-
-        function cancelEmailEditing() {
-            document.getElementById('email').setAttribute('readonly', true);
-            document.getElementById('email-edit-buttons').style.display = 'none';
-            document.getElementById('email-modify-button').style.display = 'inline';
-            document.getElementById('email').value = '<?php echo htmlspecialchars($_SESSION['email']); ?>';
-        }
+        const nomInitial = "<?php echo htmlspecialchars($_SESSION['nom']); ?>";
+        const emailInitial = "<?php echo htmlspecialchars($_SESSION['email']); ?>";
     </script>
+    <script src="../js/profile.js"></script>
 </head>
 
 <body class="profil">
@@ -147,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <tr>
                 <td><?php echo htmlspecialchars($key); ?></td>
                 <td>
-                    <button onclick="window.location.href='trip_recap.php?<?php echo (htmlspecialchars($voyage["config"])); ?>'">Voir détail</button>
+                    <button onclick="window.location.href='trip_recap.php?<?php echo htmlspecialchars($voyage["config"]); ?>'">Voir détail</button>
                     <?php if (!$voyage['payé']): ?>
                         <form method="POST" style="display:inline;">
                             <input type="hidden" name="action" value="delete_voyage">
