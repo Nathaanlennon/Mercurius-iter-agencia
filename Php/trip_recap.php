@@ -114,11 +114,13 @@ if (!($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"]))) {
         echo
             "voyage non payé <br><a href='configuration_voyage.php?" . $_SERVER['QUERY_STRING'] . "'>modification</a> ";
 
+        $nb_user = strlen((string)$_SESSION['id']);
+        $nb_trip = strlen((string)$voyage['id']);
         echo "<form action='payement.php' method='post'>
     <input type='hidden' value='" . $price . "' name='price'>
-    <input type='hidden' value='" . $_SESSION["id"] . $voyage["id"] . (0) . implode('', array_map(function () { //0 means it's a simple transaction
+    <input type='hidden' value='" . (0) . $_SESSION["id"] . $voyage["id"] .  implode('', array_map(function () { //0 means it's a simple transaction
                 return dechex(rand(0, 15));
-            }, range(1, 9))) . "' name='id'>
+            }, range(1, 7 - $nb_trip-$nb_user))) . "' name='id'>
     <button type='submit'>Payement</button>
 </form>
 ";

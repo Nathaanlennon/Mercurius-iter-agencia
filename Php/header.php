@@ -59,7 +59,7 @@ if (isset($_COOKIE["sans-gluten"]) && !isset($_SESSION['id'])) {
             <a href="presentation.php" class="purple">À propos</a>
             <a href="research.php" class="purple">Recherche</a>
             <a href="choice.php" class="red">Choix</a>
-            <?php if (isset($_SESSION['panier'])) {
+            <?php if (isset($_SESSION['panier']) && count($_SESSION['panier']) > 0) {
                 echo "<a href='panier.php' class='red'>Panier</a>";
             } ?>
             <button id="theme-toggle">Mode sombre</button>

@@ -11,7 +11,7 @@ if (!isset($_SESSION['id'])) {
     header("Location: connexion.php");
     exit;
 }
-if (!isset($_SESSION['panier'])) {
+if (!isset($_SESSION['panier'])|| empty($_SESSION['panier'])) {
     header("Location: index.php");
     exit;
 }
@@ -34,21 +34,22 @@ if (!isset($_SESSION['panier'])) {
 <?php
 $price = 0;
 foreach ($_SESSION['panier'] as $voyage => $details) {
-    if ($details['payé']) {
-        continue;
+    if (!$details['payé']) {
+        parse_str($details['config'], $config);
+        echo "<h2>" . $voyage . "</h2>"
+            . "prix : ";
+        echo -$price + $price += (calculer_prix_total($details['duree'], $config));
     }
-    parse_str($details['config'], $config);
-    echo "<h2>" . $voyage . "</h2>"
-        . "prix : ";
-    echo -$price + $price += (calculer_prix_total($details['duree'], $config));
-}
+    }
 
+$nb_user = strlen((string)$_SESSION['id']);
+$nb_trip = strlen((string)$config['id']);
 echo "<h2>Prix total : " . $price . "€</h2>";
 echo "<form action='payement.php' method='post'>
     <input type='hidden' value='" . $price . "' name='price'>
-    <input type='hidden' value='" . $_SESSION["id"] . $config["id"] . (1). implode('', array_map(function () { // 1 veut sdire que c'est une transaction de panier
+    <input type='hidden' value='" . (1). $nb_user. $_SESSION["id"] . $nb_trip . $config["id"] .  implode('', array_map(function () { // 1 veut sdire que c'est une transaction de panier
         return dechex(rand(1, 15));
-    }, range(1, 9))) . "' name='id'>
+    }, range(1, 7 - $nb_trip-$nb_user))) . "' name='id'>
     <button type='submit'>Payement</button>
 </form>";
 echo "</div>";
