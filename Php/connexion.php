@@ -11,7 +11,6 @@ if (isset($info_util['id'])) {
 $utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier), true) : [];
 
 $message = ""; // <-- Pour stocker les messages à transmettre au JS
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST["email"]);
     $password = $_POST["password"];

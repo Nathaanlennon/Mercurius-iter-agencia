@@ -62,7 +62,7 @@ while (true) {
                 }
             }
 
-        } elseif(isset($date['email']) && isset($data['password']) && isset($data['nom']) && isset($data['prenom'])){
+        } elseif(isset($data['nom'])) {
             end($utilisateurs);
             $data["id"] = key($utilisateurs) + 1;
             $utilisateurs[] = $data;

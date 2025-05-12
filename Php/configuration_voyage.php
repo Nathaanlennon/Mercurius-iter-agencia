@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
             }
         }
         if (!isset($_SESSION["voyages"]) || (isset($_SESSION["voyages"][$voyage["name"]]) && $_SESSION["voyages"][$voyage["name"]]["payé"])) {
-            header("Location: connexion.php");
+            header("Location: connexion.php?");
             exit();
         }
         if (isset($_POST["depart"])) {

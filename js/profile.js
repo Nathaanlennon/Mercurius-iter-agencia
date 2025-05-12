@@ -128,6 +128,4 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
         });
     });
-
-    console.log(nomInitial + " " + emailInitial + "1");
 });
