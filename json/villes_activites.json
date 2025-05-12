@@ -1,0 +1,152 @@
+[
+  {
+    "nom": "valence",
+    "activités": ["balade à vélo", "fort historique", "balade en bateau", "plongée"],
+    "prix": [12, 15, 40, 50]
+  },
+  {
+    "nom": "tarragone",
+    "activités": ["fort historique", "visite de ruines", "aquarium", "balade à vélo"],
+    "prix": [15, 20, 15, 12]
+  },
+  {
+    "nom": "barcelone",
+    "activités": ["randonnée côtière", "atelier artisanat", "balade à vélo", "gastronomie"],
+    "prix": [10, 20, 12, 25]
+  },
+  {
+    "nom": "arles",
+    "activités": ["croisière", "aquarium", "visite guidée", "visite de ruines"],
+    "prix": [60, 15, 22, 20]
+  },
+  {
+    "nom": "marseille",
+    "activités": ["jardin botanique", "site archéologique", "spectacle", "croisière"],
+    "prix": [12, 20, 30, 60]
+  },
+  {
+    "nom": "antibes",
+    "activités": ["visite de ruines", "balade en bateau", "atelier artisanat", "site archéologique"],
+    "prix": [20, 40, 20, 20]
+  },
+  {
+    "nom": "nice",
+    "activités": ["aquarium", "spectacle", "gastronomie", "fort historique"],
+    "prix": [15, 30, 25, 15]
+  },
+  {
+    "nom": "rome",
+    "activités": ["croisière", "musée", "randonnée côtière", "marché local"],
+    "prix": [60, 10, 10, 5]
+  },
+  {
+    "nom": "ostie",
+    "activités": ["plage", "tour panoramique", "village typique", "atelier artisanat"],
+    "prix": [0, 15, 8, 20]
+  },
+  {
+    "nom": "naples",
+    "activités": ["visite de ruines", "randonnée côtière", "croisière", "balade à vélo"],
+    "prix": [20, 10, 60, 12]
+  },
+  {
+    "nom": "herculanum",
+    "activités": ["plage", "plongée", "gastronomie", "balade en bateau"],
+    "prix": [0, 50, 25, 40]
+  },
+  {
+    "nom": "pompei",
+    "activités": ["village typique", "visite de ruines", "visite guidée", "plongée"],
+    "prix": [8, 20, 22, 50]
+  },
+  {
+    "nom": "syracuse",
+    "activités": ["tour panoramique", "visite guidée", "village typique", "visite de ruines"],
+    "prix": [15, 22, 8, 20]
+  },
+  {
+    "nom": "malte",
+    "activités": ["gastronomie", "fort historique", "site archéologique", "atelier artisanat"],
+    "prix": [25, 15, 20, 20]
+  },
+  {
+    "nom": "agrigente",
+    "activités": ["jardin botanique", "atelier artisanat", "spectacle", "marché local"],
+    "prix": [12, 20, 30, 5]
+  },
+  {
+    "nom": "butrint",
+    "activités": ["balade à vélo", "jardin botanique", "aquarium", "site archéologique"],
+    "prix": [12, 12, 15, 20]
+  },
+  {
+    "nom": "athenes",
+    "activités": ["marché local", "balade à vélo", "gastronomie", "randonnée côtière"],
+    "prix": [5, 12, 25, 10]
+  },
+  {
+    "nom": "ephesus",
+    "activités": ["balade en bateau", "tour panoramique", "gastronomie", "spectacle"],
+    "prix": [40, 15, 25, 30]
+  },
+  {
+    "nom": "istanbul",
+    "activités": ["balade en bateau", "croisière", "balade à vélo", "marché local"],
+    "prix": [40, 60, 12, 5]
+  },
+  {
+    "nom": "tipaza",
+    "activités": ["festival local", "musée", "croisière", "visite de ruines"],
+    "prix": [18, 10, 60, 20]
+  },
+  {
+    "nom": "annaba",
+    "activités": ["village typique", "plongée", "atelier artisanat", "tour panoramique"],
+    "prix": [8, 50, 20, 15]
+  },
+  {
+    "nom": "tunis",
+    "activités": ["festival local", "site archéologique", "balade à vélo", "plage"],
+    "prix": [18, 20, 12, 0]
+  },
+  {
+    "nom": "carthage",
+    "activités": ["visite de ruines", "fort historique", "randonnée côtière", "gastronomie"],
+    "prix": [20, 15, 10, 25]
+  },
+  {
+    "nom": "leptis",
+    "activités": ["atelier artisanat", "jardin botanique", "spectacle", "balade en bateau"],
+    "prix": [20, 12, 30, 40]
+  },
+  {
+    "nom": "alexandrie",
+    "activités": ["randonnée côtière", "village typique", "plage", "musée"],
+    "prix": [10, 8, 0, 10]
+  },
+  {
+    "nom": "jerusalem",
+    "activités": ["spectacle", "musée", "jardin botanique", "visite guidée"],
+    "prix": [30, 10, 12, 22]
+  },
+  {
+    "nom": "cesaree",
+    "activités": ["visite de ruines", "randonnée côtière", "plongée", "spectacle"],
+    "prix": [20, 10, 50, 30]
+  },
+  {
+    "nom": "sidon",
+    "activités": ["balade à vélo", "randonnée côtière", "festival local", "spectacle"],
+    "prix": [12, 10, 18, 30]
+  },
+  {
+    "nom": "jbeil",
+    "activités": ["visite de ruines", "visite guidée", "site archéologique", "randonnée côtière"],
+    "prix": [20, 22, 20, 10]
+  },
+  {
+    "nom": "antioche",
+    "activités": ["tour panoramique", "jardin botanique", "visite de ruines", "marché local"],
+    "prix": [15, 12, 20, 5]
+  }
+]
