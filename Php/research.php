@@ -41,7 +41,7 @@ $file = file_exists("../json/voyagetest.json") ? json_decode(file_get_contents("
 <?php
 include "header.php";
 ?>
-<script src="../js/research.js"></script>
+<script src="../JavaScript/research.js"></script>
 <script>
 
 

@@ -66,6 +66,6 @@ include "header.php"
 
 
 </div>
-<script src="../js/presentation.js"></script>
+<script src="../JavaScript/presentation.js"></script>
 </body>
 </html>

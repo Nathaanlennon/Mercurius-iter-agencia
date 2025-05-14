@@ -68,4 +68,4 @@ if (isset($_COOKIE["sans-gluten"]) && !isset($_SESSION['id'])) {
 </div>
 
 
-<script src="../js/header.js"></script>
+<script src="../JavaScript/header.js"></script>

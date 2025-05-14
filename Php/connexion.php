@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 </div>
 <div id="login-message" data-status="<?= htmlspecialchars($message) ?>" style="display: none;"></div>
-<script src="../js/connexion.js"></script>
+<script src="../JavaScript/connexion.js"></script>
 
 </body>
 </html>

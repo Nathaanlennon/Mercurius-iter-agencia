@@ -114,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
 </div>
-<script src="../js/admin.js"></script>
+<script src="../JavaScript/admin.js"></script>
 
 
 

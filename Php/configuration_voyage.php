@@ -122,6 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
 
 <script>
     let price = Array.from({length: <?php echo count($voyage["stages"]) ?> }, () => Array(3).fill(0));
+    let stages = <?= json_encode($voyage["stages"]) ?>;
 
     window.addEventListener("load", function () {
 
@@ -160,14 +161,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
         //pour le prix de l'avion de départ
         document.getElementById("avion").textContent = (nb_personnes * 100).toString();
 
-        //fin init
+    //fin init
 
 
+    const form = document.getElementById("form");
+        console.log(stages);
+        stages.forEach(function (stage, index) {
+            const div = document.getElementById(`${index}`);
+            div.innerHTML = "";
+            div.innerHTML = `
+            <span class='name'>${stage} :</span><br>
+            Niveau hôtel :
+            <select name="${index}1">
+                <option value="1" ${price[index][0] !== 1 ? "" : "selected"}>1</option>
+                <option value="2" ${price[index][0] === 2 ? "selected" : ""}>2</option>
+                <option value="3" ${price[index][0] === 3 ? "selected" : ""}>3</option>
+                <option value="4" ${price[index][0] === 4 ? "selected" : ""}>4</option>
+                <option value="5" ${price[index][0] === 5 ? "selected" : ""}>5</option>
+            </select><br>
+            Activités :
+                <label><input type='checkbox' name="${index}2[]" value="1" ${(price[index][1] & 1) !== 0 ? 'checked' : ''}> musée</label>
+            <label><input type='checkbox' name="${index}2[]" value="2" ${(price[index][1] & 2) !== 0 ? 'checked' : ''}> visite de ruines</label>
+            <label><input type='checkbox' name="${index}2[]" value="3" ${(price[index][1] & 4) !== 0 ? 'checked' : ''}> spectacle</label>
+            <label><input type='checkbox' name="${index}2[]" value="4" ${(price[index][1] & 8) !== 0 ? 'checked' : ''}> plage</label>
+            <br> Transport :
+            <label><input type='radio' name="${index}3" value="1" ${price[index][2] !== 1 ? "" : "checked"}> avion</label>
+            <label><input type='radio' name="${index}3" value="2" ${price[index][2] === 2 ? "checked" : ""}> voiture</label>
+            <label><input type='radio' name="${index}3" value="3" ${price[index][2] === 3 ? "checked" : ""}> bateau</label>
+            <label><input type='radio' name="${index}3" value="4" ${price[index][2] === 4 ? "checked" : ""}> train</label>
+            <br>
+            <br>
 
+        `;
+
+        });
     });
 
 
 </script>
+
 <div class="content">
     <div class="configuration">
         <h1><?php echo $voyage["name"] ?></h1>
@@ -183,6 +215,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
             <br>
             <br>
             <b>Avion de départ : <span id="avion"></span>€</b>
+
+
+
             <?php
 
             for ($i = 0; $i < count($voyage["stages"]); $i++) {
@@ -218,6 +253,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
     </div>
 
 </div>
-<script src="../js/configuration_voyage.js"></script>
+<script src="../JavaScript/configuration_voyage.js"></script>
 </body>
 </html>

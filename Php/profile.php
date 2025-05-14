@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         globalthis.nomInitial = "<?php echo htmlspecialchars($_SESSION['nom']); ?>";
         globalthis.emailInitial = "<?php echo htmlspecialchars($_SESSION['email']); ?>";
     </script>
-    <script src="../js/profile.js"></script>
+    <script src="../JavaScript/profile.js"></script>
 </head>
 
 <body class="profil">

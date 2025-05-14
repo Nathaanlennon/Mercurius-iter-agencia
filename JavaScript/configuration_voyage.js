@@ -75,6 +75,7 @@ window.addEventListener("load", function (){
                         switch (champ.type) {
                             case 'checkbox':
                                 console.log("checkbox" + index_trip);
+                                console.log("oui" + champ.value);
                                 price[index_trip][1] ^= (1 << champ.value - 1);
                                 break;
                             case 'radio':
