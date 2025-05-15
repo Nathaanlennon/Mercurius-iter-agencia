@@ -77,6 +77,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body class="profil">
 
 <h1 class="title">Profil</h1>
+<div style="text-align: center;">
+    <img id="loading-spinner" src="../assets/chargement.gif" style="display:none; width:40px;" alt="Chargement..." />
+</div>
 <form method="POST" id="profile-form">
     <table>
         <tr>

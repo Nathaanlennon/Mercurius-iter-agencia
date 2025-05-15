@@ -45,48 +45,54 @@ document.addEventListener('DOMContentLoaded', () => {
     profileForm.addEventListener('submit', function (event) {
         event.preventDefault();
 
-        const emailInput = document.getElementById('email');
-        const email = emailInput.value.trim();
+        document.getElementById('loading-spinner').style.display = 'block'; // Affiche l'image
 
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        setTimeout(() => {
+            const emailInput = document.getElementById('email');
+            const email = emailInput.value.trim();
 
-        if (!emailRegex.test(email)) {
-            alert('Veuillez entrer une adresse e-mail valide.');
-            emailInput.focus();
-            return;
-        }
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        const formData = new FormData(profileForm);
+            if (!emailRegex.test(email)) {
+                alert('Veuillez entrer une adresse e-mail valide.');
+                emailInput.focus();
+                document.getElementById('loading-spinner').style.display = 'none';
+                return;
+            }
 
-        fetch('profile.php', {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => {
-                if (!response.ok) throw new Error('Erreur réseau');
-                return response.text();
+            const formData = new FormData(profileForm);
+
+            fetch('profile.php', {
+                method: 'POST',
+                body: formData
             })
-            .then(data => {
-                alert('Modification enregistrée avec succès.');
+                .then(response => {
+                    if (!response.ok) throw new Error('Erreur réseau');
+                    return response.text();
+                })
+                .then(data => {
+                    alert('Modification enregistrée avec succès.');
 
-                // Mettre à jour les valeurs initiales
-                nomInitial = document.getElementById('nom').value.trim();
-                emailInitial = document.getElementById('email').value.trim();
+                    nomInitial = document.getElementById('nom').value.trim();
+                    emailInitial = document.getElementById('email').value.trim();
 
-                // Verrouiller les champs
-                document.getElementById("nom").setAttribute('readonly', true);
-                document.getElementById('email').setAttribute('readonly', true);
+                    document.getElementById("nom").setAttribute('readonly', true);
+                    document.getElementById('email').setAttribute('readonly', true);
 
-                // Réinitialiser les boutons
-                document.getElementById('nom-edit-buttons').style.display = 'none';
-                document.getElementById('email-edit-buttons').style.display = 'none';
-                document.getElementById('nom-modify-button').style.display = 'inline';
-                document.getElementById('email-modify-button').style.display = 'inline';
-            })
-            .catch(error => {
-                console.error('Erreur :', error);
-                alert('Échec de la modification');
-            });
+                    document.getElementById('nom-edit-buttons').style.display = 'none';
+                    document.getElementById('email-edit-buttons').style.display = 'none';
+                    document.getElementById('nom-modify-button').style.display = 'inline';
+                    document.getElementById('email-modify-button').style.display = 'inline';
+                })
+                .catch(error => {
+                    console.error('Erreur :', error);
+                    alert('Échec de la modification');
+                })
+                .finally(() => {
+                    document.getElementById('loading-spinner').style.display = 'none'; // Cache l'image après traitement
+                });
+
+        }, 3000);
     });
 
     document.querySelectorAll('.delete-voyage-form').forEach(form => {
@@ -121,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         message.id = "no-voyage-message";
                         document.querySelector('.profil').appendChild(message);
                     }
+                    document.getElementById('loading-spinner').style.display = 'none';
                 })
                 .catch(error => {
                     console.error('Erreur :', error);
