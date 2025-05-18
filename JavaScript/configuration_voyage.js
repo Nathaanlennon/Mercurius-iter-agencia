@@ -31,7 +31,6 @@ function calcul_stage(stage, nb_personnes, data) { //data = les activités et le
 
     // [1] : activités
     const activites = stage[1] ?? 0;
-    console.log("test ta mère la pute");
     console.log(data);
 
     for (let i = 0; i < 4; i++) {
@@ -145,19 +144,17 @@ window.addEventListener("load", function () {
                             break;
                     }
                     console.log(price);
-                    const test = fetchData().then(data => {
-                        console.log("data stages");
-                        console.log(data);
+                    let fetchprice = fetchData().then(data => {
                         document.getElementById("price").textContent = calcul_price(price, nb_personnes, data).toString();
                     })
-                    console.log("issouuu");
-                    console.log(test);
+                    fetchprice = null;
                 })
 
             });
 
         });
     });
+    data_stages = null;
 
 
     //ici on met à jour l'url
