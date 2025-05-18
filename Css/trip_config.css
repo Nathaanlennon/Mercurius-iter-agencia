@@ -11,6 +11,7 @@
 
 }
 * {
+    user-select: none;
     /*border:solid black 1px;*/
 }
 h1{
@@ -34,5 +35,15 @@ button[type="submit"]{
     &:hover{
         background-color: #9a0000;
     }
+}
+.hidden *:not(.name){
+    display: none !important;
+}
+
+.name:hover{
+    color: white;
+    background-color: #650065;
+    border-radius: 5px;
+    padding: 0.25em;
 }
 

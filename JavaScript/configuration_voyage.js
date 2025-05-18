@@ -2,6 +2,19 @@ let activities_price = [10, 20, 30, 0];
 let transports_price = [100, 60, 80, 50];
 let nb_personnes = 1;
 
+function toggleVisibility(span, parentId) {
+    const parent = document.getElementById(`${parentId}`);
+
+    // Vérifie si le parent a la classe "hidden"
+    if (parent.classList.contains("hidden")) {
+        //enleve la classe hidden
+        parent.classList.remove("hidden");
+    } else {
+        //ajoute la classe
+        parent.classList.add("hidden");
+    }
+}
+
 
 async function fetchData() {
     const response = await fetch("../json/villes_activites.json");
@@ -86,10 +99,11 @@ window.addEventListener("load", function () {
 
         stages.forEach(function (stage, index) {
             const div = document.getElementById(`${index}`);
+            console.log(div);
             div.innerHTML = "";
             div.innerHTML = `
-                <span class='name'>${stage} :</span><br>
-                Niveau hôtel :
+                <span class='name' onclick='toggleVisibility(this, ${index})'>${stage} :</span><br>
+                <span>Niveau hôtel :</span> 
                 <select name="${index}1">
                     <option value="1" ${price[index][0] !== 1 ? "" : "selected"}>1</option>
                     <option value="2" ${price[index][0] === 2 ? "selected" : ""}>2</option>
@@ -97,17 +111,16 @@ window.addEventListener("load", function () {
                     <option value="4" ${price[index][0] === 4 ? "selected" : ""}>4</option>
                     <option value="5" ${price[index][0] === 5 ? "selected" : ""}>5</option>
                 </select><br>
-                Activités :`;
+                <span>Activités :</span>`;
             for (let i = 0; i < data[stage][0].length; i++) {
-                div.innerHTML += `<label><input type='checkbox' name="${index}2[]" value="${i + 1}" ${(price[index][1] & (2 ** (i))) !== 0 ? 'checked' : ''}> ${data[stage][0][i]}</label>`;
+                div.innerHTML += `<label><input type='checkbox' name="${index}2[]" value="${i + 1}" ${(price[index][1] & (2 ** (i))) !== 0 ? 'checked' : ''}> ${data[stage][0][i]}</label>     `;
             }
             div.innerHTML += `
-                <br> Transport :
+                <br> <span>Transport :</span>
                 <label><input type='radio' name="${index}3" value="1" ${price[index][2] !== 1 ? "" : "checked"}> avion</label>
                 <label><input type='radio' name="${index}3" value="2" ${price[index][2] === 2 ? "checked" : ""}> voiture</label>
                 <label><input type='radio' name="${index}3" value="3" ${price[index][2] === 3 ? "checked" : ""}> bateau</label>
                 <label><input type='radio' name="${index}3" value="4" ${price[index][2] === 4 ? "checked" : ""}> train</label>
-                <br>
                 <br>
 
                 `;

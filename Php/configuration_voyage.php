@@ -191,29 +191,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
             <?php
 
             for ($i = 0; $i < count($voyage["stages"]); $i++) {
-                echo "<div class='trip' id='" . $i . "'>";
-                $stage = $voyage["stages"][$i];
-                echo "<span class='name'>" . $stage . " :</span><br>";
-                echo "niveau hotel : <select name=\"" . $i . "1\">
-    <option value=\"1\"" . ((isset(${$i . "1"}) && (${$i . "1"} != "1")) ? '' : 'selected') . ">1</option>
-    <option value=\"2\"" . ((isset(${$i . "1"}) && (${$i . "1"} == "2")) ? 'selected' : '') . ">2</option>
-    <option value=\"3\"" . ((isset(${$i . "1"}) && (${$i . "1"} == "3")) ? 'selected' : '') . ">3</option>
-    <option value=\"4\"" . ((isset(${$i . "1"}) && (${$i . "1"} == "4")) ? 'selected' : '') . ">4</option>
-    <option value=\"5\"" . ((isset(${$i . "1"}) && (${$i . "1"} == "5")) ? 'selected' : '') . ">5</option>
-</select><br>";
-
-
-                echo "activités : 
-    <label><input type='checkbox' name=\"" . $i . "2[]\" value=\"1\"" . ((isset(${$i . "2"}) && in_array("1", ${$i . "2"})) ? ' checked' : '') . "> musée</label>
-    <label><input type='checkbox' name=\"" . $i . "2[]\" value=\"2\"" . ((isset(${$i . "2"}) && in_array("2", ${$i . "2"})) ? ' checked' : '') . "> visite de ruines</label>
-    <label><input type='checkbox' name=\"" . $i . "2[]\" value=\"3\"" . ((isset(${$i . "2"}) && in_array("3", ${$i . "2"})) ? ' checked' : '') . "> spectacle</label>
-    <label><input type='checkbox' name=\"" . $i . "2[]\" value=\"4\"" . ((isset(${$i . "2"}) && in_array("4", ${$i . "2"})) ? ' checked' : '') . "> plage</label>";
-
-                echo "<br> transport : 
-    <label><input type='radio' name=\"" . $i . "3\" value=\"1\"" . ((isset(${$i . "3"}) && (${$i . "3"} != "1")) ? '' : 'checked') . "> avion</label>
-    <label><input type='radio' name=\"" . $i . "3\" value=\"2\"" . ((isset(${$i . "3"}) && (${$i . "3"} == "2")) ? 'checked' : '') . "> voiture</label>
-    <label><input type='radio' name=\"" . $i . "3\" value=\"3\"" . ((isset(${$i . "3"}) && (${$i . "3"} == "3")) ? 'checked' : '') . "> bateau</label>
-    <label><input type='radio' name=\"" . $i . "3\" value=\"4\"" . ((isset(${$i . "3"}) && (${$i . "3"} == "4")) ? 'checked' : '') . "> train</label><br>";
+                echo "<div class='trip hidden' id='" . $i . "'>";
                 echo "</div>"; //le div démoniaque
             }
             echo "<b>Prix total : <span id=\"price\">0</span>€</b>";
