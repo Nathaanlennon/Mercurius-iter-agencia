@@ -42,7 +42,6 @@ foreach ($_SESSION['panier'] as $voyage => $details) {
             . "Prix : ";
         //affiche le prix d'un voyage et le rajoute au total
         echo -$price + $price += (calculer_prix_total($details['duree'], $config));
-        echo "<button name='delete_voyage' value='" . $voyage . "'>Supprimer</button>";
     }
 }
 
