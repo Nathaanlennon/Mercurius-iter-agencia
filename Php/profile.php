@@ -7,17 +7,14 @@ if (!isset($info_util['id'])) {
     exit;
 }
 
-if (!isset($_SESSION['id'])) {
-    header("Location: connexion.php");
-    exit;
-}
+
 
 // Traitement du formulaire
 $queue_dir = "../queue";
 if (!file_exists($queue_dir)) {
     mkdir($queue_dir, 0777, true);
 }
-
+//formulaire
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($_POST['action'] === 'delete_voyage' && isset($_POST['voyage'])) {
         $voyageToDelete = $_POST['voyage'];
@@ -39,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         exit;
     }
-
+    //information du formulaire
     $nv_info = [
         'id' => $_SESSION['id'],
         'nom' => $_POST['nom'] ?? $_SESSION['nom'],

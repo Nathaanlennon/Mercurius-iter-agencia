@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message = "password_mismatch";
     } elseif (array_filter($utilisateurs, fn($u) => $u["email"] === $email)) {
         $message = "email_exists";
-    } else {
+    } else {//création de l'utilisateur
         $nv_id = count($utilisateurs) > 0 ? max(array_column($utilisateurs, "id")) + 1 : 1;
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
