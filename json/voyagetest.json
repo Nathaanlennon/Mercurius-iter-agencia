@@ -238,21 +238,6 @@
     ]
   },
   {
-    "id": 9,
-    "name": "Anatolia",
-    "price": 400,
-    "stages": [
-      "ephesus",
-      "antioche",
-      "istanbul"
-    ],
-    "duration": 6,
-    "key-word": [
-      "Turquie",
-      "Grèce"
-    ]
-  },
-  {
     "id": 10,
     "name": "Gallia et Italia",
     "price": 1600,

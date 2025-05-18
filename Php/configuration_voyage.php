@@ -10,6 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
     $voyage["id"] = $_GET["id"];
     if (file_exists("../json/voyagetest.json")) {
         $file = json_decode(file_get_contents("../json/voyagetest.json"), true);
+        if(!$file || $voyage["id"]>= count($file)){
+            header("Location: index.php");
+            exit();
+        }
         foreach ($file as $trip) {
             if ($trip["id"] == $voyage["id"]) {
                 $voyage = $trip;
