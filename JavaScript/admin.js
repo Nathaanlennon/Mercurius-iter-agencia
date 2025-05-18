@@ -32,3 +32,6 @@ document.querySelectorAll('.change-form').forEach(form => {//choisis tous les fo
             });
     });
 });
+document.getElementById("recherche").addEventListener("input", function () {
+    this.value = this.value.replace(/[^0-9]/g, "");
+})

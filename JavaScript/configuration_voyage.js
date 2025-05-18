@@ -22,15 +22,22 @@ async function fetchData() {
         throw new Error('Network response was not ok');
     }
     const data = Object.values(await response.json());
-
+    console.log(data);
     let filteredData = {};
     data.forEach(item => {
+        console.log(item);
         if (stages.includes(item["name"])) {
             filteredData[item["name"]] = [item["activities"], item["price"]];
         }
     });
-
-    return filteredData;  // retourne l'objet filtré
+    // console.log("pteit");
+    // console.log(Object.keys(filteredData).length);
+    // console.log(stages.length);
+    if (Object.keys(filteredData).length !== stages.length) {
+        throw new Error('Base de données incomplète ou incorrecte');
+    } else {
+        return filteredData;  // retourne l'objet filtré
+    }
 }
 
 // Calcule le prix total d'un stage donné
@@ -44,7 +51,7 @@ function calcul_stage(stage, nb_personnes, data) { //data = les activités et le
 
     // [1] : activités
     const activites = stage[1] ?? 0;
-    console.log(data);
+    // console.log(data);
 
     for (let i = 0; i < 4; i++) {
         total += (data[1][i] * ((activites & (1 << i)) !== 0));
@@ -55,7 +62,7 @@ function calcul_stage(stage, nb_personnes, data) { //data = les activités et le
     total += transports_price[transport - 1]
 
     stage.forEach(s => {
-        console.log(typeof s);
+        // console.log(typeof s);
     })
 
     return total * nb_personnes;
@@ -79,11 +86,13 @@ window.addEventListener("load", function () {
 
     let data_stages = fetchData().then(data => {
         /** @type {HTMLInputElement} */
+        console.log(data_stages);
         const number_input = document.getElementById("nb_personnes");
         number_input.addEventListener("change", () => {
             nb_personnes = number_input.value;
-            console.log(nb_personnes)
+            // console.log(nb_personnes)
             document.getElementById("avion").textContent = (nb_personnes * 100).toString();
+
             document.getElementById("price").textContent = calcul_price(price, nb_personnes, data).toString();
 
         });

@@ -19,7 +19,7 @@
       "syracuse",
       "malte",
       "agrigente",
-      "butrin",
+      "butrint",
       "athenes",
       "ephesus",
       "istanbul"
@@ -379,7 +379,7 @@
     "stages": [
       "syracuse",
       "athenes",
-      "ephese"
+      "ephesus"
     ],
     "duration": 6,
     "key-word": [

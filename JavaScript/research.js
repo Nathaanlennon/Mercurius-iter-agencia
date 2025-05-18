@@ -46,6 +46,10 @@ window.addEventListener("load", function () {
 
         print_trips(trips);
     });
+
+    document.getElementById("recherche").addEventListener("input", function () {
+        this.value = this.value.replace(/[^a-zA-Z0-9@.]/g, "");
+    })
 });
 
 

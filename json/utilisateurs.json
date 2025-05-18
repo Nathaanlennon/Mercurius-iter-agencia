@@ -31,11 +31,11 @@
     },
     {
         "id": "3",
-        "nom": "august",
+        "nom": "august1",
         "prenom": "philipe",
         "email": "ap@gmail.com",
         "password": "$2y$10$e1.DgzCEy7zQWO3Mzko9x..SbUnPY2DjNMsJDvx4fbv8ujbG2qjSq",
-        "role": "normal",
+        "role": "Normal",
         "voyages": {
             "Hispania": {
                 "pay\u00e9": true,
@@ -60,6 +60,10 @@
             "Africa Proconsularis": {
                 "pay\u00e9": true,
                 "config": "id=8&depart=2025-05-18&nb_personnes=1&01=1&03=1&11=1&13=1&21=1&23=1&31=1&33=1&41=1&42%5B0%5D=2&42%5B1%5D=3&43=1"
+            },
+            "Magna Graecia": {
+                "pay\u00e9": true,
+                "config": "id=15&depart=2025-05-18&nb_personnes=1&01=1&03=1&11=1&12%5B0%5D=1&12%5B1%5D=2&13=3&21=1&22%5B0%5D=3&23=3"
             }
         }
     },
@@ -72,12 +76,12 @@
         "role": "admin"
     },
     {
-        "id": 5,
+        "id": "5",
         "nom": "opo",
         "prenom": "op",
         "email": "op@gmail.com",
         "password": "$2y$10$HvnCcY6L8uwSdgsLjzSHV.r3Tr.fnDUKV1VLoZlUdojb1wibbd2AO",
-        "role": "normal",
+        "role": "Normal",
         "voyages": {
             "Gallia": {
                 "pay\u00e9": false,

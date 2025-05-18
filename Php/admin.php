@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {//envoi requête de changement de r�
 <div class="content">
 
     <form method="GET">
-        <label>Id spécifique : <input type="text" name="id_specific" maxlength="9" value="<?= isset($id_specific) ? htmlspecialchars($id_specific) : '' ?>"></label>
+        <label>Id spécifique : <input type="text" name="id_specific" id="recherche" maxlength="9" value="<?= isset($id_specific) ? htmlspecialchars($id_specific) : '' ?>"></label>
         <button type="submit">Envoyer</button>
     </form>
 

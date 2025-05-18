@@ -120,7 +120,7 @@ include "header.php";
     }
     ?>
     <form method="get" class="research">
-        <h6><label for="key-word">Mots clés : <input type="text" name="key-word"
+        <h6><label for="key-word">Mots clés : <input type="text" id='recherche' name="key-word"
                                                      value="<?php echo($_GET["key-word"] ?? '') ?>"></label>
         </h6>
         <h6><label>Date de départ : <input type="date" name="depart"
