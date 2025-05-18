@@ -1,14 +1,14 @@
-document.querySelectorAll('.change-form').forEach(form => {
+document.querySelectorAll('.change-form').forEach(form => {//choisis tous les formulaires dans la classe
     form.addEventListener('submit', function(event) {
         event.preventDefault();
-
+        //lorsqu'un submit est fait
         const submitButton = form.querySelector('button[type="submit"]');
         submitButton.disabled = true;
+        //désactivation du bouton de modification
+        const formData = new FormData(form);//récupération des données du formulaire
+        formData.append('maj_role', '1');//permet au php d'identifier l'action
 
-        const formData = new FormData(form);
-        formData.append('maj_role', '1');
-
-        fetch('admin.php', {
+        fetch('admin.php', {//envoi de la requête
             method: 'POST',
             body: formData
         })
@@ -27,7 +27,7 @@ document.querySelectorAll('.change-form').forEach(form => {
             })
             .finally(() => {
                 setTimeout(() => {
-                    submitButton.disabled = false;
+                    submitButton.disabled = false; //réactive le bouton après 5 sec
                 }, 5000);
             });
     });

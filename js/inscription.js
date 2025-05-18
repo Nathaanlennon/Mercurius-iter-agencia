@@ -1,12 +1,14 @@
-function toggleVisibility(fieldId) {
-    const field = document.getElementById(fieldId);
-    field.type = field.type === "password" ? "text" : "password";
+function toggleVisibility(fieldId) { //fonction pour la visibilité du mot de passe
+    const field = document.getElementById(fieldId); // on récupère le texte
+    field.type = field.type === "password" ? "text" : "password";// transformation en texte ou password selon ce que c'était
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    //on récupère les informations du formulaire d'inscription
     const form = document.getElementById("formInscription");
-
+    //se déclenche lors de l'appui du bouton de type submit
     form.addEventListener("submit", function (e) {
+        //récupération des valeurs données par l'utilisateur
         const nom = document.getElementById("nom").value.trim();
         const prenom = document.getElementById("prenom").value.trim();
         const email = document.getElementById("email").value.trim();
@@ -15,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const mdpConfirm = document.getElementById("mdp_confirm").value;
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+        //vérifie que les champs sont remplis
         if (!nom || !prenom || !email || !emailConfirm || !password || !mdpConfirm) {
             alert("Tous les champs doivent être remplis.");
             e.preventDefault();
