@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
 
 //
     }
-//pour enregistrer les données, on récupère les valeurs ezt on met à jour la base de donnée
+//pour enregistrer les données, on récupère les valeurs est on met à jour la base de donnée
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["id"])) {
 
     $voyage["id"] = $_POST["id"];
@@ -122,7 +122,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
 
 <script>
     let price = Array.from({length: <?php echo count($voyage["stages"]) ?> }, () => Array(3).fill(0));
+
     let stages = <?= json_encode($voyage["stages"]) ?>;
+
+    async function fetchData(url, stages) {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = Object.values(await response.json());
+
+        let filteredData = {};
+        data.forEach(item => {
+            if (stages.includes(item["name"])) {
+                filteredData[item["name"]] = [item["activities"], item["price"]];
+            }
+        });
+
+        return filteredData;  // retourne l'objet filtré
+    }
+
 
     window.addEventListener("load", function () {
 
@@ -161,15 +180,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
         //pour le prix de l'avion de départ
         document.getElementById("avion").textContent = (nb_personnes * 100).toString();
 
-    //fin init
 
+        let data_stages = fetchData("../json/villes_activites.json", stages).then(data=>{
+            console.log("data stages");
+            console.log(data_stages);
 
-    const form = document.getElementById("form");
-        console.log(stages);
-        stages.forEach(function (stage, index) {
-            const div = document.getElementById(`${index}`);
-            div.innerHTML = "";
-            div.innerHTML = `
+            const form = document.getElementById("form");
+            // console.log(stages);
+
+            stages.forEach(function (stage, index){
+                const div = document.getElementById(`${index}`);
+                div.innerHTML = "";
+                div.innerHTML = `
             <span class='name'>${stage} :</span><br>
             Niveau hôtel :
             <select name="${index}1">
@@ -179,11 +201,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
                 <option value="4" ${price[index][0] === 4 ? "selected" : ""}>4</option>
                 <option value="5" ${price[index][0] === 5 ? "selected" : ""}>5</option>
             </select><br>
-            Activités :
-                <label><input type='checkbox' name="${index}2[]" value="1" ${(price[index][1] & 1) !== 0 ? 'checked' : ''}> musée</label>
-            <label><input type='checkbox' name="${index}2[]" value="2" ${(price[index][1] & 2) !== 0 ? 'checked' : ''}> visite de ruines</label>
-            <label><input type='checkbox' name="${index}2[]" value="3" ${(price[index][1] & 4) !== 0 ? 'checked' : ''}> spectacle</label>
-            <label><input type='checkbox' name="${index}2[]" value="4" ${(price[index][1] & 8) !== 0 ? 'checked' : ''}> plage</label>
+            Activités :`;
+                for(let i = 0 ; i<data[stage][0].length; i++) {
+                    div.innerHTML += `<label><input type='checkbox' name="${index}2[]" value="${i + 1}" ${(price[index][1] & (2 ** (i))) !== 0 ? 'checked' : ''}> ${data[stage][0][i]}</label>`;
+                }
+                div.innerHTML += `
             <br> Transport :
             <label><input type='radio' name="${index}3" value="1" ${price[index][2] !== 1 ? "" : "checked"}> avion</label>
             <label><input type='radio' name="${index}3" value="2" ${price[index][2] === 2 ? "checked" : ""}> voiture</label>
@@ -194,7 +216,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
 
         `;
 
+            });
         });
+
+        //fin init
     });
 
 
