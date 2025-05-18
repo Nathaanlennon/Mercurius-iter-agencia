@@ -4,13 +4,14 @@
 
 .configuration {
     border-radius: 5px;
-    box-shadow: 5px 5px 7.5px #650065;
-    background-color: white;
+    box-shadow: 5px 5px 7.5px var(--p-shadow);
+    background-color: var(--p-bg);
     padding: 5%;
     display: inline-block;
 
 }
 * {
+    user-select: none;
     /*border:solid black 1px;*/
 }
 h1{
@@ -29,10 +30,20 @@ h1{
 button[type="submit"]{
     border-radius: 5px;
     background-color: #650065;
-    color: white;
+    color: var(--text-color);;
     font-size: 2em;
     &:hover{
         background-color: #9a0000;
     }
+}
+.hidden *:not(.name){
+    display: none !important;
+}
+
+.name:hover{
+    color: white;
+    background-color: #650065;
+    border-radius: 5px;
+    padding: 0.25em;
 }
 

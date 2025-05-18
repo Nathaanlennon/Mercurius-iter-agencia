@@ -1,18 +1,18 @@
 .result {
     border-radius: 5px;
-    box-shadow: 5px 5px 7.5px #650065;
-    background-color: white;
+    box-shadow: 5px 5px 7.5px var(--p-shadow);
+    background-color: var(--p-bg);
     padding: 0.5em;
     text-align: center;
     margin: 0.8em auto;
-    width : 50em;
+    width: 50em;
+    color: var(--text-color);
 }
 
-.pagination{
+.pagination {
     margin: 0.8em auto;
     width: fit-content;
     text-align: center;
-
 }
 
 .pagination a {
@@ -26,7 +26,6 @@
 }
 
 .pagination a:hover {
-    background-color: #9a0000;
+    background-color: #9a0000; /* Idem ici */
     color: white;
 }
-

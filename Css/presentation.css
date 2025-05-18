@@ -1,21 +1,19 @@
 #charter {
     border-radius: 5px;
-    box-shadow: 5px 5px 7.5px #650065;
-    background-color: white;
+    box-shadow: 5px 5px 7.5px var(--charter-shadow);
+    background-color: var(--charter-bg);
     padding: 0.5em;
-
     display: flex;
     margin: 0 0;
 }
 
 #charter * {
-    /*border: 1px solid black;*/
+    /* border: 1px solid black; */
 }
 
 #charter p {
     box-shadow: none;
 }
-
 
 #text {
     display: flex;
@@ -29,36 +27,57 @@
 
 #charter img {
     width: 100%;
-
 }
 
+/* Paragraphes verticaux colorés */
 #red {
-    background-color: #9a0000;
+    background-color: var(--red);
     color: white;
 }
 
 #purple {
-    background-color: #650065;
+    background-color: var(--purple);
     color: white;
 }
 
 #yellow {
-    background-color: #f7c041;
+    background-color: var(--yellow);
+    color: black;
 }
 
 #eggshell {
-    background-color: #F0ebd7;
+    background-color: var(--eggshell);
+    color: black;
 }
 
 p[id] {
     clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 90%, 0 80%);
     width: 1em;
-    padding:  1.5em 1em;
+    padding: 1.5em 1em;
     margin: 0.5em;
     writing-mode: vertical-rl;
     text-orientation: upright;
     font-size: 2em;
-
 }
 
+/* Thème clair */
+:root {
+    --charter-bg: white;
+    --charter-shadow: #650065;
 
+    --red: #9a0000;
+    --purple: #650065;
+    --yellow: #f7c041;
+    --eggshell: #F0ebd7;
+}
+
+/* Thème sombre */
+:root[data-theme="dark"] {
+    --charter-bg: #1e1e1e;
+    --charter-shadow: white;
+
+    --red: #660000;
+    --purple: #3d003d;
+    --yellow: #9d7007;
+    --eggshell:#1D1A0B;
+}

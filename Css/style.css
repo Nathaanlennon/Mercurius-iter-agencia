@@ -3,33 +3,57 @@
     src: url(../assets/Hadriatic-lgyRV.ttf);
 }
 
+:root {
+    --bg-color: #F0ebd7;
+    --text-color: black;
+    --link-bg: #F0ebd7;
+    --link-color: black;
+    --link-hover-bg:  #9a0000;
+    --link-hover-color: white;
+    --header-gradient: linear-gradient(90deg, #9a0000 11%, #f7c041 44% 56%, #650065 88%);
+    --p-bg: white;
+    --p-shadow: #650065;
+}
+
+:root[data-theme="dark"] {
+    --bg-color: #1D1A0B;
+    --text-color: white;
+    --link-bg: #1D1A0B;
+    --link-color: white;
+    --link-hover-bg: #650065;
+    --link-hover-color: white;
+    --header-gradient: linear-gradient(90deg, #660000 11%, #9d7007 44% 56%, #3d003d 88%);
+    --p-bg: black;
+    --p-shadow: #F0ebd7;
+    --th-bg-color: #9d7007; /* Violet pour le mode sombre */
+}
+
+
+
 body {
     font-family: hadriatic, sans-serif;
-    background-color: #F0ebd7;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     line-height: 2em;
     letter-spacing: 0.15em;
     height: 100vh;
     border-radius: 10px;
+    background-image: url("../assets/transpqr.png");
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: 50% 80%;
+    background-attachment: fixed;
 }
 
 html * {
     cursor: url('../assets/cursor.png'), auto;
 }
 
-body {
-    background-image: url("../assets/transpqr.png");
-    background-repeat: no-repeat;
-    background-size: 60%;
-    background-position: 50% 80%;
-    background-attachment: fixed;
-
-}
-
 header {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     padding: 1%;
-    background: linear-gradient(90deg, #9a0000 11%, #f7c041 44% 56%, #650065 88%);
+    background: var(--header-gradient);
 }
 
 .header {
@@ -38,9 +62,6 @@ header {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: auto;
-}
-
-header * {
 }
 
 header h1 {
@@ -53,11 +74,24 @@ header h1 {
 
 a {
     border-radius: 5px;
-    background-color: #F0ebd7;
+    background-color: var(--link-bg);
     padding: 5px;
-    color: black;
+    color: var(--link-color);
     text-decoration: none;
     align-self: center;
+}
+
+a:hover{
+    background-color: #9a0000;
+    color: var(--link-hover-color);
+}
+
+a.purple:hover, #theme-toggle:hover {
+    background-color: #650065;
+}
+
+a.red:hover, :root[data-theme="dark"] #theme-toggle:hover   {
+    background-color: #9a0000;
 }
 
 #logo {
@@ -89,6 +123,7 @@ header img {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    gap: 5px;
 }
 
 .auth > a {
@@ -97,21 +132,8 @@ header img {
     text-decoration: none;
     padding-left: 5px;
     padding-right: 5px;
-    background-color: #F0ebd7;
-    color: black;
-}
-
-a:hover {
-    background-color: #650065;
-    color: white;
-}
-
-a.purple:hover {
-    background-color: #650065;
-}
-
-a.red:hover {
-    background-color: #9a0000;
+    background-color: var(--link-bg);
+    color: var(--link-color);
 }
 
 nav {
@@ -127,14 +149,68 @@ nav {
 
 p {
     border-radius: 5px;
-    box-shadow: 5px 5px 7.5px #650065;
-    background-color: white;
+    box-shadow: 5px 5px 7.5px var(--p-shadow);
+    background-color: var(--p-bg);
     padding: 0.5em;
+    color: var(--text-color);
 }
 
 button {
-    font-family: Hadriatic, sans-serif;
+    font-family: hadriatic, sans-serif;
     font-size: 0.75em;
-    padding: 0.2em
+    padding: 0.2em;
+    border-radius: 5px;
+}
 
+button:hover {
+    background:#650065;
+}
+
+body.profil th {
+    background: var(--profil-th-bg); /* Rouge en mode clair, violet en mode sombre */
+}
+
+body.profil td {
+    background-color: var(--profil-td-bg); /* Blanc en mode clair, noir en mode sombre */
+}
+
+/* Page Authentification */
+body.authentification th {
+    background: var(--auth-th-bg); /* Rouge en mode clair, violet en mode sombre */
+}
+
+body.authentification td {
+    background-color: var(--auth-td-bg); /* Jaune en mode clair, gris en mode sombre */
+}
+
+/* Variables pour le mode clair */
+:root {
+    --profil-th-bg: #9a0000;  /* Rouge pour le th sur la page de profil */
+    --profil-td-bg: white;    /* Blanc pour le td sur la page de profil */
+    --auth-th-bg: #9a0000;    /* Rouge pour le th sur la page d'authentification */
+    --auth-td-bg: #f7c041;    /* Jaune pour le td sur la page d'authentification */
+}
+
+/* Variables pour le mode sombre */
+:root[data-theme="dark"] {
+    --profil-th-bg: #650065;  /* Violet sombre pour le th sur la page de profil */
+    --profil-td-bg: black;    /* Noir pour le td sur la page de profil */
+    --auth-th-bg: #650065;    /* Violet sombre pour le th sur la page d'authentification */
+    --auth-td-bg: black;       /* Gris pour le td sur la page d'authentification */
+}
+
+/* Par défaut (mode clair) */
+#theme-toggle {
+    background-color: #F0ebd7;
+    color: black;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+}
+
+/* Mode sombre */
+:root[data-theme="dark"] #theme-toggle {
+    background-color: #1D1A0B;
+    color: white;
 }

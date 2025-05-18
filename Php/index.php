@@ -16,7 +16,7 @@ include "header.php"
 
 <div class="content">
 
-    <p>Mercurius Iter Agencia vous invite à un voyage hors du temps, où l'histoire et l'aventure se rencontrent au cœur
+    <p class="">Mercurius Iter Agencia vous invite à un voyage hors du temps, où l'histoire et l'aventure se rencontrent au cœur
         de l'Empire Romain. Explorez les contrées majestueuses qui bordent la mer Méditerranée, et laissez-vous guider
         par l'esprit du dieu Mercure à travers un monde de découvertes sans fin. Offrez-vous une expérience sur mesure,
         où vous avez le pouvoir de choisir votre itinéraire, de personnaliser chaque étape et de vivre l'Empire Romain
@@ -60,7 +60,7 @@ include "header.php"
                     <br>
                     Vivez un voyage inoubliable entre histoire, culture et mer
                 </p>
-                <a href="http://localhost:63342/Mercurius-iter-agencia/Php/voyage_sheet.php?id=0" class="link">Réserver</a>
+                <a href="voyage_sheet.php?id=0" class="link">Réserver</a>
             </div>
 
             <div class="miniature"><img
@@ -97,10 +97,11 @@ include "header.php"
                     <br>
                     Une immersion inoubliable au cœur de l’Empire romain et des merveilles du sud méditerranéen !
                 </p>
-                <a href="http://localhost:63342/Mercurius-iter-agencia/Php/voyage_sheet.php?id=1" class="link">Réserver</a>
+                <a href="voyage_sheet.php?id=1" class="link">Réserver</a>
             </div>
         </div>
     </div>
 </div>
+
 </body>
 </html>

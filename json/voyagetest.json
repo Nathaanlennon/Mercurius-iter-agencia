@@ -19,7 +19,7 @@
       "syracuse",
       "malte",
       "agrigente",
-      "butrin",
+      "butrint",
       "athenes",
       "ephesus",
       "istanbul"
@@ -238,21 +238,6 @@
     ]
   },
   {
-    "id": 9,
-    "name": "Anatolia",
-    "price": 400,
-    "stages": [
-      "ephesus",
-      "antioche",
-      "istanbul"
-    ],
-    "duration": 6,
-    "key-word": [
-      "Turquie",
-      "Grèce"
-    ]
-  },
-  {
     "id": 10,
     "name": "Gallia et Italia",
     "price": 1600,
@@ -379,7 +364,7 @@
     "stages": [
       "syracuse",
       "athenes",
-      "ephese"
+      "ephesus"
     ],
     "duration": 6,
     "key-word": [

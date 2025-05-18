@@ -1,50 +1,48 @@
-.nom{
-    background:#9a0000 ;
+.nom {
+    background: var(--link-hover-bg); /* Remplace la couleur statique par la variable */
     width: 20%;
     text-align: center;
     color: white;
     border-radius: 5px;
-    box-shadow: 5px 5px 7.5px #650065;
+    box-shadow: 5px 5px 7.5px var(--p-shadow); /* Utilisation de la variable pour l'ombre */
 }
+
 table, tr, th, td {
-    border: 1px solid #650065;
-
-
+    border: 1px solid var(--link-hover-bg); /* Utilisation de la variable pour la couleur de la bordure */
 }
-table{
+
+table {
     width: 80%;
     border-spacing: 0;
     border-radius: 5px;
-    box-shadow: 5px 5px 7.5px #650065;
+    box-shadow: 5px 5px 7.5px var(--p-shadow); /* Utilisation de la variable pour l'ombre */
 }
 
-th{
-
-    background: #9a0000;
+th {
+    background: var(--link-hover-bg); /* Remplace la couleur statique par la variable */
     color: white;
 }
 
-td{
+td {
     width: fit-content;
-    background-color: white;
-    padding:0.5em;
+    background-color: var(--p-bg); /* Utilisation de la variable pour l'arrière-plan des cellules */
+    padding: 0.5em;
 }
 
 td, th {
     height: 50px;
 }
 
-#button{
-    border-radius: 5px;
-    text-align: center;
+/*#button {*/
+/*    border-radius: 5px;*/
+/*    text-align: center;*/
+/*}*/
+
+/*button {*/
+/*    font-family: Hadriatic, sans-serif;*/
+/*}*/
+
+input {
+    border: none;
+    outline: none;
 }
-button{
-    font-family: Hadriatic ,sans-serif;
-}
-
-
-
-
-
-
-

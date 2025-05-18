@@ -7,6 +7,12 @@ table {
     background-color: white;
 }
 
+th {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: var(--link-hover-bg); /* Changer la couleur de fond en fonction du mode */
+    color: white;
+}
 
 table, td, th {
 
@@ -15,8 +21,13 @@ table, td, th {
 }
 
 td {
-    color: blue;
+    background: var(--p-bg);
 }
 
 select {
+}
+
+.pagination{
+    text-align: center;
+
 }

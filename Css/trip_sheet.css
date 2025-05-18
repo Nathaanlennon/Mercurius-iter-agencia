@@ -3,26 +3,40 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-
-
 }
 
 * {
-    /*border:solid black 1px;*/
+    /* border: solid black 1px; */
 }
 
 #recap {
     border-radius: 5px;
-    box-shadow: 5px 5px 7.5px #650065;
-    background-color: white;
+    box-shadow: 5px 5px 7.5px var(--recap-shadow);
+    background-color: var(--recap-bg);
     padding: 0.5em;
-
 }
+
 button[type="submit"] {
     border-radius: 5px;
-    background-color: #F0ebd7;
+    background-color: var(--button-bg);
     padding: 5px;
-    color: black;
+    color: var(--button-color);
     text-decoration: none;
     align-self: center;
+}
+
+/* Thème clair */
+:root {
+    --recap-bg: white;
+    --recap-shadow: #650065;
+    --button-bg: #F0ebd7;
+    --button-color: black;
+}
+
+/* Thème sombre */
+:root[data-theme="dark"] {
+    --recap-bg: #1e1e1e;
+    --recap-shadow: white;
+    --button-bg: #3a3a3a;
+    --button-color: white;
 }

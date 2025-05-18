@@ -1,4 +1,5 @@
 <?php
+
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
     $voyage["id"] = $_GET["id"];
     if (file_exists("../json/voyagetest.json")) {
@@ -12,9 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
             }
         }
     }
-} else {
-    header("Location: research.php");
-    exit();
 }
 
 
@@ -44,7 +42,7 @@ include "header.php";
         ?>
     </p>
     <br>
-        <a href="configuration_voyage.php?id=<?php echo $voyage["id"] ?>">Réservation</a>
+    <a href="configuration_voyage.php?id=<?php echo $voyage["id"] ?>">Réservation</a>
 
 
 

@@ -1,6 +1,9 @@
 #!/usr/bin/php
 <?php
 $queue_dir = "../queue";
+if (!file_exists($queue_dir)) {
+    mkdir($queue_dir, 0777, true);
+}
 $fichier_utilisateurs = "../json/utilisateurs.json";
 
 function array_fusion($array1, $array2)
@@ -19,7 +22,6 @@ function array_fusion($array1, $array2)
     }
     return $array1;
 }
-
 if (!is_dir($queue_dir)) {
     exit();
 }
@@ -43,16 +45,27 @@ while (true) {
             unlink($file);
             continue;
         }
-        if ($data["id"] != 0) {
+        if ($data["id"] != 0 ) {
             foreach ($utilisateurs as &$util) {
                 if ($util['id'] == $data['id']) {
-                    $util = array_fusion($util, $data);
-                    echo "Modification de l'utilisateur ID: " . $data['id'] . "\n";
-                    break; //
+
+                    if (isset($data['action']) && $data['action'] === 'delete_voyage' && isset($data['voyage'])) {
+                        $voyage = $data['voyage'];
+                        if (isset($util['voyages'][$voyage])) {
+                            unset($util['voyages'][$voyage]);
+                            echo "Voyage '$voyage' supprimé pour l'utilisateur ID: " . $data['id'] . "\n";
+                        } else {
+                            echo "Voyage '$voyage' introuvable pour l'utilisateur ID: " . $data['id'] . "\n";
+                        }
+                    } else {
+                        $util = array_fusion($util, $data);
+                        echo "Modification de l'utilisateur ID: " . $data['id'] . "\n";
+                    }
+                    break;
                 }
             }
 
-        } else {
+        } elseif(isset($data['nom'])) {
             end($utilisateurs);
             $data["id"] = key($utilisateurs) + 1;
             $utilisateurs[] = $data;
