@@ -6,8 +6,22 @@ function toggleVisibility(fieldId) { //fonction pour la visibilité du mot de pa
 document.addEventListener("DOMContentLoaded", () => {
     //on récupère les informations du formulaire d'inscription
     const form = document.getElementById("formInscription");
+
+    // Liste des champs à filtrer
+    const fieldsToFilter = ["nom", "prenom", "email", "email_confirm", "password", "mdp_confirm"];
+
+    fieldsToFilter.forEach(fieldId => {
+        const input = document.getElementById(fieldId);
+        if (input) {
+            input.addEventListener("input", function () {
+                this.value = this.value.replace(/[^a-zA-Z0-9@.]/g, "");
+            });
+        }
+    });
+
     //se déclenche lors de l'appui du bouton de type submit
     form.addEventListener("submit", function (e) {
+
         //récupération des valeurs données par l'utilisateur
         const nom = document.getElementById("nom").value.trim();
         const prenom = document.getElementById("prenom").value.trim();
@@ -30,6 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
     });
+
+
 
     // Message serveur (erreur inscription)
     const messageDiv = document.getElementById("signup-message");

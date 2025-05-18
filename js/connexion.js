@@ -8,6 +8,18 @@ document.addEventListener("DOMContentLoaded", () => {
     //récupération du formulaire de connexion
     const loginForm = document.getElementById("loginForm");
 
+    // Liste des champs à filtrer
+    const fieldsToFilter = [ "email", "password",];
+
+    fieldsToFilter.forEach(fieldId => {
+        const input = document.getElementById(fieldId);
+        if (input) {
+            input.addEventListener("input", function () {
+                this.value = this.value.replace(/[^a-zA-Z0-9@.]/g, "");
+            });
+        }
+    });
+
     // Gestion du formulaire
     loginForm.addEventListener("submit", function(e) {//se déclenche lors du clic sur le bouton de type submit
         const email = document.getElementById("email").value.trim();

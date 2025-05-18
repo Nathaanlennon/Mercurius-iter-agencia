@@ -28,6 +28,19 @@ function cancelEmailEditing() {//annule l'écriture dans la zone d'écriture de 
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    // Liste des champs à filtrer
+    const fieldsToFilter = [ "email", "nom",];
+
+    fieldsToFilter.forEach(fieldId => {
+        const input = document.getElementById(fieldId);
+        if (input) {
+            input.addEventListener("input", function () {
+                this.value = this.value.replace(/[^a-zA-Z0-9@.]/g, "");
+            });
+        }
+    });
+
     //récupère les valeurs du formulaire de profil
     const profileForm = document.getElementById('profile-form');
 
@@ -99,6 +112,9 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
 
             const formData = new FormData(form);
+
+
+
             //Envoi les informations au PHP
             fetch('profile.php', {
                 method: 'POST',
