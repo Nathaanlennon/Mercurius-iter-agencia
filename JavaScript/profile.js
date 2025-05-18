@@ -1,100 +1,121 @@
 let emailInitial;
 let nomInitial;
 
-function enableNomEditing() {
-    console.log(nomInitial);
+function enableNomEditing() { //permet l'écriture dans la zone d'écriture du nom
     document.getElementById('nom').removeAttribute('readonly');
     document.getElementById('nom-edit-buttons').style.display = 'inline';
     document.getElementById('nom-modify-button').style.display = 'none';
-    console.log(nomInitial);
 }
 
-function cancelNomEditing() {
-    console.log(nomInitial);
+function cancelNomEditing() {//annule l'écriture dans la zone d'écriture du nom
     document.getElementById('nom').setAttribute('readonly', true);
     document.getElementById('nom-edit-buttons').style.display = 'none';
     document.getElementById('nom-modify-button').style.display = 'inline';
     document.getElementById('nom').value = nomInitial;
-    console.log(nomInitial);
 }
 
-function enableEmailEditing() {
-    console.log(emailInitial);
+function enableEmailEditing() {//permet l'écriture dans la zone d'écriture de l'email
     document.getElementById('email').removeAttribute('readonly');
     document.getElementById('email-edit-buttons').style.display = 'inline';
     document.getElementById('email-modify-button').style.display = 'none';
-    console.log(emailInitial);
 }
 
-function cancelEmailEditing() {
-    console.log(emailInitial);
+function cancelEmailEditing() {//annule l'écriture dans la zone d'écriture de l'email
     document.getElementById('email').setAttribute('readonly', true);
     document.getElementById('email-edit-buttons').style.display = 'none';
     document.getElementById('email-modify-button').style.display = 'inline';
     document.getElementById('email').value = emailInitial;
-    console.log(emailInitial);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    // Liste des champs à filtrer
+    const fieldsToFilter = [ "email", "nom",];
+
+    fieldsToFilter.forEach(fieldId => {
+        const input = document.getElementById(fieldId);
+        if (input) {
+            input.addEventListener("input", function () {
+                this.value = this.value.replace(/[^a-zA-Z0-9@.]/g, "");
+            });
+        }
+    });
+
+    //récupère les valeurs du formulaire de profil
     const profileForm = document.getElementById('profile-form');
 
     // Initialiser les variables avec les valeurs du DOM
     emailInitial = document.getElementById('email').value.trim();
     nomInitial = document.getElementById('nom').value.trim();
 
+    //cas du bouton de type submit
     profileForm.addEventListener('submit', function (event) {
         event.preventDefault();
 
-        const emailInput = document.getElementById('email');
-        const email = emailInput.value.trim();
 
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        document.getElementById('loading-spinner').style.display = 'block'; // Affiche l'image
 
-        if (!emailRegex.test(email)) {
-            alert('Veuillez entrer une adresse e-mail valide.');
-            emailInput.focus();
-            return;
-        }
+        setTimeout(() => {
+            //récupère l'email
+            const emailInput = document.getElementById('email');
+            const email = emailInput.value.trim();
 
-        const formData = new FormData(profileForm);
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        fetch('profile.php', {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => {
-                if (!response.ok) throw new Error('Erreur réseau');
-                return response.text();
+            if (!emailRegex.test(email)) {
+                alert('Veuillez entrer une adresse e-mail valide.');
+                emailInput.focus();
+                document.getElementById('loading-spinner').style.display = 'none';
+                return;
+            }
+
+            const formData = new FormData(profileForm);
+            //envoi des informations au PHP
+            fetch('profile.php', {
+                method: 'POST',
+                body: formData
             })
-            .then(data => {
-                alert('Modification enregistrée avec succès.');
+                .then(response => {
+                    //si cela n'as pas marché
+                    if (!response.ok) throw new Error('Erreur réseau');
+                    return response.text();
+                })
+                .then(data => {
+                    alert('Modification enregistrée avec succès.');
+                    //modifications des informations pour au cas où il y a une annulation la prochaine fois
+                    nomInitial = document.getElementById('nom').value.trim();
+                    emailInitial = document.getElementById('email').value.trim();
 
-                // Mettre à jour les valeurs initiales
-                nomInitial = document.getElementById('nom').value.trim();
-                emailInitial = document.getElementById('email').value.trim();
+                    //remet en lecture seule la zone de texte
+                    document.getElementById("nom").setAttribute('readonly', true);
+                    document.getElementById('email').setAttribute('readonly', true);
+                    //faire disparaitre les cases d'annulation et confirmation et remet modification
+                    document.getElementById('nom-edit-buttons').style.display = 'none';
+                    document.getElementById('email-edit-buttons').style.display = 'none';
+                    document.getElementById('nom-modify-button').style.display = 'inline';
+                    document.getElementById('email-modify-button').style.display = 'inline';
+                })
+                .catch(error => {
+                    //cas où il y a une erreur
+                    console.error('Erreur :', error);
+                    alert('Échec de la modification');
+                })
+                .finally(() =>{
+                    document.getElementById('loading-spinner').style.display = 'none'; // Cache l'image après traitement
+                });
 
-                // Verrouiller les champs
-                document.getElementById("nom").setAttribute('readonly', true);
-                document.getElementById('email').setAttribute('readonly', true);
-
-                // Réinitialiser les boutons
-                document.getElementById('nom-edit-buttons').style.display = 'none';
-                document.getElementById('email-edit-buttons').style.display = 'none';
-                document.getElementById('nom-modify-button').style.display = 'inline';
-                document.getElementById('email-modify-button').style.display = 'inline';
-            })
-            .catch(error => {
-                console.error('Erreur :', error);
-                alert('Échec de la modification');
-            });
+        }, 3000);
     });
 
-    document.querySelectorAll('.delete-voyage-form').forEach(form => {
+    document.querySelectorAll('.delete-voyage-form').forEach(form => { //Pour chaque formulaire de suppression de voyage, empêche l'envoi par défaut
         form.addEventListener('submit', function (event) {
             event.preventDefault();
 
             const formData = new FormData(form);
 
+
+
+            //Envoi les informations au PHP
             fetch('profile.php', {
                 method: 'POST',
                 body: formData
@@ -105,13 +126,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
                 .then(data => {
                     alert('Voyage annulé avec succès.');
-
+                    //supprime la ligne du voyage annulé
                     const row = form.closest('tr');
                     if (row) row.remove();
-
+                    //vérifie le nombre de voyage
                     const table = document.getElementById('voyages-table');
                     const remainingRows = table.querySelectorAll('tr').length - 1; // exclude header
-
+                    //cas où le nombre de voyage est à 0
                     if (remainingRows === 0) {
                         const container = document.getElementById('voyages-container');
                         if (container) container.remove();
@@ -121,6 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         message.id = "no-voyage-message";
                         document.querySelector('.profil').appendChild(message);
                     }
+                    document.getElementById('loading-spinner').style.display = 'none';
                 })
                 .catch(error => {
                     console.error('Erreur :', error);

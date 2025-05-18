@@ -5,29 +5,29 @@ include "header.php";
 
 $queue_dir = "../queue";
 if (!file_exists($queue_dir)) {
-    mkdir($queue_dir, 0777, true);
+    mkdir($queue_dir, 0777, true);//crée le fichier de queue s'il n'existe pas
 }
-$fichier = "../json/utilisateurs.json";
+$fichier = "../json/utilisateurs.json";//charge le fichier json
 
-$utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier), true) : [];
+$utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier), true) : []; //si pas possible, on obtient un tableau vide
 
 $info_util = $_SESSION;
 
 if (!isset($info_util['role']) || $info_util['role'] !== "admin") {
-    header("Location: index.php");
+    header("Location: index.php"); //redirection vers index si l'utilisateur n'est pas connecté ou admin
     exit;
 }
-$utilisateurs = array_filter($utilisateurs, fn($user) => $user['role'] !== 'admin');
+$utilisateurs = array_filter($utilisateurs, fn($user) => $user['role'] !== 'admin'); //on cache les admins
 
 $utilisateurs_par_page = 10;
 $total_utilisateurs = count($utilisateurs);
 
 if (isset($_GET['id_specific'])) {
     $id_specific = $_GET['id_specific'];
-    $utilisateurs = array_filter($utilisateurs, fn($user) => strpos($user['id'], $id_specific) !== false);
+    $utilisateurs = array_filter($utilisateurs, fn($user) => strpos($user['id'], $id_specific) !== false);//on filtre les utilisateurs par id
 }
 
-$total_utilisateurs = count($utilisateurs);
+$total_utilisateurs = count($utilisateurs);//nombre d'utilisateur
 
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $page = max(1, $page);
@@ -38,7 +38,7 @@ $utilisateurs_page = array_slice($utilisateurs, $debut, $utilisateurs_par_page);
 
 $total_pages = ceil($total_utilisateurs / $utilisateurs_par_page);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {//envoi requête de changement de rôle sous forme json dans queue/
     if (isset($_POST['maj_role'])) {
         $util_id = $_POST['util_id'];
         $nv_role = $_POST['role'];

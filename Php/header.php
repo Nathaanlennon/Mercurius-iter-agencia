@@ -9,7 +9,7 @@ $utilisateurs = file_exists($fichier) ? json_decode(file_get_contents($fichier),
 
 if (isset($_COOKIE["sans-gluten"]) && !isset($_SESSION['id'])) {
     foreach ($utilisateurs as $utilisateur) {
-        if ($_COOKIE["sans-gluten"] == $utilisateur["id"]) {
+        if ($_COOKIE["sans-gluten"] == $utilisateur["id"]) {//importations des informations grâce au cookie
             if ($utilisateur["role"] == "Banni") {
                 echo "Vous avez été banni";
                 exit;

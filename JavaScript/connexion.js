@@ -1,14 +1,27 @@
-function toggleVisibility() {
-    const passwordField = document.getElementById("password");
-    const type = passwordField.type === "password" ? "text" : "password";
+function toggleVisibility() {//fonction pour la visibilité du mot de passe
+    const passwordField = document.getElementById("password");// on récupère le texte
+    const type = passwordField.type === "password" ? "text" : "password";// transformation en texte ou password selon ce que c'était
     passwordField.type = type;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    //récupération du formulaire de connexion
     const loginForm = document.getElementById("loginForm");
 
+    // Liste des champs à filtrer
+    const fieldsToFilter = [ "email", "password",];
+
+    fieldsToFilter.forEach(fieldId => {
+        const input = document.getElementById(fieldId);
+        if (input) {
+            input.addEventListener("input", function () {
+                this.value = this.value.replace(/[^a-zA-Z0-9@.]/g, "");
+            });
+        }
+    });
+
     // Gestion du formulaire
-    loginForm.addEventListener("submit", function(e) {
+    loginForm.addEventListener("submit", function(e) {//se déclenche lors du clic sur le bouton de type submit
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value;
 

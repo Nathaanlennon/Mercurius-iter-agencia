@@ -1,6 +1,9 @@
 #!/usr/bin/php
 <?php
 $queue_dir = "../queue";
+if (!file_exists($queue_dir)) {
+    mkdir($queue_dir, 0777, true);
+}
 $fichier_utilisateurs = "../json/utilisateurs.json";
 
 function array_fusion($array1, $array2)

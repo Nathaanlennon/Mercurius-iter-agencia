@@ -1,12 +1,28 @@
-function toggleVisibility(fieldId) {
-    const field = document.getElementById(fieldId);
-    field.type = field.type === "password" ? "text" : "password";
+function toggleVisibility(fieldId) { //fonction pour la visibilité du mot de passe
+    const field = document.getElementById(fieldId); // on récupère le texte
+    field.type = field.type === "password" ? "text" : "password";// transformation en texte ou password selon ce que c'était
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    //on récupère les informations du formulaire d'inscription
     const form = document.getElementById("formInscription");
 
+    // Liste des champs à filtrer
+    const fieldsToFilter = ["nom", "prenom", "email", "email_confirm", "password", "mdp_confirm"];
+
+    fieldsToFilter.forEach(fieldId => {
+        const input = document.getElementById(fieldId);
+        if (input) {
+            input.addEventListener("input", function () {
+                this.value = this.value.replace(/[^a-zA-Z0-9@.]/g, "");
+            });
+        }
+    });
+
+    //se déclenche lors de l'appui du bouton de type submit
     form.addEventListener("submit", function (e) {
+
+        //récupération des valeurs données par l'utilisateur
         const nom = document.getElementById("nom").value.trim();
         const prenom = document.getElementById("prenom").value.trim();
         const email = document.getElementById("email").value.trim();
@@ -15,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const mdpConfirm = document.getElementById("mdp_confirm").value;
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+        //vérifie que les champs sont remplis
         if (!nom || !prenom || !email || !emailConfirm || !password || !mdpConfirm) {
             alert("Tous les champs doivent être remplis.");
             e.preventDefault();
@@ -28,6 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
     });
+
+
 
     // Message serveur (erreur inscription)
     const messageDiv = document.getElementById("signup-message");

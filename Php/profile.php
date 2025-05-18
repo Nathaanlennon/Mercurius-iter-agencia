@@ -7,17 +7,14 @@ if (!isset($info_util['id'])) {
     exit;
 }
 
-if (!isset($_SESSION['id'])) {
-    header("Location: connexion.php");
-    exit;
-}
+
 
 // Traitement du formulaire
 $queue_dir = "../queue";
 if (!file_exists($queue_dir)) {
     mkdir($queue_dir, 0777, true);
 }
-
+//formulaire
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($_POST['action'] === 'delete_voyage' && isset($_POST['voyage'])) {
         $voyageToDelete = $_POST['voyage'];
@@ -39,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         exit;
     }
-
+    //information du formulaire
     $nv_info = [
         'id' => $_SESSION['id'],
         'nom' => $_POST['nom'] ?? $_SESSION['nom'],
@@ -77,6 +74,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body class="profil">
 
 <h1 class="title">Profil</h1>
+<div style="text-align: center;">
+    <img id="loading-spinner" src="../assets/chargement.gif" style="display:none; width:40px;" alt="Chargement..." />
+</div>
 <form method="POST" id="profile-form">
     <table>
         <tr>
